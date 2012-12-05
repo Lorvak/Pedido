@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;br.com.senac.teste_aula.meuteste&apos; to &apos;ProximaTela&apos;&#x0D;&#x0A;- Original project: &apos;Teste_aula&apos;&#x0D;&#x0A;- Original element: &apos;br.com.senac.teste_aula.meuteste&apos;&#x0D;&#x0A;- Renamed element: &apos;br.com.senac.teste_aula.ProximaTela&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;meuteste&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;br.com.senac.teste_aula{meuteste.java[meuteste" matchStrategy="1" name="ProximaTela" qualified="false" references="true" similarDeclarations="false" stamp="1353669494578" textual="false" version="1.0"/>
+</session>

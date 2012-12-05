@@ -1,0 +1,9 @@
+<resources>
+
+    <string name="app_name">Pedido</string>
+
+    <string name="login">Usuario</string>
+
+    <string name="pizza">Pizzas</string>
+
+</resources>

@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="app_name">Pedido</string>
+
+    <string name="login">Usuario</string>
+
+</resources>
