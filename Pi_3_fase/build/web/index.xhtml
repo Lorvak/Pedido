@@ -50,6 +50,10 @@
                                 <p:menuitem value="Pesquisar por nome" action="#{logradouroControle.pesq()}" ajax="false" icon="ui-icon-star"/>
                                 <p:menuitem value="Pesquisar por cep" action="#{logradouroControle.pesqCep()}" ajax="false" icon="ui-icon-star"/>
                             </p:submenu>
+                            <p:submenu label="Endereco" icon="ui-icon-extlink">
+                                <p:menuitem value="Cadastrar" action="#{enderecoControle.novo()}" ajax="false" icon="ui-icon-star"/>
+                                <p:menuitem value="Pesquisar" action="#{enderecoControle.pesq()}" ajax="false" icon="ui-icon-star"/>
+                            </p:submenu>
                         </p:submenu>
                     </p:panelMenu>
                 </h:form>

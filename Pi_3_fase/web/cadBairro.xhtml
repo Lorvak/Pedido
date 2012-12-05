@@ -23,19 +23,19 @@
                     <h:panelGrid id="painel" columns="2">
                         <h:outputText  value="Nome:"/>
                         <p:inputText id="nome" value="#{bairroControle.bairro.nome}" required="true" requiredMessage="Campo nome é obrigatorio! "/>
-                        <h:outputText value="Pais: " style="color: white"/>  
+                        <h:outputText value="Pais: "/>  
                         <p:selectOneMenu id="pais" value="#{bairroControle.pais.id}" effect="fold" required="true" requiredMessage="Campo Pais é obrigatorio! ">  
                             <f:selectItem itemLabel="Select One" itemValue="0" />  
                             <f:selectItems value="#{bairroControle.comboPais}"/>
                             <f:ajax execute="pais" render="IDestado"/>
                         </p:selectOneMenu>
-                        <h:outputText value="Estado: " style="color: white"/>  
+                        <h:outputText value="Estado: "/>  
                         <p:selectOneMenu id="IDestado" value="#{bairroControle.estado.id}" effect="fold" required="true" requiredMessage="Campo Estado é obrigatorio! " disabled="#{bairroControle.pais.id==0}">  
                             <f:selectItem itemLabel="Select One" itemValue="0" />  
                             <f:selectItems value="#{bairroControle.comboEstado}" />  
                             <f:ajax execute="IDestado" render="cidade"/>
                         </p:selectOneMenu>
-                        <h:outputText value="Cidade: " style="color: white"/>  
+                        <h:outputText value="Cidade: "/>  
                         <p:selectOneMenu id="cidade" value="#{bairroControle.cidade.id}" effect="fold" required="true" requiredMessage="Campo Cidade é obrigatorio! " disabled="#{bairroControle.estado.id==0}">  
                             <f:selectItem itemLabel="Select One" itemValue="0" />  
                             <f:selectItems value="#{bairroControle.comboCidade}" />  
