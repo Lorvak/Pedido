@@ -13,7 +13,7 @@ public class Pizza extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.pizza);
 	
-		findViewById(R.id.tab1).setOnClickListener(
+		findViewById(R.id.Pizza).setOnClickListener(
 				new View.OnClickListener() {
 					@Override
 					public void onClick(View view) { 

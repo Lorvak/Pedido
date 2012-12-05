@@ -11,7 +11,7 @@ public class Bebida extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.bebida);
 	
-		findViewById(R.id.tab2).setOnClickListener(
+		findViewById(R.id.Bebida).setOnClickListener(
 				new View.OnClickListener() {
 					@Override
 					public void onClick(View view) { 

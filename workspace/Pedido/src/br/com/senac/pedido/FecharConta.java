@@ -11,7 +11,7 @@ public class FecharConta extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.fechar_conta);
 	
-		findViewById(R.id.tab4).setOnClickListener(
+		findViewById(R.id.Fechar).setOnClickListener(
 				new View.OnClickListener() {
 					@Override
 					public void onClick(View view) { 

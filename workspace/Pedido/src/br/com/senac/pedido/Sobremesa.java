@@ -11,7 +11,7 @@ public class Sobremesa extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.sobremesa);
 	
-		findViewById(R.id.tab3).setOnClickListener(
+		findViewById(R.id.Sobremesa).setOnClickListener(
 				new View.OnClickListener() {
 					@Override
 					public void onClick(View view) { 
