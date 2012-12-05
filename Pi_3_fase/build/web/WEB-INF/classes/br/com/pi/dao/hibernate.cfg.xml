@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/pizzaria</property>
+    <property name="hibernate.connection.username">root</property>
+    <mapping class="br.com.pi.entidade.Perfil"/>
+    <mapping class="br.com.pi.entidade.Usuario"/>
+    <mapping class="br.com.pi.entidade.Pais"/>
+    <mapping class="br.com.pi.entidade.Estado"/>
+    <mapping class="br.com.pi.entidade.Cidade"/>
+    <mapping class="br.com.pi.entidade.Bairro"/>
+    <mapping class="br.com.pi.entidade.Logradouro"/>
+    <mapping class="br.com.pi.entidade.Endereco"/>
+    <mapping class="br.com.pi.entidade.Pessoa"/>
+    <mapping class="br.com.pi.entidade.Cliente"/>
+    <mapping class="br.com.pi.entidade.Funcionario"/>
+    <mapping class="br.com.pi.entidade.Entregador"/>
+    <mapping class="br.com.pi.entidade.Bebida"/>
+    <mapping class="br.com.pi.entidade.Borda"/>
+    <mapping class="br.com.pi.entidade.Mesa"/>
+    <mapping class="br.com.pi.entidade.Sabor"/>
+    <mapping class="br.com.pi.entidade.Tamanho"/>
+    <mapping class="br.com.pi.entidade.Pizza"/>
+    <mapping class="br.com.pi.entidade.Pedido"/>
+    <mapping class="br.com.pi.entidade.PedidoTele"/>
+  </session-factory>
+</hibernate-configuration>

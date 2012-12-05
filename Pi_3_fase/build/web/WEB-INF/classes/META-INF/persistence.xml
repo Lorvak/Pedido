@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+  <persistence-unit name="Pi_3_fasePU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>br.com.pi.entidade.Bairro</class>
+    <class>br.com.pi.entidade.Bebida</class>
+    <class>br.com.pi.entidade.Borda</class>
+    <class>br.com.pi.entidade.Cidade</class>
+    <class>br.com.pi.entidade.Cliente</class>
+    <class>br.com.pi.entidade.Endereco</class>
+    <class>br.com.pi.entidade.Entregador</class>
+    <class>br.com.pi.entidade.Estado</class>
+    <class>br.com.pi.entidade.Funcionario</class>
+    <class>br.com.pi.entidade.Logradouro</class>
+    <class>br.com.pi.entidade.Mesa</class>
+    <class>br.com.pi.entidade.Pais</class>
+    <class>br.com.pi.entidade.Pedido</class>
+    <class>br.com.pi.entidade.PedidoTele</class>
+    <class>br.com.pi.entidade.Perfil</class>
+    <class>br.com.pi.entidade.Pessoa</class>
+    <class>br.com.pi.entidade.Pizza</class>
+    <class>br.com.pi.entidade.Sabor</class>
+    <class>br.com.pi.entidade.Tamanho</class>
+    <class>br.com.pi.entidade.Usuario</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="hibernate.connection.username" value="root"/>
+      <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+      <property name="hibernate.connection.password" value=""/>
+      <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/pizzaria?zeroDateTimeBehavior=convertToNull"/>
+      <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+      <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+    </properties>
+  </persistence-unit>
+</persistence>

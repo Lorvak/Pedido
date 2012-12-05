@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+    <h:head>
+        <title>Principal</title>
+        <style type="text/css">
+            .ui-widget{
+                font-size: 11px !important;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" size="180" header="SENAC"                         
+                          resizable="true" closable="true" collapsible="true">
+                <div id="topo" style="width: 100%; text-align: center;">
+                </div>
+            </p:layoutUnit>
+            <p:layoutUnit position="west"  header="Menu" 
+                          resizable="true"  collapsible="true">
+                <h:form>
+                    <p:growl id="messages" autoUpdate="true"/>
+
+                    <p:panelMenu style="width:200px">
+                        <p:submenu label="Navegação" >
+                            <p:menuitem value="HOME" url="index.faces" icon="ui-icon-star"/>
+                            <p:menuitem value="Prime Faces" url="http://www.primefaces.org" icon="ui-icon-star"/>
+                            <p:submenu label="Pais" icon="ui-icon-extlink">
+                                <p:menuitem value="Cadastrar" action="#{paisControle.novo()}" ajax="false" icon="ui-icon-star"/>
+                                <p:menuitem value="Pesquisar" action="#{paisControle.pesq()}" ajax="false" icon="ui-icon-star"/>
+                            </p:submenu>
+                            <p:submenu label="Estado" icon="ui-icon-extlink">
+                                <p:menuitem value="Cadastrar" action="#{estadoControle.novo()}" ajax="false" icon="ui-icon-star"/>
+                                <p:menuitem value="Pesquisar" action="#{estadoControle.pesq()}" ajax="false" icon="ui-icon-star"/>
+                            </p:submenu>
+                            <p:submenu label="Cidade" icon="ui-icon-extlink">
+                                <p:menuitem value="Cadastrar" action="#{cidadeControle.novo()}" ajax="false" icon="ui-icon-star"/>
+                                <p:menuitem value="Pesquisar" action="#{cidadeControle.pesq()}" ajax="false" icon="ui-icon-star"/>
+                            </p:submenu>
+                            <p:submenu label="Bairro" icon="ui-icon-extlink">
+                                <p:menuitem value="Cadastrar" action="#{bairroControle.novo()}" ajax="false" icon="ui-icon-star"/>
+                                <p:menuitem value="Pesquisar" action="#{bairroControle.pesq()}" ajax="false" icon="ui-icon-star"/>
+                            </p:submenu>
+                            <p:submenu label="Logradouro" icon="ui-icon-extlink">
+                                <p:menuitem value="Cadastrar" action="#{logradouroControle.novo()}" ajax="false" icon="ui-icon-star"/>
+                                <p:menuitem value="Pesquisar por nome" action="#{logradouroControle.pesq()}" ajax="false" icon="ui-icon-star"/>
+                                <p:menuitem value="Pesquisar por cep" action="#{logradouroControle.pesqCep()}" ajax="false" icon="ui-icon-star"/>
+                            </p:submenu>
+                        </p:submenu>
+                    </p:panelMenu>
+                </h:form>
+            </p:layoutUnit>
+
+            <ui:insert name="center">
+                <p:layoutUnit position="center" header="principal">
+
+                </p:layoutUnit>
+            </ui:insert>               
+
+        </p:layout>
+    </h:body>
+</html>
+
