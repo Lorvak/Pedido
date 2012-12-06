@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="./index.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="center">
+        <p:layoutUnit position="center" header="Usuario">
+            <h:form id="form1">
+                <p:toolbar>
+                    <p:toolbarGroup align="left" style="height: 25px;">
+                        <p:commandButton value="Pesquisar" image="ui-icon-search" action="#{usuarioControle.pesquisaLike()}" ajax="false" style="margin: 0px;" disabled="true"/>
+                        <p:commandButton value="Novo" image="ui-icon-folder-open" action="#{usuarioControle.novoUsuario()}" ajax="false" style="margin: 0px;"/>
+                    </p:toolbarGroup>
+                </p:toolbar>
+            </h:form>
+            <h:form id="form2">
+                <p:separator style="width: 100%; height: 5px; margin: 5px 0px;"/>
+                <p:messages id="menssages" showSummary="true"/>
+                <p:fieldset legend="Pesquisa" toggleable="true" style="width: 400px; margin: 0 auto;">
+                    <h:panelGrid columns="3">
+                        <h:outputText value="Login: " />
+                        <p:inputText id="login" value="#{usuarioControle.usuario.login}" size="">
+                            <p:focus for="login"/>
+                        </p:inputText>
+                        <p:commandButton value="Pesquisar" image="ui-icon-search" update="tabelacidade" action="#{usuarioControle.pesquisaLike()}" ajax="false"/>
+                    </h:panelGrid>
+                </p:fieldset>
+                <p:separator style="width: 100%; height: 5px; margin: 5px 0px 5px 0px;"/>
+                <p:dataTable id="tabelacidade" value="#{usuarioControle.model}" var="c" paginator="true" rows="5" emptyMessage="Nenhum Valor encontrado">
+                    <f:facet name="header">
+                        <h:outputText value="Listando usuarios(s)"/>
+                    </f:facet>
+                    <p:column>
+                        <f:facet name="header">Perfil</f:facet>
+                        <h:outputText value="${c.perfil.nome}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Login</f:facet>
+                        <h:outputText value="${c.login}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Cidade</f:facet>
+                        <h:outputText value="${c.senha}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Alterar/Excluir</f:facet>
+                        <p:commandButton action="#{usuarioControle.alterar()}" value="Alterar" ajax="false"/>
+                        <p:commandButton action="#{usuarioControle.excluir()}" update="tabelacidade" value="Excluir" ajax="false"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </p:layoutUnit>
+    </ui:define>
+
+</ui:composition>

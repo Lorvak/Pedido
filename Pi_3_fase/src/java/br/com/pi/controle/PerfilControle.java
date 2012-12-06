@@ -104,7 +104,7 @@ public class PerfilControle {
     }
 
 
-    public void excluir(ActionEvent evento) {
+    public void excluir() {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
             perfilDAO = new PerfilDAOImp();

@@ -18,8 +18,7 @@ public class Cliente extends Pessoa implements Serializable {
     private static final long serialVersionUID = 1L;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date cadastro;
-    @Transient
-    private String teste;
+   
 
     public Date getCadastro() {
         return cadastro;

@@ -6,6 +6,7 @@ package br.com.pi.controle;
 
 import br.com.pi.dao.UsuarioDAO;
 import br.com.pi.dao.UsuarioDAOImp;
+import br.com.pi.entidade.Perfil;
 import br.com.pi.entidade.Usuario;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -26,6 +27,7 @@ public class UsuarioControle {
 
     private Usuario usuario;
     private UsuarioDAO usuarioDAO;
+    private Perfil perfil;
     private DataModel model;
 
     public Usuario getUsuario() {
@@ -54,6 +56,18 @@ public class UsuarioControle {
     public void setModel(DataModel model) {
         this.model = model;
     }
+
+    public Perfil getPerfil() {
+        if (perfil == null) {
+            perfil = new Perfil();
+        }
+        return perfil;
+    }
+
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
+    }
+    
 
     public String salvar() {
         FacesContext context = FacesContext.getCurrentInstance();

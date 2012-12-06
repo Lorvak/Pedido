@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="./index.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="center">
+        <p:layoutUnit position="center" header="Cadastro Funcionario">
+            <h:form id="form1">
+                <p:toolbar>
+                    <p:toolbarGroup align="left" style="height: 25px;">
+                        <p:commandButton value="Pesquisar" image="ui-icon-search" action="#{clienteControle.pesquisaLike()}" ajax="false" style="margin: 0px;"/>
+                        <p:commandButton value="Novo" image="ui-icon-folder-open" action="#{clienteControle.novoCliente()}" ajax="false" style="margin: 0px;" disabled="true"/>
+                    </p:toolbarGroup>
+                </p:toolbar>
+            </h:form>
+            <h:form id="form2">
+                <p:separator style="width: 100%; height: 5px; margin: 5px 0px;"/>
+                <p:messages id="menssages" showSummary="true"/>
+                <p:fieldset legend="Cadastro" toggleable="true" style="width: 400px; margin: 0 auto;">
+                    <h:panelGrid id="painel" columns="2">
+                        <h:outputText  value="Nome:"/>
+                        <p:inputText id="nome" value="#{clienteControle.cliente.nome}" required="true" requiredMessage="Campo nome é obrigatorio! "/>
+                        <h:outputText  value="Nascimento:"/>
+                        <p:inputText id="nascimento" value="#{clienteControle.cliente.nascimento}" required="true" requiredMessage="Campo nascimento é obrigatorio! "/>
+                        <h:outputText value="Celular: " />  
+                        <p:inputText id="celular" value="#{clienteControle.cliente.celular}" required="true" requiredMessage="Campo celular é obrigatorio! "/>
+                        <h:outputText value="Email: " />  
+                        <p:inputText id="email" value="#{clienteControle.cliente.email}" required="true" requiredMessage="Campo email é obrigatorio! "/>
+                        <h:outputText value="Ederecos: " />  
+                        <p:inputText id="endrecos" value="#{clienteControle.cliente.enderecos}" required="true" requiredMessage="Campo enderecos é obrigatorio! "/>
+                        <h:outputText value="Cadastro: " />  
+                        <p:inputText id="cadastro" value="#{clienteControle.cliente.cadastro}" required="true" requiredMessage="Campo cadastro é obrigatorio! "/>
+                        <p:commandButton value="salvar" action="#{clienteControle.salvar()}" ajax="false"/>
+                    </h:panelGrid>
+                </p:fieldset>
+            </h:form>
+        </p:layoutUnit>
+    </ui:define>
+
+</ui:composition>
