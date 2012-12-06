@@ -29,7 +29,7 @@ public class Endereco implements Serializable {
     @Column(length = 14)
     private String telefone;
     @Column(nullable = false)
-    private String numero;;
+    private String numero;
     @ManyToMany(mappedBy = "enderecos")
     private List<Pessoa> pessoas;
     @ManyToOne
