@@ -29,13 +29,7 @@ public class Cliente extends Pessoa implements Serializable {
         this.cadastro = cadastro;
     }
 
-    public String getTeste() {
-        return teste;
-    }
-
-    public void setTeste(String teste) {
-        this.teste = teste;
-    }
+  
     
     
 }
