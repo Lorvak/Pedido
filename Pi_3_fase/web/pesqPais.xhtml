@@ -40,7 +40,13 @@
                     <p:column>
                         <f:facet name="header">Alterar/Excluir</f:facet>
                         <p:commandButton action="#{paisControle.alterar()}" value="Alterar" ajax="false"/>
-                        <p:commandButton action="#{paisControle.excluir()}" update="tabelapais" value="Excluir" ajax="false"/>
+                        <p:commandButton onclick="confirmation.show()" value="Excluir Conf"/>
+                        <p:confirmDialog id="confirmDialog" message="Tem Certeza que deseja Excluir?" appendToBody="true" header="Excluir"
+                                         severity="alert" widgetVar="confirmation">
+                            <p:commandButton id="confirm" value="Sim" oncomplete="confirmation.hide()" process="@this" update="@form"
+                                             actionListener="#{paisControle.excluir()}"/>
+                            <p:commandButton id="decline" value="Não" onclick="confirmation.hide()" type="button"/>
+                        </p:confirmDialog>
                     </p:column>
                 </p:dataTable>
             </h:form>
