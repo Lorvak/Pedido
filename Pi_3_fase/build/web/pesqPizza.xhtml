@@ -7,12 +7,12 @@
                 xmlns:f="http://java.sun.com/jsf/core">
 
     <ui:define name="center">
-        <p:layoutUnit position="center" header="Tamanho">
+        <p:layoutUnit position="center" header="Pizza">
             <h:form id="form1">
                 <p:toolbar>
                     <p:toolbarGroup align="left" style="height: 25px;">
-                        <p:commandButton value="Pesquisar" image="ui-icon-search" action="#{tamanhoControle.pesq()}" ajax="false" style="margin: 0px;" disabled="true"/>
-                        <p:commandButton value="Novo" image="ui-icon-folder-open" action="#{tamanhoControle.novo()}" ajax="false" style="margin: 0px;"/>
+                        <p:commandButton value="Pesquisar" image="ui-icon-search" action="#{pizzaControle.pesq()}" ajax="false" style="margin: 0px;" disabled="true"/>
+                        <p:commandButton value="Novo" image="ui-icon-folder-open" action="#{pizzaControle.novo()}" ajax="false" style="margin: 0px;"/>
                     </p:toolbarGroup>
                 </p:toolbar>
             </h:form>
@@ -21,42 +21,26 @@
                 <p:messages id="menssages" showSummary="true"/>
                 <p:fieldset legend="Pesquisa" toggleable="true" style="width: 400px; margin: 0 auto;">
                     <h:panelGrid columns="1">
-                        <p:commandButton value="Pesquisar Tamanhos" image="ui-icon-search" update="tabelatamanho" action="#{tamanhoControle.pesquisa()}" ajax="false"/>
+                        <p:commandButton value="Pesquisar Pizzas" image="ui-icon-search" update="tabelapizza" action="#{pizzaControle.pesquisa()}" ajax="false"/>
                     </h:panelGrid>
                 </p:fieldset>
                 <p:separator style="width: 100%; height: 5px; margin: 5px 0px 5px 0px;"/>
-                <p:dataTable id="tabelatamanho" value="#{tamanhoControle.model}" var="c" paginator="true" rows="5" emptyMessage="Nenhum Valor encontrado">
+                <p:dataTable id="tabelapizza" value="#{pizzaControle.model}" var="c" paginator="true" rows="5" emptyMessage="Nenhum Valor encontrado">
                     <f:facet name="header">
-                        <h:outputText value="Listando tamanho(s)"/>
+                        <h:outputText value="Listando pizza(s)"/>
                     </f:facet>
                     <p:column>
-                        <f:facet name="header">Nome</f:facet>
-                        <h:outputText value="${c.nome}"></h:outputText>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">Preço</f:facet>
-                        <h:outputText value="${c.preco}"></h:outputText>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">Centrimetros</f:facet>
-                        <h:outputText value="${c.cemtimetros}"></h:outputText>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">N° Fatias</f:facet>
-                        <h:outputText value="${c.fatias}"></h:outputText>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">N° Sabores</f:facet>
-                        <h:outputText value="${c.nsabores}"></h:outputText>
+                        <f:facet name="header">Numero</f:facet>
+                        <h:outputText value="${c.numero}"></h:outputText>
                     </p:column>
                     <p:column>
                         <f:facet name="header">Alterar/Excluir</f:facet>
-                        <p:commandButton action="#{tamanhoControle.alterar()}" value="Alterar" ajax="false"/>
+                        <p:commandButton action="#{pizzaControle.alterar()}" value="Alterar" ajax="false"/>
                         <p:commandButton onclick="confirmation.show()" value="Excluir Conf"/>
                         <p:confirmDialog id="confirmDialog" message="Tem Certeza que deseja Excluir?" appendToBody="true" header="Excluir"
                                          severity="alert" widgetVar="confirmation">
                             <p:commandButton id="confirm" value="Sim" oncomplete="confirmation.hide()" process="@this" update="@form"
-                                             actionListener="#{tamanhoControle.excluir()}"/>
+                                             actionListener="#{pizzaControle.excluir()}"/>
                             <p:commandButton id="decline" value="Não" onclick="confirmation.hide()" type="button"/>
                         </p:confirmDialog>
                     </p:column>

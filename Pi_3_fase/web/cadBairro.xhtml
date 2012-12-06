@@ -35,7 +35,7 @@
                             <f:selectItems value="#{bairroControle.comboEstado}" />  
                             <f:ajax execute="IDestado" render="cidade"/>
                         </p:selectOneMenu>
-                        <h:outputText value="Cidade: "/>  
+                        <h:outputText value="Cidade :"/>  
                         <p:selectOneMenu id="cidade" value="#{bairroControle.cidade.id}" effect="fold" required="true" requiredMessage="Campo Cidade é obrigatorio! " disabled="#{bairroControle.estado.id==0}">  
                             <f:selectItem itemLabel="Select One" itemValue="0" />  
                             <f:selectItems value="#{bairroControle.comboCidade}" />  
