@@ -7,46 +7,28 @@ package br.com.pi.controle;
 import br.com.pi.dao.BebidaDAO;
 import br.com.pi.dao.BebidaDAOImp;
 import br.com.pi.entidade.Bebida;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 import javax.faces.model.DataModel;
+import javax.faces.context.FacesContext;
 import javax.faces.model.ListDataModel;
+import javax.faces.model.SelectItem;
 
 /**
  *
- * @author Hugo
+ * @author Eduardo Moraes Silveira
  */
 @ManagedBean
 @SessionScoped
 public class BebidaControle {
 
     private Bebida bebida;
-    private BebidaDAO bebidaDAO;
+    private BebidaDAO dao;
     private DataModel model;
-
-    public Bebida getBebida() {
-        if (bebida == null) {
-            bebida = new Bebida();
-        }
-        return bebida;
-    }
-
-    public void setBebida(Bebida bebida) {
-        this.bebida = bebida;
-    }
-
-    public BebidaDAO getBebidaDAO() {
-        return bebidaDAO;
-    }
-
-    public void setBebidaDAO(BebidaDAO bebidaDAO) {
-        this.bebidaDAO = bebidaDAO;
-    }
-
+        
     public DataModel getModel() {
         return model;
     }
@@ -55,81 +37,73 @@ public class BebidaControle {
         this.model = model;
     }
 
-    public String salvar() {
-        FacesContext context = FacesContext.getCurrentInstance();
-        bebidaDAO = new BebidaDAOImp();
-        if (bebida.getId() == null) {
-            bebidaDAO.salva(bebida);
-            context.addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO,
-                    "Bebida salvo com sucesso!", ""));
-        } else {
-            bebidaDAO.altera(bebida);
-            context.addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO,
-                    "Bebida alterado com sucesso!", ""));
+    public Bebida getBebida() {
+        if (bebida == null) {
+            bebida = new Bebida();
         }
-        limpar();
-        return "cadBebida";
+        return bebida;
     }
 
+    public void setBebida(Bebida usuario) {
+        this.bebida = usuario;
+    }
+    
     private void limpar() {
         bebida = null;
         model = null;
     }
-     public String limpaPesquisa() {
-        limpar();
-        return "pesqBebida";
+    
+    public String novo() {
+        bebida = new Bebida();
+        return "cadBebida.faces";
     }
-
-    public void pesquisaLike() {
-        bebidaDAO = new BebidaDAOImp();
-        if (bebida != null) {
-            List<Bebida> bebidas = bebidaDAO.getTodos();
-            model = new ListDataModel(bebidas);
+    
+    public String pesq() {
+        limpar();
+        return "pesqBebida.faces";
+    }
+    
+    public String salvar() {
+        dao = new BebidaDAOImp();
+        FacesContext context = FacesContext.getCurrentInstance();
+        if (bebida.getId() == null) {
+            dao.salva(bebida);
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Bebida Salvo Com Sucesso!", ""));
+        } else {
+            dao.altera(bebida);
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Bebida Alterado Com Sucesso!", ""));
+        }
+        limpar();
+        return "pesqBebida.faces";
+    }
+    
+    public void pesquisa() {
+        dao = new BebidaDAOImp();
+        List<Bebida> bebidaes = dao.getTodos();
+        model = new ListDataModel(bebidaes);
+        FacesContext context = FacesContext.getCurrentInstance();
+        if (bebidaes.isEmpty()) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Bebida inesistente!", "Bebida inesistente!"));
+            limpar();
         }
     }
-
-    public String voltar() {
-        limpar();
-        return "index.feces";
-    }
-
-    public String novoBebida() {
-        bebida = new Bebida();
-
-        return "cadBebida";
-    }
-
-    public void excluir(ActionEvent evento) {
+    
+    public String excluir() {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
-            bebidaDAO = new BebidaDAOImp();
+            dao = new BebidaDAOImp();
             bebida = (Bebida) model.getRowData();
-            bebidaDAO.remove(bebida);
-
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
-                    "Bebida excluído com sucesso!", ""));
+            dao.remove(bebida);
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Bebida Excluido com sucesso!", ""));
         } catch (Exception e) {
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-                    "não foi possivel exclusão!", ""));
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "não foi posivel executar a exclusão!", ""));
         }
         limpar();
+        return "";
     }
-
+    
     public String alterar() {
-        FacesContext context = FacesContext.getCurrentInstance();
         bebida = (Bebida) model.getRowData();
-        setBebida(bebida);
-        context.addMessage(null,
-                new FacesMessage(FacesMessage.SEVERITY_INFO,
-                "Bebida alterado com sucesso!", ""));
-        return "cadBebida";
-
-    }
-
-    public String btPesquisar() {
-        bebida = null;
-        return "pesqBebida";
+        return "cadBebida.faces";
     }
 }

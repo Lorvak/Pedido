@@ -24,11 +24,13 @@
                         <h:outputText  value="Nome:" />
                         <p:inputText id="nome" value="#{tamanhoControle.tamanho.nome}" required="true" requiredMessage="Campo nome é obrigatorio! "/>
                         <h:outputText  value="Preço:" />
-                        <p:inputText id="nome" value="#{tamanhoControle.tamanho.preco}" required="true" requiredMessage="Campo nome é obrigatorio! "/>
+                        <p:inputText id="preco" value="#{tamanhoControle.tamanho.preco}" required="true" requiredMessage="Campo Preço é obrigatorio! "/>
                         <h:outputText  value="Centimetros:" />
-                        <p:inputText id="nome" value="#{tamanhoControle.tamanho.cemtimetros}" required="true" requiredMessage="Campo nome é obrigatorio! "/>
+                        <p:inputText id="centimetros" value="#{tamanhoControle.tamanho.cemtimetros}" required="true" requiredMessage="Campo Centimetros é obrigatorio! "/>
+                        <h:outputText  value="N° Sabores" />
+                        <p:inputText id="nsabores" value="#{tamanhoControle.tamanho.nsabores}" required="true" requiredMessage="Campo Centimetros é obrigatorio! "/>
                         <h:outputText  value="N° Fatias:" />
-                        <p:inputText id="nome" value="#{tamanhoControle.tamanho.fatias}" required="true" requiredMessage="Campo nome é obrigatorio! "/>
+                        <p:inputText id="fatias" value="#{tamanhoControle.tamanho.fatias}" required="true" requiredMessage="Campo Fatias é obrigatorio! "/>
                         <p:commandButton value="salvar" action="#{tamanhoControle.salvar()}" ajax="false"/>
                     </h:panelGrid>
                 </p:fieldset>

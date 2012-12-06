@@ -83,7 +83,7 @@ public class TamanhoControle {
         model = new ListDataModel(tamanhoes);
         FacesContext context = FacesContext.getCurrentInstance();
         if (tamanhoes.isEmpty()) {
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "Tamanho inesistente!"));
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Tamanho inesistente!", "Tamanho inesistente!"));
             limpar();
         }
     }

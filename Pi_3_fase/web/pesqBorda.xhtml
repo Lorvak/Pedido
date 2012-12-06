@@ -7,12 +7,12 @@
                 xmlns:f="http://java.sun.com/jsf/core">
 
     <ui:define name="center">
-        <p:layoutUnit position="center" header="Cidade">
+        <p:layoutUnit position="center" header="Borda">
             <h:form id="form1">
                 <p:toolbar>
                     <p:toolbarGroup align="left" style="height: 25px;">
-                        <p:commandButton value="Pesquisar" image="ui-icon-search" action="#{cidadeControle.pesq()}" ajax="false" style="margin: 0px;" disabled="true"/>
-                        <p:commandButton value="Novo" image="ui-icon-folder-open" action="#{cidadeControle.novo()}" ajax="false" style="margin: 0px;"/>
+                        <p:commandButton value="Pesquisar" image="ui-icon-search" action="#{bordaControle.pesq()}" ajax="false" style="margin: 0px;" disabled="true"/>
+                        <p:commandButton value="Novo" image="ui-icon-folder-open" action="#{bordaControle.novo()}" ajax="false" style="margin: 0px;"/>
                     </p:toolbarGroup>
                 </p:toolbar>
             </h:form>
@@ -20,39 +20,31 @@
                 <p:separator style="width: 100%; height: 5px; margin: 5px 0px;"/>
                 <p:messages id="menssages" showSummary="true"/>
                 <p:fieldset legend="Pesquisa" toggleable="true" style="width: 400px; margin: 0 auto;">
-                    <h:panelGrid columns="3">
-                        <h:outputText value="Nome: " />
-                        <p:inputText id="nome" value="#{cidadeControle.nome}" size="">
-                            <p:focus for="nome"/>
-                        </p:inputText>
-                        <p:commandButton value="Pesquisar" image="ui-icon-search" update="tabelacidade" action="#{cidadeControle.pesquisaLike()}" ajax="false"/>
+                    <h:panelGrid columns="1">
+                        <p:commandButton value="Pesquisar Bordas" image="ui-icon-search" update="tabelaborda" action="#{bordaControle.pesquisa()}" ajax="false"/>
                     </h:panelGrid>
                 </p:fieldset>
                 <p:separator style="width: 100%; height: 5px; margin: 5px 0px 5px 0px;"/>
-                <p:dataTable id="tabelacidade" value="#{cidadeControle.model}" var="c" paginator="true" rows="5" emptyMessage="Nenhum Valor encontrado">
+                <p:dataTable id="tabelaborda" value="#{bordaControle.model}" var="c" paginator="true" rows="5" emptyMessage="Nenhum Valor encontrado">
                     <f:facet name="header">
-                        <h:outputText value="Listando cidade(s)"/>
+                        <h:outputText value="Listando borda(s)"/>
                     </f:facet>
                     <p:column>
-                        <f:facet name="header">Pais</f:facet>
-                        <h:outputText value="${c.estado.pais.nome}"></h:outputText>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">Estado</f:facet>
-                        <h:outputText value="${c.estado.nome}"></h:outputText>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">Cidade</f:facet>
+                        <f:facet name="header">Nome</f:facet>
                         <h:outputText value="${c.nome}"></h:outputText>
                     </p:column>
                     <p:column>
+                        <f:facet name="header">Preço</f:facet>
+                        <h:outputText value="${c.preco}"></h:outputText>
+                    </p:column>
+                    <p:column>
                         <f:facet name="header">Alterar/Excluir</f:facet>
-                        <p:commandButton action="#{cidadeControle.alterar()}" value="Alterar" ajax="false"/>
+                        <p:commandButton action="#{bordaControle.alterar()}" value="Alterar" ajax="false"/>
                         <p:commandButton onclick="confirmation.show()" value="Excluir Conf"/>
                         <p:confirmDialog id="confirmDialog" message="Tem Certeza que deseja Excluir?" appendToBody="true" header="Excluir"
                                          severity="alert" widgetVar="confirmation">
                             <p:commandButton id="confirm" value="Sim" oncomplete="confirmation.hide()" process="@this" update="@form"
-                                             actionListener="#{cidadeControle.excluir()}"/>
+                                             actionListener="#{bordaControle.excluir()}"/>
                             <p:commandButton id="decline" value="Não" onclick="confirmation.hide()" type="button"/>
                         </p:confirmDialog>
                     </p:column>

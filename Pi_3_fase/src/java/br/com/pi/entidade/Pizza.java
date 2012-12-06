@@ -31,7 +31,7 @@ public class Pizza implements Serializable {
     private Borda borda;
     @OneToMany
     private List<Sabor> sabores;
-    @Column(nullable=false,precision=2)
+    @Transient
     private Double precoFinal;
     @Column(nullable=true)
     private String obs;

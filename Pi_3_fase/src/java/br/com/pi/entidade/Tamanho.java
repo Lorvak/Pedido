@@ -25,27 +25,31 @@ public class Tamanho implements Serializable {
     private String nome;
     @Column(nullable=true,precision=2)
     private Double cemtimetros;
-    @Column(nullable=true,precision=0)
+    @Column(nullable=true)
     private Long fatias;
     @Column(nullable=true,precision=2)
     private Double preco;
+    @Column(nullable=true)
+    private Long nsabores;
 
     public Tamanho() {
     }
 
-    public Tamanho(String nome, Double cemtimetros, Long fatias, Double preco) {
+    public Tamanho(String nome, Double cemtimetros, Long fatias, Double preco, Long nsabores) {
         this.nome = nome;
         this.cemtimetros = cemtimetros;
         this.fatias = fatias;
         this.preco = preco;
+        this.nsabores = nsabores;
     }
 
-    public Tamanho(Long id, String nome, Double cemtimetros, Long fatias, Double preco) {
+    public Tamanho(Long id, String nome, Double cemtimetros, Long fatias, Double preco, Long nsabores) {
         this.id = id;
         this.nome = nome;
         this.cemtimetros = cemtimetros;
         this.fatias = fatias;
         this.preco = preco;
+        this.nsabores = nsabores;
     }
 
     public Long getId() {
@@ -86,6 +90,14 @@ public class Tamanho implements Serializable {
 
     public void setPreco(Double preco) {
         this.preco = preco;
+    }
+
+    public Long getNsabores() {
+        return nsabores;
+    }
+
+    public void setNsabores(Long nsabores) {
+        this.nsabores = nsabores;
     }
 
     @Override
