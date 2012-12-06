@@ -11,8 +11,8 @@
             <h:form id="form1">
                 <p:toolbar>
                     <p:toolbarGroup align="left" style="height: 25px;">
-                        <p:commandButton value="Pesquisar" image="ui-icon-search" action="#{clienteControle.pesquisaLike()}" ajax="false" style="margin: 0px;"/>
-                        <p:commandButton value="Novo" image="ui-icon-folder-open" action="#{clienteControle.novoCliente()}" ajax="false" style="margin: 0px;" disabled="true"/>
+                        <p:commandButton value="Pesquisar" image="ui-icon-search" action="#{funcionarioControle.pesquisaLike()}" ajax="false" style="margin: 0px;"/>
+                        <p:commandButton value="Novo" image="ui-icon-folder-open" action="#{funcionarioControle.novoFuncionario()}" ajax="false" style="margin: 0px;" disabled="true"/>
                     </p:toolbarGroup>
                 </p:toolbar>
             </h:form>
@@ -22,18 +22,22 @@
                 <p:fieldset legend="Cadastro" toggleable="true" style="width: 400px; margin: 0 auto;">
                     <h:panelGrid id="painel" columns="2">
                         <h:outputText  value="Nome:"/>
-                        <p:inputText id="nome" value="#{clienteControle.cliente.nome}" required="true" requiredMessage="Campo nome é obrigatorio! "/>
+                        <p:inputText id="nome" value="#{funcionarioControle.funcionario.nome}" required="true" requiredMessage="Campo nome é obrigatorio! "/>
                         <h:outputText  value="Nascimento:"/>
-                        <p:inputText id="nascimento" value="#{clienteControle.cliente.nascimento}" required="true" requiredMessage="Campo nascimento é obrigatorio! "/>
-                        <h:outputText value="Celular: " />  
-                        <p:inputText id="celular" value="#{clienteControle.cliente.celular}" required="true" requiredMessage="Campo celular é obrigatorio! "/>
+                        <p:inputText id="nascimento" value="#{funcionarioControle.funcionario.nascimento}" required="true" requiredMessage="Campo nascimento é obrigatorio! "/>
+                        <h:outputText value="Cpf: " />  
+                        <p:inputText id="cpf" value="#{funcionarioControle.funcionario.cpf}" required="true" requiredMessage="Campo celular é obrigatorio! "/>
                         <h:outputText value="Email: " />  
-                        <p:inputText id="email" value="#{clienteControle.cliente.email}" required="true" requiredMessage="Campo email é obrigatorio! "/>
+                        <p:inputText id="email" value="#{funcionarioControle.funcionario.email}" required="true" requiredMessage="Campo email é obrigatorio! "/>
                         <h:outputText value="Ederecos: " />  
-                        <p:inputText id="endrecos" value="#{clienteControle.cliente.enderecos}" required="true" requiredMessage="Campo enderecos é obrigatorio! "/>
-                        <h:outputText value="Cadastro: " />  
-                        <p:inputText id="cadastro" value="#{clienteControle.cliente.cadastro}" required="true" requiredMessage="Campo cadastro é obrigatorio! "/>
-                        <p:commandButton value="salvar" action="#{clienteControle.salvar()}" ajax="false"/>
+                        <p:inputText id="endrecos" value="#{funcionarioControle.funcionario.enderecos}" required="true" requiredMessage="Campo enderecos é obrigatorio! "/>
+                        <h:outputText value="Pis: " />  
+                        <p:inputText id="pis" value="#{funcionarioControle.funcionario.pis}" required="true" requiredMessage="Campo cadastro é obrigatorio! "/>
+                        <h:outputText value="Carteira de Trabalho: " />  
+                        <p:inputText id="CarteiraTrabalho" value="#{funcionarioControle.funcionario.carteiraTrabalho}" required="true" requiredMessage="Campo cadastro é obrigatorio! "/>
+                        <h:outputText value="Cracha: " />  
+                        <p:inputText id="cracha" value="#{funcionarioControle.funcionario.cracha}" required="true" requiredMessage="Campo cadastro é obrigatorio! "/>
+                        <p:commandButton value="salvar" action="#{funcionarioControle.salvar()}" ajax="false"/>
                     </h:panelGrid>
                 </p:fieldset>
             </h:form>
