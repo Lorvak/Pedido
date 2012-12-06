@@ -6,9 +6,7 @@ package br.com.pi.entidade;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Temporal;
+import javax.persistence.*;
 
 /**
  *
@@ -20,6 +18,8 @@ public class Cliente extends Pessoa implements Serializable {
     private static final long serialVersionUID = 1L;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date cadastro;
+    @Transient
+    private String teste;
 
     public Date getCadastro() {
         return cadastro;
@@ -27,6 +27,14 @@ public class Cliente extends Pessoa implements Serializable {
 
     public void setCadastro(Date cadastro) {
         this.cadastro = cadastro;
+    }
+
+    public String getTeste() {
+        return teste;
+    }
+
+    public void setTeste(String teste) {
+        this.teste = teste;
     }
     
     
