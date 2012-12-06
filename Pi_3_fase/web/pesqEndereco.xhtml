@@ -22,8 +22,8 @@
                 <p:fieldset legend="Pesquisa" toggleable="true" style="width: 400px; margin: 0 auto;">
                     <h:panelGrid columns="3">
                         <h:outputText value="Telefone: " />
-                        <p:inputText id="telefone" value="#{enderecoControle.telefone}" size="">
-                            <p:focus for="nome"/>
+                        <p:inputText id="telefone" value="#{enderecoControle.telefone}">
+                            <p:focus for="telefone"/>
                         </p:inputText>
                         <p:commandButton value="Pesquisar" image="ui-icon-search" update="tabelalogradouro" action="#{enderecoControle.pesquisaLike()}" ajax="false"/>
                     </h:panelGrid>
@@ -33,6 +33,38 @@
                     <f:facet name="header">
                         <h:outputText value="Listando Endereco(s)"/>
                     </f:facet>
+                    <p:column>
+                        <f:facet name="header">Pais</f:facet>
+                        <h:outputText value="${c.logradouro.bairro.cidade.estado.pais.nome}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Estado</f:facet>
+                        <h:outputText value="${c.logradouro.bairro.cidade.estado.nome}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Cidade</f:facet>
+                        <h:outputText value="${c.logradouro.bairro.cidade.nome}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Bairro</f:facet>
+                        <h:outputText value="${c.logradouro.bairro.nome}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Logradouro</f:facet>
+                        <h:outputText value="${c.logradouro.nome}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Cep</f:facet>
+                        <h:outputText value="${c.logradouro.cep}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Numero</f:facet>
+                        <h:outputText value="${c.numero}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Telefone</f:facet>
+                        <h:outputText value="${c.logradouro.cep}"></h:outputText>
+                    </p:column>
                     <p:column>
                         <f:facet name="header">Alterar/Excluir</f:facet>
                         <p:commandButton action="#{enderecoControle.alterar()}" value="Alterar" ajax="false"/>

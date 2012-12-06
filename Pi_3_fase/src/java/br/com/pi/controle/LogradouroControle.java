@@ -26,6 +26,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
 import javax.faces.context.FacesContext;
+import javax.faces.model.ArrayDataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
@@ -53,7 +54,7 @@ public class LogradouroControle {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
+
     public DataModel getModel() {
         return model;
     }
@@ -83,7 +84,7 @@ public class LogradouroControle {
     public void setBairro(Bairro usuario) {
         this.bairro = usuario;
     }
-    
+
     public Estado getEstado() {
         if (estado == null) {
             estado = new Estado();
@@ -116,7 +117,7 @@ public class LogradouroControle {
     public void setLogradouro(Logradouro usuario) {
         this.logradouro = usuario;
     }
-    
+
     private void limpar() {
         logradouro = null;
         bairro = null;
@@ -125,7 +126,7 @@ public class LogradouroControle {
         pais = null;
         model = null;
     }
-    
+
     public String novo() {
         logradouro = new Logradouro();
         bairro = new Bairro();
@@ -134,17 +135,17 @@ public class LogradouroControle {
         pais = new Pais();
         return "cadLogradouro.faces";
     }
-    
+
     public String pesq() {
         limpar();
         return "pesqLogradouro.faces";
     }
-    
+
     public String pesqCep() {
         limpar();
         return "pesqLogradouroCep.faces";
     }
-    
+
     public String salvar() {
         dao = new LogradouroDAOImp();
         FacesContext context = FacesContext.getCurrentInstance();
@@ -159,7 +160,7 @@ public class LogradouroControle {
         limpar();
         return "pesqLogradouro.faces";
     }
-    
+
     public void pesquisaLike() {
         dao = new LogradouroDAOImp();
         List<Logradouro> logradouroes = dao.pesquisaLikeNome(nome);
@@ -170,7 +171,7 @@ public class LogradouroControle {
             limpar();
         }
     }
-    
+
     public void pesquisaCep() {
         dao = new LogradouroDAOImp();
         List<Logradouro> logradouroes = dao.pesquisaLikeCep(nome);
@@ -181,7 +182,7 @@ public class LogradouroControle {
             limpar();
         }
     }
-    
+
     public String excluir() {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
@@ -195,18 +196,18 @@ public class LogradouroControle {
         limpar();
         return "";
     }
-    
+
     public String paginapesq() {
         limpar();
         return "pesLogradouro.faces";
     }
-    
+
     public String alterar() {
         logradouro = (Logradouro) model.getRowData();
         bairro = logradouro.getBairro();
         return "cadLogradouro.faces";
     }
-    
+
     public List<SelectItem> getComboPais() {
         PaisDAO pdao = new PaisDAOImp();
         List<Pais> paises = pdao.getTodos();
@@ -230,33 +231,32 @@ public class LogradouroControle {
             return new ArrayList<SelectItem>();
         }
     }
-    
-    public List<SelectItem> getComboCidade(){
+
+    public List<SelectItem> getComboCidade() {
         CidadeDAO pdao = new CidadeDAOImp();
         if (estado.getId() != null) {
-        List<Cidade> cidadees = pdao.pesquisaEstado(estado);
-        List<SelectItem> listaCombo = new ArrayList<SelectItem>();
-        for (Cidade forn : cidadees) {
-            listaCombo.add(new SelectItem(forn.getId(), forn.getNome()));
-        }
+            List<Cidade> cidadees = pdao.pesquisaEstado(estado);
+            List<SelectItem> listaCombo = new ArrayList<SelectItem>();
+            for (Cidade forn : cidadees) {
+                listaCombo.add(new SelectItem(forn.getId(), forn.getNome()));
+            }
             return listaCombo;
         } else {
             return new ArrayList<SelectItem>();
         }
     }
-    
-    public List<SelectItem> getComboBairro(){
+
+    public List<SelectItem> getComboBairro() {
         BairroDAO pdao = new BairroDAOImp();
         if (cidade.getId() != null) {
-        List<Bairro> bairroes = pdao.pesquisaCidade(cidade);
-        List<SelectItem> listaCombo = new ArrayList<SelectItem>();
-        for (Bairro forn : bairroes) {
-            listaCombo.add(new SelectItem(forn.getId(), forn.getNome()));
-        }
+            List<Bairro> bairroes = pdao.pesquisaCidade(cidade);
+            List<SelectItem> listaCombo = new ArrayList<SelectItem>();
+            for (Bairro forn : bairroes) {
+                listaCombo.add(new SelectItem(forn.getId(), forn.getNome()));
+            }
             return listaCombo;
         } else {
             return new ArrayList<SelectItem>();
         }
     }
-    
 }
