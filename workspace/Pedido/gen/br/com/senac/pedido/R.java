@@ -22,23 +22,25 @@ public final class R {
         public static final int sobremesa2=0x7f020008;
     }
     public static final class id {
-        public static final int Bebida=0x7f070009;
-        public static final int Fechar=0x7f07000c;
+        public static final int Bebida=0x7f07000a;
+        public static final int Fechar=0x7f07000d;
         public static final int Pizza=0x7f070007;
-        public static final int Sobremesa=0x7f07000a;
+        public static final int Sobremesa=0x7f07000b;
+        public static final int bebidaMesa=0x7f07000e;
+        public static final int button1=0x7f070009;
+        public static final int button2=0x7f07000f;
         public static final int email=0x7f070003;
         public static final int listView1=0x7f070008;
-        public static final int listView2=0x7f07000b;
-        public static final int listaMesa=0x7f07000f;
+        public static final int listView2=0x7f07000c;
         public static final int login=0x7f070005;
         public static final int login_form=0x7f070002;
         public static final int login_status=0x7f070000;
         public static final int login_status_message=0x7f070001;
-        public static final int menu_forgot_password=0x7f070010;
+        public static final int menu_forgot_password=0x7f070012;
         public static final int password=0x7f070004;
-        public static final int quickContactBadge1=0x7f07000d;
+        public static final int quickContactBadge1=0x7f070010;
         public static final int sign_in_button=0x7f070006;
-        public static final int tabhost=0x7f07000e;
+        public static final int tabhost=0x7f070011;
     }
     public static final class layout {
         public static final int activity_login=0x7f030000;

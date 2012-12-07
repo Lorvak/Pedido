@@ -1,8 +1,7 @@
 com.android.ide.eclipse.adt.fixLegacyEditors=1
-com.android.ide.eclipse.adt.sdk=C\:\\Documents and Settings\\Liana\\Desktop\\adt-bundle-windows-x86\\sdk
-com.android.ide.eclipse.adt.xmlEditor=true
-design.palette.flyout.state=1
-design.palette.flyout.width=147
+com.android.ide.eclipse.adt.sdk=E\:\\Eduardo\\Android\\sdk
+design.palette.flyout.width=261
+design.structure.flyout.dockLocation=4
 design.structure.flyout.state=1
-design.structure.flyout.width=178
+design.structure.flyout.width=238
 eclipse.preferences.version=1

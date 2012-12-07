@@ -226,7 +226,7 @@ public class Login extends Activity {
 			showProgress(false);
 
 			if (success) {
-				startActivity(new Intent(getBaseContext(),menu.class));
+				startActivity(new Intent(getBaseContext(),mesa.class));
 			} else {
 				mPasswordView
 						.setError(getString(R.string.error_incorrect_password));
