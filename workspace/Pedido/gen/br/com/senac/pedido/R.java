@@ -29,11 +29,12 @@ public final class R {
         public static final int email=0x7f070003;
         public static final int listView1=0x7f070008;
         public static final int listView2=0x7f07000b;
+        public static final int listaMesa=0x7f07000f;
         public static final int login=0x7f070005;
         public static final int login_form=0x7f070002;
         public static final int login_status=0x7f070000;
         public static final int login_status_message=0x7f070001;
-        public static final int menu_forgot_password=0x7f07000f;
+        public static final int menu_forgot_password=0x7f070010;
         public static final int password=0x7f070004;
         public static final int quickContactBadge1=0x7f07000d;
         public static final int sign_in_button=0x7f070006;
@@ -44,8 +45,9 @@ public final class R {
         public static final int bebida=0x7f030001;
         public static final int fechar_conta=0x7f030002;
         public static final int menu=0x7f030003;
-        public static final int pizza=0x7f030004;
-        public static final int sobremesa=0x7f030005;
+        public static final int mesa=0x7f030004;
+        public static final int pizza=0x7f030005;
+        public static final int sobremesa=0x7f030006;
     }
     public static final class menu {
         public static final int activity_login=0x7f060000;
