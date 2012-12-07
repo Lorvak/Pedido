@@ -11,7 +11,7 @@
             <h:form id="form1">
                 <p:toolbar>
                     <p:toolbarGroup align="left" style="height: 25px;">
-                        <p:commandButton value="Pesquisar" image="ui-icon-search" action="#{perfilControle.pesquisaLike()}" ajax="false" style="margin: 0px;"/>
+                        <p:commandButton value="Pesquisar" image="ui-icon-search" action="#{perfilControle.btPesquisar()}" ajax="false" style="margin: 0px;"/>
                         <p:commandButton value="Novo" image="ui-icon-folder-open" action="#{perfilControle.novo()}" ajax="false" style="margin: 0px;" disabled="true"/>
                     </p:toolbarGroup>
                 </p:toolbar>
@@ -23,7 +23,7 @@
                     <h:panelGrid id="painel" columns="2">
                         <h:outputText  value="Nome:" />
                         <p:inputText id="nome" value="#{perfilControle.perfil.nome}" required="true" requiredMessage="Campo nome é obrigatorio! "/>
-                        <p:commandButton value="salvar" action="#{perfil.salvar()}" ajax="false"/>
+                        <p:commandButton value="salvar" action="#{perfilControle.salvar()}" ajax="false"/>
                     </h:panelGrid>
                 </p:fieldset>
             </h:form>

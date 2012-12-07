@@ -85,21 +85,23 @@
                             <p:submenu label="RH" icon="ui-icon-extlink">
                                 <p:submenu label="Perfil" icon="ui-icon-extlink">
                                     <p:menuitem value="Cadastrar" action="#{perfilControle.novo()}" ajax="false" icon="ui-icon-star"/>
-                                    <p:menuitem value="Pesquisar" action="#{perfilControle.pesquisaLike()}" ajax="false" icon="ui-icon-star"/>
+                                    <p:menuitem value="Pesquisar" action="#{perfilControle.btPesquisar()}" ajax="false" icon="ui-icon-star"/>
                                 </p:submenu>
-                                <p:submenu>
+                                <p:submenu label="Cliente" icon="ui-icon-extlink">
                                     <p:menuitem value="Cadastrar" action="#{clienteControle.novoCliente()}" ajax="false" icon="ui-icon-star"/>
-                                    <p:menuitem value="Pesquisar" action="#{clienteControle.pesquisaLike()}" ajax="false" icon="ui-icon-star"/>
+                                    <p:menuitem value="Pesquisar" action="#{clienteControle.btPesquisar()}" ajax="false" icon="ui-icon-star"/>
                                 </p:submenu>
-                                <p:submenu>
+                                <p:submenu label="Usuario" icon="ui-icon-extlink">
                                     <p:menuitem value="Cadastrar" action="#{usuarioControle.novoUsuario()}" ajax="false" icon="ui-icon-star"/>
-                                    <p:menuitem value="Pesquisar" action="#{usuarioControle.pesquisaLike()}" ajax="false" icon="ui-icon-star"/>
+                                    <p:menuitem value="Pesquisar" action="#{usuarioControle.btPesquisar()}" ajax="false" icon="ui-icon-star"/>
                                 </p:submenu>
-                                <p:menuitem value="Cadastrar" action="#{funcionarioControle.novoFuncionario()}" ajax="false" icon="ui-icon-star"/>
-                                <p:menuitem value="Pesquisar" action="#{funcionarioControle.pesquisaLike()}" ajax="false" icon="ui-icon-star"/>
+                                <p:submenu label="Funcionario" icon="ui-icon-extlink">
+                                    <p:menuitem value="Cadastrar" action="#{funcionarioControle.novoFuncionario()}" ajax="false" icon="ui-icon-star"/>
+                                    <p:menuitem value="Pesquisar" action="#{funcionarioControle.btPesquisar()}" ajax="false" icon="ui-icon-star"/>
+                                </p:submenu>
+
                             </p:submenu>
                         </p:submenu>
-                       
                     </p:panelMenu>
                 </h:form>
             </p:layoutUnit>
