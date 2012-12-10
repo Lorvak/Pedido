@@ -24,11 +24,12 @@
                     <h:panelGrid id="painel" columns="2">
 
                         <h:outputText value="Sabor: " />  
-                        <p:selectOneMenu id="borda" value="#{pizzaControle.sabor.id}" effect="fold" required="true" requiredMessage="Campo borda é obrigatorio! ">  
+                        <p:selectOneMenu id="borda" value="#{pizzaControle.sabor.id}" effect="fold">  
                             <f:selectItem itemLabel="Select One" itemValue="" />  
                             <f:selectItems value="#{pizzaControle.comboSabor}" />  
                         </p:selectOneMenu>
                         <p:commandButton value="salvar" action="#{pizzaControle.salvaSabor()}" ajax="false"/>
+                        <p:commandButton value="Voltar" action="#{pizzaControle.voltar()}" ajax="false"/>
                     </h:panelGrid>
                 </p:fieldset>
             </h:form>

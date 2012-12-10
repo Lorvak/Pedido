@@ -125,7 +125,7 @@ public class PizzaControle {
 //        FacesContext context = FacesContext.getCurrentInstance();
 //        if (tamanho.getNsabores() != null) {
 //            if (pizza.getTamanho().getNsabores() >= sabores.size()) {
-                return "addSabor.faces";
+        return "addSabor.faces";
 //            }
 //        }
 //        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Numero maximo de sabores atingido!", "Numero maximo de sabores atingido!w"));
@@ -134,6 +134,10 @@ public class PizzaControle {
 
     public String salvaSabor() {
         sabores.add(sabor);
+        return "cadPizza.faces";
+    }
+    
+    public String voltar() {
         return "cadPizza.faces";
     }
 
@@ -153,6 +157,7 @@ public class PizzaControle {
         FacesContext context = FacesContext.getCurrentInstance();
         pizza.setTamanho(tamanho);
         pizza.setBorda(borda);
+        pizza.setSabores(sabores);
         if (pizza.getId() == null) {
             dao.salva(pizza);
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Pizza Salvo Com Sucesso!", ""));
@@ -191,15 +196,26 @@ public class PizzaControle {
 
     public String alterar() {
         pizza = (Pizza) model.getRowData();
+        tamanho = pizza.getTamanho();
+        sabores = pizza.getSabores();
+        borda = pizza.getBorda();
         return "cadPizza.faces";
     }
 
     public List<SelectItem> getComboSabor() {
+        boolean flag = true;
         SaborDAO pdao = new SaborDAOImp();
         List<Sabor> paises = pdao.getTodos();
         List<SelectItem> listaCombo = new ArrayList<SelectItem>();
         for (Sabor forn : paises) {
-            listaCombo.add(new SelectItem(forn.getId(), forn.getNome()));
+            for (Sabor selectItem : sabores) {
+                if (forn.getId() == selectItem.getId()) {
+                    flag = false;
+                }
+            }
+            if (flag) {
+                listaCombo.add(new SelectItem(forn.getId(), forn.getNome()));
+            }
         }
         return listaCombo;
     }
