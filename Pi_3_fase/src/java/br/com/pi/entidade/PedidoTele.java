@@ -35,31 +35,31 @@ public class PedidoTele implements Serializable {
     @OneToOne
     private Funcionario funcionario;
     @OneToOne
-    private Endereco endereco;
+    private Moradia moradia;
     @OneToOne
     private Entregador entregador;
 
     public PedidoTele() {
     }
 
-    public PedidoTele(Double preco, List<Pizza> pizzas, List<Bebida> bebidas, Cliente cliente, Funcionario funcionario, Endereco endereco, Entregador entregador) {
+    public PedidoTele(Double preco, List<Pizza> pizzas, List<Bebida> bebidas, Cliente cliente, Funcionario funcionario, Moradia moradia, Entregador entregador) {
         this.preco = preco;
         this.pizzas = pizzas;
         this.bebidas = bebidas;
         this.cliente = cliente;
         this.funcionario = funcionario;
-        this.endereco = endereco;
+        this.moradia = moradia;
         this.entregador = entregador;
     }
 
-    public PedidoTele(Long id, Double preco, List<Pizza> pizzas, List<Bebida> bebidas, Cliente cliente, Funcionario funcionario, Endereco endereco, Entregador entregador) {
+    public PedidoTele(Long id, Double preco, List<Pizza> pizzas, List<Bebida> bebidas, Cliente cliente, Funcionario funcionario, Moradia moradia, Entregador entregador) {
         this.id = id;
         this.preco = preco;
         this.pizzas = pizzas;
         this.bebidas = bebidas;
         this.cliente = cliente;
         this.funcionario = funcionario;
-        this.endereco = endereco;
+        this.moradia = moradia;
         this.entregador = entregador;
     }
 
@@ -111,12 +111,12 @@ public class PedidoTele implements Serializable {
         this.funcionario = funcionario;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+    public Moradia getMoradia() {
+        return moradia;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    public void setEndereco(Moradia moradia) {
+        this.moradia = moradia;
     }
 
     public Entregador getEntregador() {

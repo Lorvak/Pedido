@@ -51,9 +51,10 @@
                                     <p:menuitem value="Pesquisar por nome" action="#{logradouroControle.pesq()}" ajax="false" icon="ui-icon-star"/>
                                     <p:menuitem value="Pesquisar por cep" action="#{logradouroControle.pesqCep()}" ajax="false" icon="ui-icon-star"/>
                                 </p:submenu>
-                                <p:submenu label="Endereco" icon="ui-icon-extlink">
-                                    <p:menuitem value="Cadastrar" action="#{enderecoControle.novo()}" ajax="false" icon="ui-icon-star"/>
-                                    <p:menuitem value="Pesquisar" action="#{enderecoControle.pesq()}" ajax="false" icon="ui-icon-star"/>
+                                <p:submenu label="Moradia" icon="ui-icon-extlink">
+                                    <p:menuitem value="Cadastrar" action="#{moradiaControle.novo()}" ajax="false" icon="ui-icon-star"/>
+                                    <p:menuitem value="Pesquisar por Numero" action="#{moradiaControle.pesq()}" ajax="false" icon="ui-icon-star"/>
+                                    <p:menuitem value="Pesquisar por Telefone" action="#{moradiaControle.pesqFone()}" ajax="false" icon="ui-icon-star"/>
                                 </p:submenu>
                             </p:submenu>
                             <p:submenu label="Pedido" icon="ui-icon-extlink">
@@ -79,7 +80,7 @@
                                 </p:submenu>
                                 <p:submenu label="Pizza" icon="ui-icon-extlink">
                                     <p:menuitem value="Cadastrar" action="#{pizzaControle.novo()}" ajax="false" icon="ui-icon-star"/>
-                                    <p:menuitem value="Pesquisar" action="#{mesaControle.pesq()}" ajax="false" icon="ui-icon-star"/>
+                                    <p:menuitem value="Pesquisar" action="#{pizzaControle.pesq()}" ajax="false" icon="ui-icon-star"/>
                                 </p:submenu>
                             </p:submenu>
                             <p:submenu label="RH" icon="ui-icon-extlink">

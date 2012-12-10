@@ -25,6 +25,8 @@
                         <p:inputText id="nome" value="#{bebidaControle.bebida.nome}" required="true" requiredMessage="Campo nome é obrigatorio! "/>
                         <h:outputText  value="Preço:" />
                         <p:inputText id="preco" value="#{bebidaControle.bebida.preco}" required="true" requiredMessage="Campo Preço é obrigatorio! "/>
+                        <h:outputText  value="Unidades:" />
+                        <p:inputText id="unidades" value="#{bebidaControle.bebida.unidades}" required="true" requiredMessage="Campo Preço é obrigatorio! "/>
                         <p:commandButton value="salvar" action="#{bebidaControle.salvar()}" ajax="false"/>
                     </h:panelGrid>
                 </p:fieldset>

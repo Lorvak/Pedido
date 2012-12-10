@@ -101,7 +101,7 @@ public class FuncionarioControle {
         return "cadFuncionario";
     }
 
-    public void excluir(ActionEvent evento) {
+    public void excluir() {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
             funcionarioDAO = new FuncionarioDAOImp();

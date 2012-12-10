@@ -7,7 +7,6 @@
     <class>br.com.pi.entidade.Borda</class>
     <class>br.com.pi.entidade.Cidade</class>
     <class>br.com.pi.entidade.Cliente</class>
-    <class>br.com.pi.entidade.Endereco</class>
     <class>br.com.pi.entidade.Entregador</class>
     <class>br.com.pi.entidade.Estado</class>
     <class>br.com.pi.entidade.Funcionario</class>
@@ -22,6 +21,7 @@
     <class>br.com.pi.entidade.Sabor</class>
     <class>br.com.pi.entidade.Tamanho</class>
     <class>br.com.pi.entidade.Usuario</class>
+    <class>br.com.pi.entidade.Moradia</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.connection.username" value="root"/>

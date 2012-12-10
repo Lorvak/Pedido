@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="./index.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="center">
+        <p:layoutUnit position="center" header="Moradia">
+            <h:form id="form1">
+                <p:toolbar>
+                    <p:toolbarGroup align="left" style="height: 25px;">
+                        <p:commandButton value="Pesquisar por nome" image="ui-icon-search" action="#{moradiaControle.pesq()}" ajax="false" style="margin: 0px;" disabled="true"/>
+                        <p:commandButton value="Pesquisar por Telefone" image="ui-icon-search" action="#{moradiaControle.pesqFone()}" ajax="false" style="margin: 0px;"/>
+                        <p:commandButton value="Novo" image="ui-icon-folder-open" action="#{moradiaControle.novo()}" ajax="false" style="margin: 0px;"/>
+                    </p:toolbarGroup>
+                </p:toolbar>
+            </h:form>
+            <h:form id="form2">
+                <p:separator style="width: 100%; height: 5px; margin: 5px 0px;"/>
+                <p:messages id="menssages" showSummary="true"/>
+                <p:fieldset legend="Pesquisa" toggleable="true" style="width: 400px; margin: 0 auto;">
+                    <h:panelGrid columns="3">
+                        <h:outputText value="Nome: " />
+                        <p:inputText id="nome" value="#{moradiaControle.nome}" size="">
+                            <p:focus for="nome"/>
+                        </p:inputText>
+                        <p:commandButton value="Pesquisar" image="ui-icon-search" update="tabelamoradia" action="#{moradiaControle.pesquisaFone()}" ajax="false"/>
+                    </h:panelGrid>
+                </p:fieldset>
+                <p:separator style="width: 100%; height: 5px; margin: 5px 0px 5px 0px;"/>
+                <p:dataTable id="tabelamoradia" value="#{moradiaControle.model}" var="c" paginator="true" rows="5" emptyMessage="Nenhum Valor encontrado">
+                    <f:facet name="header">
+                        <h:outputText value="Listando moradia(s)"/>
+                    </f:facet>
+                    <p:column>
+                        <f:facet name="header">Pais</f:facet>
+                        <h:outputText value="${c.logradouro.bairro.cidade.estado.pais.nome}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Estado</f:facet>
+                        <h:outputText value="${c.logradouro.bairro.cidade.estado.nome}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Cidade</f:facet>
+                        <h:outputText value="${c.logradouro.bairro.cidade.nome}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Bairro</f:facet>
+                        <h:outputText value="${c.logradouro.bairro.nome}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Logradouro</f:facet>
+                        <h:outputText value="${c.logradouro.nome}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Cep</f:facet>
+                        <h:outputText value="${c.logradouro.cep}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Numero</f:facet>
+                        <h:outputText value="${c.numero}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Telefone</f:facet>
+                        <h:outputText value="${c.telefone}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Alterar/Excluir</f:facet>
+                        <p:commandButton action="#{moradiaControle.alterar()}" value="Alterar" ajax="false"/>
+                        <p:commandButton onclick="confirmation.show()" value="Excluir Conf"/>
+                        <p:confirmDialog id="confirmDialog" message="Tem Certeza que deseja Excluir?" appendToBody="true" header="Excluir"
+                                         severity="alert" widgetVar="confirmation">
+                            <p:commandButton id="confirm" value="Sim" oncomplete="confirmation.hide()" process="@this" update="@form"
+                                             actionListener="#{moradiaControle.excluir()}"/>
+                            <p:commandButton id="decline" value="Não" onclick="confirmation.hide()" type="button"/>
+                        </p:confirmDialog>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </p:layoutUnit>
+    </ui:define>
+
+</ui:composition>

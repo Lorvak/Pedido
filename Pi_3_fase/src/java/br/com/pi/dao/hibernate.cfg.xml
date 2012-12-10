@@ -13,7 +13,6 @@
     <mapping class="br.com.pi.entidade.Cidade"/>
     <mapping class="br.com.pi.entidade.Bairro"/>
     <mapping class="br.com.pi.entidade.Logradouro"/>
-    <mapping class="br.com.pi.entidade.Endereco"/>
     <mapping class="br.com.pi.entidade.Pessoa"/>
     <mapping class="br.com.pi.entidade.Cliente"/>
     <mapping class="br.com.pi.entidade.Funcionario"/>
@@ -26,5 +25,6 @@
     <mapping class="br.com.pi.entidade.Pizza"/>
     <mapping class="br.com.pi.entidade.Pedido"/>
     <mapping class="br.com.pi.entidade.PedidoTele"/>
+    <mapping class="br.com.pi.entidade.Moradia"/>
   </session-factory>
 </hibernate-configuration>

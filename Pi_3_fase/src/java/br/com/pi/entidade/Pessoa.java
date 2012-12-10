@@ -38,7 +38,7 @@ public class Pessoa implements Serializable {
     private Date nascimento;
     private String email;
     @ManyToMany
-    private List<Endereco> enderecos;
+    private List<Moradia> moradias;
     @OneToOne
     private Usuario usuario;
 
@@ -82,12 +82,12 @@ public class Pessoa implements Serializable {
         this.email = email;
     }
 
-    public List<Endereco> getEnderecos() {
-        return enderecos;
+    public List<Moradia> getMoradias() {
+        return moradias;
     }
 
-    public void setEnderecos(List<Endereco> enderecos) {
-        this.enderecos = enderecos;
+    public void setMoradias(List<Moradia> moradias) {
+        this.moradias = moradias;
     }
 
    

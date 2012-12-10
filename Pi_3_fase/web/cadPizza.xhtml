@@ -26,23 +26,17 @@
                         <h:outputText  value="Observações:"/>
                         <p:inputTextarea id="obs" value="#{pizzaControle.pizza.obs}"/>
                         <h:outputText value="Borda: " />  
-                        <p:selectOneMenu value="#{pizzaControle.pizza.borda}" effect="fold" required="true" requiredMessage="Campo borda é obrigatorio! ">  
-                            <f:selectItem itemLabel="Select One" itemValue="" />  
+                        <p:selectOneMenu id="borda" value="#{pizzaControle.borda.id}" effect="fold">  
+                            <f:selectItem itemLabel="Select One" itemValue="0" />  
                             <f:selectItems value="#{pizzaControle.comboBorda}" />  
                         </p:selectOneMenu>
                         <h:outputText value="Tamanho: " />  
-                        <p:selectOneMenu value="#{pizzaControle.pizza.tamanho}" effect="fold" required="true" requiredMessage="Campo tamanho é obrigatorio! ">  
-                            <f:selectItem itemLabel="Select One" itemValue="" />  
+                        <p:selectOneMenu id="tamanho" value="#{pizzaControle.tamanho.id}" effect="fold">  
+                            <f:selectItem itemLabel="Select One" itemValue="0" />  
                             <f:selectItems value="#{pizzaControle.comboTamanho}" /> 
-                            <f:ajax execute="#{pizzaControle.calculaSabores()}"/> 
+                            <f:ajax execute="tamanho" render="btaddsabor"/>
                         </p:selectOneMenu>
-                        <c:forEach items="#{pizzaControle.pizza.sabores}" var="sabore">
-                            <h:outputText value="Sabor:" />  
-                            <p:selectOneMenu value="${sabores}" effect="fold" required="true" requiredMessage="Campo sabor é obrigatorio! ">  
-                                <f:selectItem itemLabel="Select One" itemValue="" />  
-                                <f:selectItems value="#{pizzaControle.comboSabor}" />  
-                            </p:selectOneMenu>
-                        </c:forEach>
+                        <p:commandButton id="btaddsabor" value="Adicionar Sabor" action="#{pizzaControle.novoSabor()}" ajax="false" disabled="#{pizzaControle.tamanho.id == 0 || pizzaControle.tamanho == null}"/>
                         <p:commandButton value="salvar" action="#{pizzaControle.salvar()}" ajax="false"/>
                     </h:panelGrid>
                 </p:fieldset>
