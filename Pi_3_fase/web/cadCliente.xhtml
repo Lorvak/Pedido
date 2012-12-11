@@ -30,7 +30,7 @@
                         <h:outputText value="Email: " />  
                         <p:inputText id="email" value="#{clienteControle.cliente.email}" required="true" requiredMessage="Campo email é obrigatorio! "/>
                         <h:outputText value="Ederecos: " />  
-                        <p:inputText id="endrecos" value="#{clienteControle.cliente.enderecos}" required="true" requiredMessage="Campo enderecos é obrigatorio! "/>
+                        <p:inputText id="endrecos" value="#{clienteControle.cliente.moradias}" required="true" requiredMessage="Campo enderecos é obrigatorio! "/>
                         <h:outputText value="Cadastro: " />  
                         <p:inputText id="cadastro" value="#{clienteControle.cliente.cadastro}" required="true" requiredMessage="Campo cadastro é obrigatorio! "/>
                         <p:commandButton value="salvar" action="#{clienteControle.salvar()}" ajax="false"/>
