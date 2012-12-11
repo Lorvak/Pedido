@@ -1,17 +1,18 @@
 package br.com.senac.pedido;
 
+
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.test.suitebuilder.annotation.LargeTest;
-import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class Bebida extends Activity{
 	
 	private TextView txtMesa;
+	private int RETORNO_PIZZA = 1;
 	
 	
 	@Override
@@ -33,6 +34,8 @@ public class Bebida extends Activity{
 						startActivity(new Intent(getBaseContext(),Bebida.class));
 					}
 				});
+		
+		Button bt = (Button) findViewById(R.id.cadPedido);
 
 }
 	

@@ -11,5 +11,8 @@
     <string name="sobremesa">Sobremesas</string>
 
     <string name="fconta">Fechar Conta</string>
+    <string name="txtCadBordaNome">Nome</string>
+    <string name="btCadBordaSubmit">Cadastrar</string>
+    <string name="txtCadBebida">Cadastrar Bebida</string>
 
 </resources>

@@ -31,6 +31,7 @@
         <activity android:name="Bebida"></activity>
         <activity android:name="Sobremesa"></activity>
         <activity android:name="FecharConta"></activity>
+        <activity android:name="cadBorda"></activity>
         
     </application>
 
