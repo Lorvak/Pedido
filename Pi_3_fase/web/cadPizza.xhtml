@@ -36,7 +36,8 @@
                             <f:selectItems value="#{pizzaControle.comboTamanho}" /> 
                             <f:ajax execute="tamanho" render="btaddsabor"/>
                         </p:selectOneMenu>
-                        <p:commandButton id="btaddsabor" value="Adicionar Sabor" action="#{pizzaControle.novoSabor()}" ajax="false" disabled="#{pizzaControle.tamanho.id == 0 || pizzaControle.tamanho.id == null}"/>
+                        <p:commandButton id="btaddsabor" value="Adicionar Sabor" action="#{pizzaControle.novoSabor()}" ajax="false" 
+                                         disabled="#{pizzaControle.tamanho.id == 0 || pizzaControle.tamanho.id == null || pizzaControle.btSabor}"/>
                         <p:commandButton value="salvar" action="#{pizzaControle.salvar()}" ajax="false"/>
                     </h:panelGrid>
                 </p:fieldset>

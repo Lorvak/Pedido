@@ -5,11 +5,13 @@
 package br.com.pi.entidade;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 /**
  *
@@ -25,6 +27,8 @@ public class Sabor implements Serializable {
     private Double preco;
     @Column(nullable=false)
     private String nome;
+    @ManyToMany(mappedBy = "sabores")
+    private List<Pizza> pizzas;
 
     public Sabor() {
     }

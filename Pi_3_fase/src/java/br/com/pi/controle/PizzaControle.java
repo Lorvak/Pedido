@@ -36,11 +36,21 @@ public class PizzaControle {
 
     private Pizza pizza;
     private PizzaDAO dao;
+    private TamanhoDAO tDao;
     private DataModel model;
     private List<Sabor> sabores;
     private Sabor sabor;
     private Borda borda;
     private Tamanho tamanho;
+    private boolean btSabor;
+
+    public boolean isBtSabor() {
+        return btSabor;
+    }
+
+    public void setBtSabor(boolean btSabor) {
+        this.btSabor = btSabor;
+    }
 
     public Tamanho getTamanho() {
         if (tamanho == null) {
@@ -115,28 +125,28 @@ public class PizzaControle {
         pizza = new Pizza();
         borda = new Borda();
         tamanho = new Tamanho();
+        sabores = new ArrayList<Sabor>();
         return "cadPizza.faces";
     }
 
     public String novoSabor() {
+        sabor = null;
         if (sabores == null) {
             sabores = new ArrayList<Sabor>();
         }
-//        FacesContext context = FacesContext.getCurrentInstance();
-//        if (tamanho.getNsabores() != null) {
-//            if (pizza.getTamanho().getNsabores() >= sabores.size()) {
         return "addSabor.faces";
-//            }
-//        }
-//        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Numero maximo de sabores atingido!", "Numero maximo de sabores atingido!w"));
-//        return "cadPizza.faces";
     }
 
     public String salvaSabor() {
         sabores.add(sabor);
+        tDao = new TamanhoDAOImp();
+        pizza.setTamanho(tDao.pesquisa(tamanho.getId()));
+        if (sabores.size() == pizza.getTamanho().getNsabores()) {
+            btSabor = true;
+        }
         return "cadPizza.faces";
     }
-    
+
     public String voltar() {
         return "cadPizza.faces";
     }
@@ -203,13 +213,14 @@ public class PizzaControle {
     }
 
     public List<SelectItem> getComboSabor() {
-        boolean flag = true;
+        boolean flag;
         SaborDAO pdao = new SaborDAOImp();
-        List<Sabor> paises = pdao.getTodos();
+        List<Sabor> list = pdao.getTodos();
         List<SelectItem> listaCombo = new ArrayList<SelectItem>();
-        for (Sabor forn : paises) {
+        for (Sabor forn : list) {
+            flag = true;
             for (Sabor selectItem : sabores) {
-                if (forn.getId() == selectItem.getId()) {
+                if (forn.getId().longValue() == selectItem.getId().longValue()) {
                     flag = false;
                 }
             }
@@ -222,9 +233,9 @@ public class PizzaControle {
 
     public List<SelectItem> getComboTamanho() {
         TamanhoDAO pdao = new TamanhoDAOImp();
-        List<Tamanho> paises = pdao.getTodos();
+        List<Tamanho> list = pdao.getTodos();
         List<SelectItem> listaCombo = new ArrayList<SelectItem>();
-        for (Tamanho forn : paises) {
+        for (Tamanho forn : list) {
             listaCombo.add(new SelectItem(forn.getId(), forn.getNome()));
         }
         return listaCombo;
@@ -232,9 +243,9 @@ public class PizzaControle {
 
     public List<SelectItem> getComboBorda() {
         BordaDAO pdao = new BordaDAOImp();
-        List<Borda> paises = pdao.getTodos();
+        List<Borda> list = pdao.getTodos();
         List<SelectItem> listaCombo = new ArrayList<SelectItem>();
-        for (Borda forn : paises) {
+        for (Borda forn : list) {
             listaCombo.add(new SelectItem(forn.getId(), forn.getNome()));
         }
         return listaCombo;

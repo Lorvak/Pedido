@@ -21,7 +21,7 @@
                 <p:messages id="menssages" showSummary="true"/>
                 <p:fieldset legend="Pesquisa" toggleable="true" style="width: 400px; margin: 0 auto;">
                     <h:panelGrid columns="1">
-                        <p:commandButton value="Pesquisar Pizzas" image="ui-icon-search" update="tabelapizza" action="#{pizzaControle.pesquisa()}" ajax="false"/>
+                        <p:commandButton value="Pesquisar Pizzas" image="ui-icon-search" update="tabelapizza" action="#{pizzaControle.pizza.tamanho.nome}" ajax="false"/>
                     </h:panelGrid>
                 </p:fieldset>
                 <p:separator style="width: 100%; height: 5px; margin: 5px 0px 5px 0px;"/>
@@ -29,6 +29,14 @@
                     <f:facet name="header">
                         <h:outputText value="Listando pizza(s)"/>
                     </f:facet>
+                    <p:column>
+                        <f:facet name="header">Tamanho</f:facet>
+                        <h:outputText value="${c.tamanho.nome}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Borda</f:facet>
+                        <h:outputText value="${c.borda.nome}"></h:outputText>
+                    </p:column>
                     <p:column>
                         <f:facet name="header">Obs</f:facet>
                         <h:outputText value="${c.obs}"></h:outputText>

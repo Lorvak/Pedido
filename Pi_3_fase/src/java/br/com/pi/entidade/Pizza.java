@@ -12,7 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
 /**
@@ -29,7 +29,7 @@ public class Pizza implements Serializable {
     private Tamanho tamanho;
     @OneToOne
     private Borda borda;
-    @OneToMany
+    @ManyToMany
     private List<Sabor> sabores;
     @Transient
     private Double precoFinal;
