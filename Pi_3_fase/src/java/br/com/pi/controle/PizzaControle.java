@@ -38,6 +38,7 @@ public class PizzaControle {
     private PizzaDAO dao;
     private TamanhoDAO tDao;
     private DataModel model;
+    private DataModel model2;
     private List<Sabor> sabores;
     private Sabor sabor;
     private Borda borda;
@@ -103,6 +104,14 @@ public class PizzaControle {
     public void setModel(DataModel model) {
         this.model = model;
     }
+    
+    public DataModel getModel2() {
+        return model2;
+    }
+
+    public void setModel2(DataModel model2) {
+        this.model2 = model2;
+    }
 
     public Pizza getPizza() {
         if (pizza == null) {
@@ -119,6 +128,7 @@ public class PizzaControle {
     private void limpar() {
         pizza = null;
         model = null;
+        model2 = null;
     }
 
     public String novo() {
@@ -181,13 +191,33 @@ public class PizzaControle {
 
     public void pesquisa() {
         dao = new PizzaDAOImp();
-        List<Pizza> pizzaes = dao.getTodos();
-        model = new ListDataModel(pizzaes);
+        List<Pizza> pizzas = dao.getTodos();
+        List<Pizza> pizzas2 = new ArrayList<Pizza>();
+        boolean flag;
+        for (Pizza item : pizzas) {
+            flag = true;
+            for (Pizza item2 : pizzas2) {
+                if(item.getId().longValue() == item2.getId().longValue()){
+                    flag = false;
+                }
+            }
+            if (flag) {
+                pizzas2.add(item);
+            }
+        }
+        model = new ListDataModel(pizzas2);
         FacesContext context = FacesContext.getCurrentInstance();
-        if (pizzaes.isEmpty()) {
+        if (pizzas2.isEmpty()) {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Pizza inesistente!", "Pizza inesistente!"));
             limpar();
         }
+    }
+    
+    public void pesquisapizza() {
+        dao = new PizzaDAOImp();
+        pizza = (Pizza) model.getRowData();
+        pizza = dao.pesquisa(pizza.getId());
+        model2 = new ListDataModel(pizza.getSabores());
     }
 
     public String excluir() {
