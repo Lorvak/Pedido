@@ -51,6 +51,25 @@
                                              actionListener="#{pizzaControle.excluir()}"/>
                             <p:commandButton id="decline" value="Não" onclick="confirmation.hide()" type="button"/>
                         </p:confirmDialog>
+
+                        <p:commandButton id="cbPesqPizza" action="#{pizzaControle.pesquisapizza()}" oncomplete="show.show()" update="showDialog"  value="Mostrar Pizza"/>
+                        <p:confirmDialog id="showDialog" appendToBody="true" header="Pizza" message="Obs: #{pizzaControle.pizza.obs}"
+                                         widgetVar="show">
+
+                            <h:outputText value="Tamanho: #{pizzaControle.pizza.tamanho.nome}" /> <br/>
+                            <h:outputText value="Borda: #{pizzaControle.pizza.borda.nome}" /> <br/>
+                            <h:outputText value="Preço Final: #{pizzaControle.pizza.precoFinal}" /> <br/> 
+
+                            <p:dataTable id="tabelapizza" value="#{pizzaControle.model2}" var="d" emptyMessage="Nenhum Valor encontrado">
+                                <p:column>
+                                    <f:facet name="header">Sabores</f:facet>
+                                    <h:outputText value="${d.nome}"></h:outputText>
+                                </p:column>
+                            </p:dataTable> <br/>
+
+                            <p:commandButton id="fechar" value="Fechar" onclick="show.hide()" type="button"/>
+                        </p:confirmDialog>
+
                     </p:column>
                 </p:dataTable>
             </h:form>
