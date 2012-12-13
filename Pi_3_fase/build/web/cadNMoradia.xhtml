@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="./index.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="center">
+        <p:layoutUnit position="center" header="Cadstro Moradia">
+            <h:form id="form1">
+                <p:toolbar>
+                    <p:toolbarGroup align="left" style="height: 25px;">
+                        <p:commandButton value="Pesquisar" image="ui-icon-search" action="#{clienteControle.btPesquisar()}" ajax="false" style="margin: 0px;"/>
+                        <p:commandButton value="Novo" image="ui-icon-folder-open" action="#{clienteControle.novoCliente()}" ajax="false" style="margin: 0px;" disabled="true"/>
+                    </p:toolbarGroup>
+                </p:toolbar>
+            </h:form>
+            <h:form id="form2">
+                <p:separator style="width: 100%; height: 5px; margin: 5px 0px;"/>
+                <p:messages id="menssages" showSummary="true"/>
+                <p:fieldset legend="Cadastro" toggleable="true" style="width: 400px; margin: 0 auto;">
+                    <h:panelGrid id="painel" columns="2">
+                        <h:outputText  value="Numero:" />
+                        <p:inputText id="numero" value="#{clienteControle.moradia.numero}" required="true" requiredMessage="Campo nome é obrigatorio! "/>
+                        <h:outputText  value="Complemento:" />
+                        <p:inputText id="complemento" value="#{clienteControle.moradia.complemento}" required="true" requiredMessage="Campo cep é obrigatorio! "/>
+                        <h:outputText  value="Telefone:" />
+                        <p:inputText id="telefone" value="#{clienteControle.moradia.telefone}" required="true" requiredMessage="Campo cep é obrigatorio! "/>
+                        <h:outputText value="Pais: " />  
+                        <p:selectOneMenu id="pais" value="#{moradiaControle.pais.id}" effect="fold" required="true" requiredMessage="Campo Pais é obrigatorio! ">  
+                            <f:selectItem itemLabel="Select One" itemValue="0" />  
+                            <f:selectItems value="#{moradiaControle.comboPais}"/>
+                            <f:ajax execute="pais" render="IDestado"/>
+                        </p:selectOneMenu>
+                        <h:outputText value="Estado: " />  
+                        <p:selectOneMenu id="IDestado" value="#{moradiaControle.estado.id}" effect="fold" required="true" requiredMessage="Campo Estado é obrigatorio! " disabled="#{moradiaControle.pais.id==0}">  
+                            <f:selectItem itemLabel="Select One" itemValue="0" />  
+                            <f:selectItems value="#{moradiaControle.comboEstado}" />  
+                            <f:ajax execute="IDestado" render="cidade"/>
+                        </p:selectOneMenu>
+                        <h:outputText value="Cidade: " />  
+                        <p:selectOneMenu id="cidade" value="#{moradiaControle.cidade.id}" effect="fold" required="true" requiredMessage="Campo Cidade é obrigatorio! " disabled="#{moradiaControle.estado.id==0}">  
+                            <f:selectItem itemLabel="Select One" itemValue="0" />  
+                            <f:selectItems value="#{moradiaControle.comboCidade}" />   
+                            <f:ajax execute="cidade" render="bairro"/>
+                        </p:selectOneMenu>
+                        <h:outputText value="Bairro: " />  
+                        <p:selectOneMenu id="bairro" value="#{moradiaControle.bairro.id}" effect="fold" required="true" requiredMessage="Campo Bairro é obrigatorio! " disabled="#{moradiaControle.cidade.id==0}">  
+                            <f:selectItem itemLabel="Select One" itemValue="0" />  
+                            <f:selectItems value="#{moradiaControle.comboBairro}" />   
+                            <f:ajax execute="bairro" render="logradouro"/>
+                        </p:selectOneMenu>
+                        <h:outputText value="Bairro: " />  
+                        <p:selectOneMenu id="logradouro" value="#{clienteControle.logradouro.id}" effect="fold" required="true" requiredMessage="Campo Bairro é obrigatorio! " disabled="#{moradiaControle.cidade.id==0}">  
+                            <f:selectItem itemLabel="Select One" itemValue="0" />  
+                            <f:selectItems value="#{moradiaControle.comboLogradouro}" />   
+                        </p:selectOneMenu>
+                        <p:commandButton value="salvar" action="#{clienteControle.salvar()}" ajax="false"/>
+                    </h:panelGrid>
+                </p:fieldset>
+            </h:form>
+        </p:layoutUnit>
+    </ui:define>
+
+</ui:composition>

@@ -6,7 +6,13 @@ package br.com.pi.controle;
 
 import br.com.pi.dao.ClienteDAO;
 import br.com.pi.dao.ClienteDAOImp;
+import br.com.pi.dao.MoradiaDAO;
+import br.com.pi.dao.MoradiaDAOImp;
 import br.com.pi.entidade.Cliente;
+import br.com.pi.entidade.Logradouro;
+import br.com.pi.entidade.Moradia;
+import br.com.pi.entidade.Perfil;
+import br.com.pi.entidade.Usuario;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -27,10 +33,17 @@ public class ClienteControle {
     private Cliente cliente;
     private ClienteDAO clienteDAO;
     private DataModel model;
+    private Moradia moradia;
+    private MoradiaDAO moradiaDAO;
+    private Logradouro logradouro;
+    private Usuario usuario;
+    private Perfil perfil;
 
     public Cliente getCliente() {
         if (cliente == null) {
             cliente = new Cliente();
+            cliente.setUsuario(new Usuario());
+            cliente.getUsuario().setPerfil(new Perfil());
         }
         return cliente;
     }
@@ -55,9 +68,63 @@ public class ClienteControle {
         this.model = model;
     }
 
+    public Moradia getMoradia() {
+        if (moradia == null) {
+            moradia = new Moradia();
+        }
+        return moradia;
+    }
+
+    public void setMoradia(Moradia moradia) {
+        this.moradia = moradia;
+    }
+
+    public MoradiaDAO getMoradiaDAO() {
+        return moradiaDAO;
+    }
+
+    public void setMoradiaDAO(MoradiaDAO moradiaDAO) {
+        this.moradiaDAO = moradiaDAO;
+    }
+
+    public Logradouro getLogradouro() {
+        if (logradouro == null) {
+            logradouro = new Logradouro();
+        }
+        return logradouro;
+    }
+
+    public void setLogradouro(Logradouro logradouro) {
+        this.logradouro = logradouro;
+    }
+
+    public Usuario getUsuario() {
+        if (usuario == null) {
+            usuario = new Usuario();
+        }
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Perfil getPerfil() {
+        if (perfil == null) {
+            perfil = new Perfil();
+        }
+        return perfil;
+    }
+
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
+    }
+
     public String salvar() {
         FacesContext context = FacesContext.getCurrentInstance();
         clienteDAO = new ClienteDAOImp();
+        usuario.setPerfil(perfil);
+        cliente.setUsuario(usuario);
         if (cliente.getId() == null) {
             clienteDAO.salva(cliente);
             context.addMessage(null,
@@ -75,9 +142,12 @@ public class ClienteControle {
 
     private void limpar() {
         cliente = null;
+        usuario = null;
+        perfil = null;
         model = null;
     }
-     public String limpaPesquisa() {
+
+    public String limpaPesquisa() {
         limpar();
         return "pesqCliente";
     }
@@ -93,6 +163,11 @@ public class ClienteControle {
     public String voltar() {
         limpar();
         return "index.feces";
+    }
+
+    public String voltarAoCadastro() {
+
+        return "cadCliente.faces";
     }
 
     public String novoCliente() {
@@ -119,6 +194,8 @@ public class ClienteControle {
 
     public String alterar() {
         FacesContext context = FacesContext.getCurrentInstance();
+        usuario = cliente.getUsuario();
+        perfil = usuario.getPerfil();
         cliente = (Cliente) model.getRowData();
         setCliente(cliente);
         context.addMessage(null,
@@ -131,5 +208,17 @@ public class ClienteControle {
     public String btPesquisar() {
         cliente = null;
         return "pesqCliente";
+    }
+
+    public String btNovoEndereco() {
+        moradia = new Moradia();
+        return "cadNMoradia";
+    }
+
+    public String salvarNovoEndereco() {
+        cliente.getMoradias().add(moradia);
+        moradiaDAO = new MoradiaDAOImp();
+//        moradiaDAO.salva(moradia);
+        return "cadCliente";
     }
 }

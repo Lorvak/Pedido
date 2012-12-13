@@ -24,15 +24,27 @@
                         <h:outputText  value="Nome:"/>
                         <p:inputText id="nome" value="#{clienteControle.cliente.nome}" required="true" requiredMessage="Campo nome é obrigatorio! "/>
                         <h:outputText  value="Nascimento:"/>
-                        <p:inputText id="nascimento" value="#{clienteControle.cliente.nascimento}" required="true" requiredMessage="Campo nascimento é obrigatorio! "/>
+                        <p:calendar locale="pt" showButtonPanel="true" navigator="true" yearRange="1920" id="nascimento" 
+                                    value="#{clienteControle.cliente.nascimento}" required="true" requiredMessage="Campo nascimento é obrigatorio! "/>
                         <h:outputText value="Celular: " />  
                         <p:inputText id="celular" value="#{clienteControle.cliente.celular}" required="true" requiredMessage="Campo celular é obrigatorio! "/>
                         <h:outputText value="Email: " />  
                         <p:inputText id="email" value="#{clienteControle.cliente.email}" required="true" requiredMessage="Campo email é obrigatorio! "/>
+                        <h:outputText value="Usuario: " />  
+                        <p:inputText id="login" value="#{clienteControle.usuario.login}"/>
+                        <h:outputText value="Senha: " />  
+                        <p:inputText id="senha" value="#{clienteControle.usuario.senha}"/>
+                        
+                        <h:outputText value="Perfil: " />  
+                        <p:selectOneMenu id="perfil" value="#{clienteControle.perfil.id}" effect="fold">  
+                            <f:selectItem itemLabel="Select One" itemValue="0" />  
+                            <f:selectItems value="#{usuarioControle.comboPerfis}" /> 
+                        </p:selectOneMenu>
+                        
                         <h:outputText value="Ederecos: " />  
-                        <p:inputText id="endrecos" value="#{clienteControle.cliente.moradias}" required="true" requiredMessage="Campo enderecos é obrigatorio! "/>
+                        <p:commandButton id="btaddsabor" value="Adicionar Endereço" action="#{clienteControle.btNovoEndereco()}" ajax="false" />
                         <h:outputText value="Cadastro: " />  
-                        <p:inputText id="cadastro" value="#{clienteControle.cliente.cadastro}" required="true" requiredMessage="Campo cadastro é obrigatorio! "/>
+                        <p:calendar id="cadastro" value="#{clienteControle.cliente.cadastro}" required="true" requiredMessage="Campo cadastro é obrigatorio! "/>
                         <p:commandButton value="salvar" action="#{clienteControle.salvar()}" ajax="false"/>
                     </h:panelGrid>
                 </p:fieldset>

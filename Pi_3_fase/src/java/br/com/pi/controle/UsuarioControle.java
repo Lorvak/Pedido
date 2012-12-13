@@ -4,10 +4,13 @@
  */
 package br.com.pi.controle;
 
+import br.com.pi.dao.PerfilDAO;
+import br.com.pi.dao.PerfilDAOImp;
 import br.com.pi.dao.UsuarioDAO;
 import br.com.pi.dao.UsuarioDAOImp;
 import br.com.pi.entidade.Perfil;
 import br.com.pi.entidade.Usuario;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -16,6 +19,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
+import javax.faces.model.SelectItem;
 
 /**
  *
@@ -145,5 +149,15 @@ public class UsuarioControle {
     public String btPesquisar() {
         usuario = null;
         return "pesqUsuario";
+    }
+    
+    public List<SelectItem> getComboPerfis() {
+        PerfilDAO pdao = new PerfilDAOImp();
+        List<Perfil> perfis = pdao.getTodos();
+        List<SelectItem> listaCombo = new ArrayList<SelectItem>();
+        for (Perfil forn : perfis) {
+            listaCombo.add(new SelectItem(forn.getId(), forn.getNome()));
+        }
+        return listaCombo;
     }
 }

@@ -28,7 +28,7 @@
                         <h:outputText value="Perfil: " />  
                         <p:selectOneMenu value="#{usuarioControle.perfil.id}" effect="fold" required="true" requiredMessage="Campo Perfil é obrigatorio! ">  
                             <f:selectItem itemLabel="Select One" itemValue="" />  
-                            <f:selectItems value="#{usuarioControle.perfil}" />  
+                            <f:selectItems value="#{usuarioControle.comboPerfis}" />  
                         </p:selectOneMenu>
                         <p:commandButton value="salvar" action="#{usuarioControle.salvar()}" ajax="false"/>
                     </h:panelGrid>
