@@ -45,6 +45,8 @@
                         <p:commandButton id="btaddsabor" value="Adicionar Endereço" action="#{clienteControle.btNovoEndereco()}" ajax="false" />
                         <h:outputText value="Cadastro: " />  
                         <p:calendar id="cadastro" value="#{clienteControle.cliente.cadastro}" required="true" requiredMessage="Campo cadastro é obrigatorio! "/>
+                        
+                        
                         <p:commandButton value="salvar" action="#{clienteControle.salvar()}" ajax="false"/>
                     </h:panelGrid>
                 </p:fieldset>
