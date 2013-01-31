@@ -14,9 +14,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
+import org.hibernate.annotations.Cascade;
 
 /**
  *
@@ -38,8 +40,10 @@ public class Pessoa implements Serializable {
     private Date nascimento;
     private String email;
     @ManyToMany
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<Moradia> moradias;
     @OneToOne
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Usuario usuario;
 
     public Long getId() {
