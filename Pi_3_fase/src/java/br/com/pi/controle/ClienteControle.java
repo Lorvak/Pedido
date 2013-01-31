@@ -13,6 +13,7 @@ import br.com.pi.entidade.Logradouro;
 import br.com.pi.entidade.Moradia;
 import br.com.pi.entidade.Perfil;
 import br.com.pi.entidade.Usuario;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -216,6 +217,9 @@ public class ClienteControle {
     }
 
     public String salvarNovoEndereco() {
+        if(cliente.getMoradias()==null){
+            cliente.setMoradias(new ArrayList<Moradia>());
+        }
         cliente.getMoradias().add(moradia);
         moradiaDAO = new MoradiaDAOImp();
 //        moradiaDAO.salva(moradia);
