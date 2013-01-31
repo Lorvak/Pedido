@@ -13,6 +13,7 @@ import br.com.pi.entidade.Logradouro;
 import br.com.pi.entidade.Moradia;
 import br.com.pi.entidade.Perfil;
 import br.com.pi.entidade.Usuario;
+import com.sun.security.ntlm.Client;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -34,6 +35,7 @@ public class ClienteControle {
     private Cliente cliente;
     private ClienteDAO clienteDAO;
     private DataModel model;
+    private DataModel model2;
     private Moradia moradia;
     private MoradiaDAO moradiaDAO;
     private Logradouro logradouro;
@@ -67,6 +69,17 @@ public class ClienteControle {
 
     public void setModel(DataModel model) {
         this.model = model;
+    }
+
+    public DataModel getModel2() {
+        if(model2 == null){
+            model2 = new ListDataModel();
+        }
+        return model2;
+    }
+
+    public void setModel2(DataModel model2) {
+        this.model2 = model2;
     }
 
     public Moradia getMoradia() {
@@ -224,5 +237,12 @@ public class ClienteControle {
         moradiaDAO = new MoradiaDAOImp();
 //        moradiaDAO.salva(moradia);
         return "cadCliente";
+    }
+    
+     public void pesquisaMoradias() {
+        clienteDAO = new ClienteDAOImp();
+        cliente = (Cliente) model.getRowData();
+        cliente = clienteDAO.pesquisa(cliente.getId());
+        model2 = new ListDataModel(cliente.getMoradias());
     }
 }

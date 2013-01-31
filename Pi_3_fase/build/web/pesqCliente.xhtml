@@ -35,32 +35,43 @@
                     </f:facet>
                     <p:column>
                         <f:facet name="header">Nome</f:facet>
-                        <h:outputText value="${c.cliente.nome}"></h:outputText>
+                        <h:outputText value="${c.nome}"></h:outputText>
                     </p:column>
                     <p:column>
                         <f:facet name="header">Nascimento</f:facet>
-                        <h:outputText value="${c.cliente.nascimento}"></h:outputText>
+                        <h:outputText value="${c.nascimento}"></h:outputText>
                     </p:column>
                     <p:column>
                         <f:facet name="header">Celular</f:facet>
-                        <h:outputText value="${c.cliente.celular}"></h:outputText>
+                        <h:outputText value="${c.celular}"></h:outputText>
                     </p:column>
                     <p:column>
                         <f:facet name="header">Email</f:facet>
-                        <h:outputText value="${c.cliente.email}"></h:outputText>
+                        <h:outputText value="${c.email}"></h:outputText>
                     </p:column>
-                    <p:column>
-                        <f:facet name="header">Enderecos</f:facet>
-                        <h:outputText value="${c.cliente.moradias}"></h:outputText>
-                    </p:column>
+
                     <p:column>
                         <f:facet name="header">Cadastro</f:facet>
-                        <h:outputText value="${c.cliente.cadastro}"></h:outputText>
+                        <h:outputText value="${c.cadastro}"></h:outputText>
                     </p:column>
                     <p:column>
                         <f:facet name="header">Alterar/Excluir</f:facet>
                         <p:commandButton action="#{clienteControle.alterar()}" value="Alterar" ajax="false"/>
-                        <p:commandButton action="#{clienteControle.excluir()}" update="tabelacidade" value="Excluir" ajax="false"/>
+
+                        <p:commandButton id="cbPesqPizza" action="#{clienteControle.pesquisaMoradias()}" oncomplete="show.show()" update="showDialog"  value="Mostrar Enderecos"/>
+                        <p:confirmDialog id="showDialog" appendToBody="true" header="Pizza" message="Obs: Enderecos de ${c.nome}"
+                                         widgetVar="show">
+
+                            <p:dataTable id="tabelamoradias" value="#{clienteControle.model2}" var="d" emptyMessage="Nenhum Valor encontrado">
+                                <p:column>
+                                    <f:facet name="header">Logradouro</f:facet>
+                                    <h:outputText value="${d.logradouro.nome}"></h:outputText>
+                                </p:column>
+                            </p:dataTable> <br/>
+
+                            <p:commandButton id="fechar" value="Fechar" onclick="show.hide()" type="button"/>
+                        </p:confirmDialog>
+
                     </p:column>
                 </p:dataTable>
             </h:form>
