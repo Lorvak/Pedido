@@ -38,6 +38,14 @@
                         <h:outputText value="${c.nome}"></h:outputText>
                     </p:column>
                     <p:column>
+                        <f:facet name="header">Nivel de Acesso</f:facet>
+                        <h:outputText value="${c.acesso}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Descrição</f:facet>
+                        <h:outputText value="${c.descricao}"></h:outputText>
+                    </p:column>
+                    <p:column>
                         <f:facet name="header">Alterar/Excluir</f:facet>
                         <p:commandButton action="#{perfilControle.alterar()}" value="Alterar" ajax="false"/>
                         <p:commandButton action="#{perfilControle.excluir()}" update="tabelaperfil" value="Excluir" ajax="false"/>
