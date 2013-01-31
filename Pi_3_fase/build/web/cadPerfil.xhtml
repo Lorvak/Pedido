@@ -23,6 +23,10 @@
                     <h:panelGrid id="painel" columns="2">
                         <h:outputText  value="Nome:" />
                         <p:inputText id="nome" value="#{perfilControle.perfil.nome}" required="true" requiredMessage="Campo nome é obrigatorio! "/>
+                        <h:outputText  value="Acesso:" />
+                        <p:inputText id="acesso" value="#{perfilControle.perfil.acesso}" required="true" requiredMessage="Campo acesso é obrigatorio! "/>
+                        <h:outputText  value="Descricao:" />
+                        <p:inputTextarea id="descricao" value="#{perfilControle.perfil.descricao}" required="true" requiredMessage="Campo descrição é obrigatorio! "/>
                         <p:commandButton value="salvar" action="#{perfilControle.salvar()}" ajax="false"/>
                     </h:panelGrid>
                 </p:fieldset>
