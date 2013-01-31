@@ -233,6 +233,7 @@ public class ClienteControle {
         if(cliente.getMoradias()==null){
             cliente.setMoradias(new ArrayList<Moradia>());
         }
+        moradia.setLogradouro(logradouro);
         cliente.getMoradias().add(moradia);
         moradiaDAO = new MoradiaDAOImp();
 //        moradiaDAO.salva(moradia);

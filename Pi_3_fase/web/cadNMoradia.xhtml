@@ -51,7 +51,7 @@
                             <f:selectItems value="#{moradiaControle.comboBairro}" />   
                             <f:ajax execute="bairro" render="logradouro"/>
                         </p:selectOneMenu>
-                        <h:outputText value="Bairro: " />  
+                        <h:outputText value="Logradouro: " />  
                         <p:selectOneMenu id="logradouro" value="#{clienteControle.logradouro.id}" effect="fold" required="true" requiredMessage="Campo Bairro é obrigatorio! " disabled="#{moradiaControle.cidade.id==0}">  
                             <f:selectItem itemLabel="Select One" itemValue="0" />  
                             <f:selectItems value="#{moradiaControle.comboLogradouro}" />   
