@@ -49,23 +49,58 @@
                         <f:facet name="header">Email</f:facet>
                         <h:outputText value="${c.email}"></h:outputText>
                     </p:column>
-
                     <p:column>
                         <f:facet name="header">Cadastro</f:facet>
                         <h:outputText value="${c.cadastro}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Perfil</f:facet>
+                        <h:outputText value="${c.usuario.perfil.nome}"></h:outputText>
                     </p:column>
                     <p:column>
                         <f:facet name="header">Alterar/Excluir</f:facet>
                         <p:commandButton action="#{clienteControle.alterar()}" value="Alterar" ajax="false"/>
 
                         <p:commandButton id="cbPesqPizza" action="#{clienteControle.pesquisaMoradias()}" oncomplete="show.show()" update="showDialog"  value="Mostrar Enderecos"/>
-                        <p:confirmDialog id="showDialog" appendToBody="true" header="Pizza" message="Obs: Enderecos de ${c.nome}"
+                        <p:confirmDialog id="showDialog" appendToBody="true" header="Endereços" message="Enderecos de ${c.nome}"
                                          widgetVar="show">
 
                             <p:dataTable id="tabelamoradias" value="#{clienteControle.model2}" var="d" emptyMessage="Nenhum Valor encontrado">
                                 <p:column>
+                                    <f:facet name="header">Pais</f:facet>
+                                    <h:outputText value="${d.logradouro.bairro.cidade.estado.pais.nome}"></h:outputText>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">Estado</f:facet>
+                                    <h:outputText value="${d.logradouro.bairro.cidade.estado.nome}"></h:outputText>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">Cidade</f:facet>
+                                    <h:outputText value="${d.logradouro.bairro.cidade.nome}"></h:outputText>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">Bairro</f:facet>
+                                    <h:outputText value="${d.logradouro.bairro.nome}"></h:outputText>
+                                </p:column>
+                                <p:column>
                                     <f:facet name="header">Logradouro</f:facet>
                                     <h:outputText value="${d.logradouro.nome}"></h:outputText>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">Cep</f:facet>
+                                    <h:outputText value="${d.logradouro.cep}"></h:outputText>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">Complemento</f:facet>
+                                    <h:outputText value="${d.complemento}"></h:outputText>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">Numero</f:facet>
+                                    <h:outputText value="${d.numero}"></h:outputText>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">Telefone</f:facet>
+                                    <h:outputText value="${d.telefone}"></h:outputText>
                                 </p:column>
                             </p:dataTable> <br/>
 
