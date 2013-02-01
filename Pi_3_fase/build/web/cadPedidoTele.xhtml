@@ -7,12 +7,12 @@
                 xmlns:f="http://java.sun.com/jsf/core">
 
     <ui:define name="center">
-        <p:layoutUnit position="center" header="Cadstro Mesa">
+        <p:layoutUnit position="center" header="Tele Entrega">
             <h:form id="form1">
                 <p:toolbar>
                     <p:toolbarGroup align="left" style="height: 25px;">
-                        <p:commandButton value="Pesquisar" image="ui-icon-search" action="#{mesaControle.pesq()}" ajax="false" style="margin: 0px;"/>
-                        <p:commandButton value="Novo" image="ui-icon-folder-open" action="#{mesaControle.novo()}" ajax="false" style="margin: 0px;" disabled="true"/>
+                        <p:commandButton value="Pesquisar" image="ui-icon-search" action="#{pedidoTeleControle.pesq()}" ajax="false" style="margin: 0px;"/>
+                        <p:commandButton value="Novo" image="ui-icon-folder-open" action="#{pedidoTeleControle.novo()}" ajax="false" style="margin: 0px;" disabled="true"/>
                     </p:toolbarGroup>
                 </p:toolbar>
             </h:form>
@@ -23,7 +23,7 @@
                     <h:panelGrid id="painel" columns="2">
                         <h:outputText  value="Numero:" />
                         <p:inputText id="numero" value="#{mesaControle.mesa.numero}" required="true" requiredMessage="Campo numero é obrigatorio! "/>
-                        <p:commandButton value="salvar" action="#{mesaControle.salvar()}" ajax="false"/>
+                        <p:commandButton value="salvar" action="#{pedidoTeleControle.salvar()}" ajax="false"/>
                     </h:panelGrid>
                 </p:fieldset>
             </h:form>

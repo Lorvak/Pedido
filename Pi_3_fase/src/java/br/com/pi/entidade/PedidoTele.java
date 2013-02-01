@@ -5,6 +5,7 @@
 package br.com.pi.entidade;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +14,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import org.hibernate.annotations.Cascade;
 
 /**
  *
@@ -26,7 +29,10 @@ public class PedidoTele implements Serializable {
     private Long id;
     @Column(nullable=true,precision=2)
     private Double preco;
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date horaPedido;
     @OneToMany
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<Pizza> pizzas;
     @OneToMany
     private List<Bebida> bebidas;
