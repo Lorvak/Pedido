@@ -1,0 +1,46 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityListarPedidos" >
+
+    <DatePicker
+        android:id="@+id/datePickerFiltro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+    
+      <Button
+          android:id="@+id/btSearch"
+          android:layout_width="180dp"
+          android:layout_height="wrap_content"
+          android:layout_alignParentLeft="true"
+          android:layout_below="@id/datePickerFiltro"
+          android:layout_centerVertical="true"
+          android:onClick="btAtualizaRegistros"
+          android:text="@string/search"
+          android:textSize="28sp" />
+
+    <ListView
+        android:id="@+id/listViewRegistros"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/btSearch"
+        android:layout_centerVertical="true"
+        />
+
+    <Button
+        android:id="@+id/button1"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btSearch"
+        android:layout_toRightOf="@+id/btSearch"
+        android:onClick="voltar"
+        android:text="@string/voltar"
+        android:textSize="28dp" />
+
+</RelativeLayout>
