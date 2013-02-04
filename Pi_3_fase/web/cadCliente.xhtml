@@ -42,7 +42,7 @@
                         </p:selectOneMenu>
                         
                         <h:outputText value="Ederecos: " />  
-                        <p:commandButton id="btaddsabor" value="Adicionar Endereço" action="#{clienteControle.btNovoEndereco()}" ajax="false" />
+                        <p:button value="Adicionar Endereço" href="cadNMoradia.faces"/>
                         <h:outputText value="Cadastro: " />  
                         <p:calendar id="cadastro" value="#{clienteControle.cliente.cadastro}" required="true" requiredMessage="Campo cadastro é obrigatorio! "/>
                         
