@@ -236,9 +236,9 @@ public class ClienteControle {
         }
         moradia.setLogradouro(logradouro);
         cliente.getMoradias().add(moradia);
-//        moradiaDAO = new MoradiaDAOImp();
+        moradiaDAO = new MoradiaDAOImp();
 //        moradiaDAO.salva(moradia);
-        moradia = new Moradia();
+//        moradia = new Moradia();
         return "cadCliente";
     }
     

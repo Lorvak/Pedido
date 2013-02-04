@@ -33,20 +33,17 @@
                         <h:outputText value="Usuario: " />  
                         <p:inputText id="login" value="#{clienteControle.usuario.login}"/>
                         <h:outputText value="Senha: " />  
-                        <p:inputText id="senha" value="#{clienteControle.usuario.senha}"/>
+                        <p:password id="senha" value="#{clienteControle.usuario.senha}"/>
                         
                         <h:outputText value="Perfil: " />  
                         <p:selectOneMenu id="perfil" value="#{clienteControle.perfil.id}" effect="fold">  
                             <f:selectItem itemLabel="Select One" itemValue="0" />  
                             <f:selectItems value="#{usuarioControle.comboPerfis}" /> 
                         </p:selectOneMenu>
-                        
-                        <h:outputText value="Ederecos: " />  
-                        <p:button value="Adicionar Endereço" href="cadNMoradia.faces"/>
                         <h:outputText value="Cadastro: " />  
                         <p:calendar id="cadastro" value="#{clienteControle.cliente.cadastro}" required="true" requiredMessage="Campo cadastro é obrigatorio! "/>
-                        
-                        
+                        <h:outputText value="Ederecos: " />  
+                        <p:commandButton id="btaddsabor" value="Adicionar Endereço" action="#{clienteControle.btNovoEndereco()}" ajax="false" />
                         <p:commandButton value="salvar" action="#{clienteControle.salvar()}" ajax="false"/>
                     </h:panelGrid>
                 </p:fieldset>
