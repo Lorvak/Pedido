@@ -30,28 +30,32 @@
                         </p:selectOneMenu>
                         <h:outputText value="Estado: " />  
                         <p:selectOneMenu id="IDestado" value="#{moradiaControle.estado.id}" 
-                                         effect="fold" required="true" requiredMessage="Campo Estado é obrigatorio! " disabled="#{moradiaControle.pais.id==0 || moradiaControle.pais.id==null}">  
+                                         effect="fold" required="true" requiredMessage="Campo Estado é obrigatorio! " 
+                                         disabled="#{moradiaControle.pais.id==0 || moradiaControle.pais.id==null}">  
                             <f:selectItem itemLabel="Select One" itemValue="0" />  
                             <f:selectItems value="#{moradiaControle.comboEstado}" />  
                             <f:ajax execute="IDestado" render="cidade"/>
                         </p:selectOneMenu>
                         <h:outputText value="Cidade: " />  
                         <p:selectOneMenu id="cidade" value="#{moradiaControle.cidade.id}" 
-                                         effect="fold" required="true" requiredMessage="Campo Cidade é obrigatorio! " disabled="#{moradiaControle.estado.id==0 || moradiaControle.estado.id==null}">  
+                                         effect="fold" required="true" requiredMessage="Campo Cidade é obrigatorio! " 
+                                         disabled="#{moradiaControle.estado.id==0 || moradiaControle.estado.id==null}">  
                             <f:selectItem itemLabel="Select One" itemValue="0" />  
                             <f:selectItems value="#{moradiaControle.comboCidade}" />   
                             <f:ajax execute="cidade" render="bairro"/>
                         </p:selectOneMenu>
                         <h:outputText value="Bairro: " />  
                         <p:selectOneMenu id="bairro" value="#{moradiaControle.bairro.id}" 
-                                         effect="fold" required="true" requiredMessage="Campo Bairro é obrigatorio! " disabled="#{moradiaControle.cidade.id==0 || moradiaControle.cidade.id==null}">  
+                                         effect="fold" required="true" requiredMessage="Campo Bairro é obrigatorio! " 
+                                         disabled="#{moradiaControle.cidade.id==0 || moradiaControle.cidade.id==null}">  
                             <f:selectItem itemLabel="Select One" itemValue="0" />  
                             <f:selectItems value="#{moradiaControle.comboBairro}" />   
                             <f:ajax execute="bairro" render="logradouro"/>
                         </p:selectOneMenu>
                         <h:outputText value="Logradouro: " />  
                         <p:selectOneMenu id="logradouro" value="#{moradiaControle.logradouro.id}" 
-                                         effect="fold" required="true" requiredMessage="Campo Logradouro é obrigatorio! " disabled="#{moradiaControle.bairro.id==0 || moradiaControle.bairro.id==null}">  
+                                         effect="fold" required="true" requiredMessage="Campo Logradouro é obrigatorio! " 
+                                         disabled="#{moradiaControle.bairro.id==0 || moradiaControle.bairro.id==null}">  
                             <f:selectItem itemLabel="Select One" itemValue="0" />  
                             <f:selectItems value="#{moradiaControle.comboLogradouro}" />   
                         </p:selectOneMenu>

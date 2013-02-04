@@ -21,8 +21,6 @@
                 <p:messages id="menssages" showSummary="true"/>
                 <p:fieldset legend="Cadastro" toggleable="true" style="width: 400px; margin: 0 auto;">
                     <h:panelGrid id="painel" columns="2">
-                        <h:outputText  value="Nome:"/>
-                        <p:inputText id="nome" value="#{cidadeControle.cidade.nome}" required="true" requiredMessage="Campo nome é obrigatorio! "/>
                         <h:outputText value="Pais: "/>  
                         <p:selectOneMenu id="pais" value="#{cidadeControle.pais.id}" effect="fold" required="true" requiredMessage="Campo Pais é obrigatorio! ">  
                             <f:selectItem itemLabel="Select One" itemValue="0" />  
@@ -30,10 +28,13 @@
                             <f:ajax execute="pais" render="IDestado"/>
                         </p:selectOneMenu>
                         <h:outputText value="Estado: "/>  
-                        <p:selectOneMenu id="IDestado" value="#{cidadeControle.estado.id}" effect="fold" required="true" requiredMessage="Campo Estado é obrigatorio! " disabled="#{cidadeControle.pais.id==0}">  
+                        <p:selectOneMenu id="IDestado" value="#{cidadeControle.estado.id}" effect="fold" required="true" requiredMessage="Campo Estado é obrigatorio! " 
+                                         disabled="#{cidadeControle.pais.id == 0 || cidadeControle.pais.id == null}">  
                             <f:selectItem itemLabel="Select One" itemValue="0" />  
                             <f:selectItems value="#{cidadeControle.comboEstado}" />  
                         </p:selectOneMenu>
+                        <h:outputText  value="Nome:"/>
+                        <p:inputText id="nome" value="#{cidadeControle.cidade.nome}" required="true" requiredMessage="Campo nome é obrigatorio! "/>
                         <p:commandButton value="salvar" action="#{cidadeControle.salvar()}" ajax="false"/>
                     </h:panelGrid>
                 </p:fieldset>

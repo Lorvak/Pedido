@@ -21,15 +21,15 @@
                 <p:messages id="menssages" showSummary="true"/>
                 <p:fieldset legend="Cadastro" toggleable="true" style="width: 400px; margin: 0 auto;">
                     <h:panelGrid id="painel" columns="2">
-                        <h:outputText  value="Nome:"/>
-                        <p:inputText id="nome" value="#{estadoControle.estado.nome}" required="true" requiredMessage="Campo nome é obrigatorio! "/>
-                        <h:outputText  value="Sigla:"/>
-                        <p:inputText id="sigla" value="#{estadoControle.estado.sigla}" required="true" requiredMessage="Sigla nome é obrigatorio! "/>
                         <h:outputText value="Pais: " />  
                         <p:selectOneMenu value="#{estadoControle.pais.id}" effect="fold" required="true" requiredMessage="Campo Pais é obrigatorio! ">  
                             <f:selectItem itemLabel="Select One" itemValue="" />  
                             <f:selectItems value="#{estadoControle.comboPais}" />  
                         </p:selectOneMenu>
+                        <h:outputText  value="Nome:"/>
+                        <p:inputText id="nome" value="#{estadoControle.estado.nome}" required="true" requiredMessage="Campo nome é obrigatorio! "/>
+                        <h:outputText  value="Sigla:"/>
+                        <p:inputText id="sigla" value="#{estadoControle.estado.sigla}" required="true" requiredMessage="Sigla nome é obrigatorio! "/>
                         <p:commandButton value="salvar" action="#{estadoControle.salvar()}" ajax="false"/>
                     </h:panelGrid>
                 </p:fieldset>

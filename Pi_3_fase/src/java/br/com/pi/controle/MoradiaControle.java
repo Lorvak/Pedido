@@ -152,6 +152,15 @@ public class MoradiaControle {
         pais = new Pais();
         return "cadMoradia.faces";
     }
+    
+    public void novo2() {
+        moradia = new Moradia();
+        logradouro = new Logradouro();
+        bairro = new Bairro();
+        cidade = new Cidade();
+        estado = new Estado();
+        pais = new Pais();
+    }
 
     public String pesq() {
         limpar();

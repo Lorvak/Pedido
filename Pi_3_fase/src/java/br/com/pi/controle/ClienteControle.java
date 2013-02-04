@@ -151,7 +151,7 @@ public class ClienteControle {
                     "Cliente alterado com sucesso!", ""));
         }
         limpar();
-        return "cadCliente";
+        return "pesqCliente";
     }
 
     private void limpar() {
@@ -159,6 +159,7 @@ public class ClienteControle {
         usuario = null;
         perfil = null;
         model = null;
+        moradia = null;
     }
 
     public String limpaPesquisa() {
@@ -186,7 +187,7 @@ public class ClienteControle {
 
     public String novoCliente() {
         cliente = new Cliente();
-
+        usuario = new Usuario();
         return "cadCliente";
     }
 
