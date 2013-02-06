@@ -25,12 +25,7 @@
                         <p:inputText id="nome" value="#{perfilControle.perfil.nome}" required="true" requiredMessage="Campo nome é obrigatorio! "/>
                         <h:outputText  value="Acesso:" />
                         <p:selectOneMenu id="acesso" value="#{perfilControle.perfil.acesso}" required="true" requiredMessage="Campo acesso é obrigatorio! ">
-                           <f:selectItem itemLabel="select one" itemValue="" />
-                           <f:selectItem itemLabel="1" itemValue="" />
-                           <f:selectItem itemLabel="2" itemValue="" />
-                           <f:selectItem itemLabel="3" itemValue="" />
-                           <f:selectItem itemLabel="4" itemValue="" />
-                           <f:selectItem itemLabel="5" itemValue="" />
+                            <f:selectItems value="#{perfilControle.acessos}" />
                            
                         </p:selectOneMenu>
                         <h:outputText  value="Descricao:" />
