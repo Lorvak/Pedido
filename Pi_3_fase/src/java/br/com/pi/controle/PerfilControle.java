@@ -7,6 +7,7 @@ package br.com.pi.controle;
 import br.com.pi.dao.PerfilDAO;
 import br.com.pi.dao.PerfilDAOImp;
 import br.com.pi.entidade.Perfil;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -26,6 +27,7 @@ public class PerfilControle {
     private Perfil perfil;
     private PerfilDAO perfilDAO;
     private DataModel model;
+    private List acessos;
 
     public Perfil getPerfil() {
          if (perfil == null) {
@@ -100,6 +102,12 @@ public class PerfilControle {
     }
     public String novo() {
         perfil = new Perfil();
+        acessos = new ArrayList();
+        acessos.add("1");
+        acessos.add("2");
+        acessos.add("3");
+        acessos.add("4");
+        acessos.add("5");
         return "cadPerfil.faces";
     }
 
