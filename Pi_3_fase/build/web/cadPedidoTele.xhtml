@@ -27,6 +27,7 @@
                                          style="margin-right: 15px"     onclick="dlgCep.show();"/>
                             <p:commandButton value="Pesquisar" image="ui-icon-search"  title="pesquisa Cliente"
                                              oncomplete="dlgCliente.show();"  />
+                        <p:commandButton value="salvar" action="#{pedidoTeleControle.salvar()}" ajax="false"/>
                         </h:panelGrid>
 
 
@@ -34,49 +35,57 @@
 
                             <h:form id="form_modalCliente" >
                                 <p:messages id="mensCliente" showDetail="true" />
-                                <h:panelGrid columns="2" >
-
+                                <h:panelGrid columns="3" >
                                     <h:outputText value="Nome: " />
-                                    <p:inputText id="login" value="#{clienteControle.cliente.nome}">
+                                    <p:inputText id="login" value="#{pedidoTeleControle.cliente.nome}">
                                         <p:focus for="login"/>
                                     </p:inputText>
-                                    <p:commandButton value="Pesquisar" image="ui-icon-search" update="tabelacidade" action="#{clienteControle.pesquisaLike()}" ajax="false"/>
-                                    
+                                    <p:commandButton value="Pesquisar" image="ui-icon-search" update="gridEstado" action="#{pedidoTeleControle.pesquisaCliente()}" ajax="false"/>
+
                                     <h:outputText value="Cliente:" />
                                     <p:inputText id="nomeCliente" value="#{pedidoTeleControle.cliente.nome}"  />
                                     <p:commandButton value="Pesquisar" image="ui-icon-search"
-                                                     update="@form" actionListener="#{empresaControle.pesquisaCliente()}"/>
+                                                     update="gridEstado" actionListener="#{pedidoTeleControle.pesquisaCliente()}"/>
                                 </h:panelGrid>
-                                <p:dataTable id="gridEstado" value="#{empresaControle.cepModel}"
+                                <p:dataTable id="gridEstado" value="#{pedidoTeleControle.clienteModel}"
                                              var="cepGrid" paginator="true" rows="4" 
                                              emptyMessage="Nenhum valor encontrado">
                                     <f:facet name="header">
-                                        <h:outputText value="Listando CEP(s)"/>
+                                        <h:outputText value="Listando cliente(s)"/>
                                     </f:facet>
                                     <p:column>
-                                        <f:facet name="header">CEP</f:facet>
-                                        <h:outputText value="#{cepGrid.cep}" />
+                                        <f:facet name="header">Nome</f:facet>
+                                        <h:outputText value="${c.nome}"></h:outputText>
                                     </p:column>
                                     <p:column>
-                                        <f:facet name="header">Logradouro</f:facet>
-                                        <h:outputText value="#{cepGrid.logradouro}" />
+                                        <f:facet name="header">Nascimento</f:facet>
+                                        <h:outputText value="${c.nascimento}"></h:outputText>
                                     </p:column>
                                     <p:column>
-                                        <f:facet name="header">Bairro</f:facet>
-                                        <h:outputText value="#{cepGrid.bairro.nome}" />
+                                        <f:facet name="header">Celular</f:facet>
+                                        <h:outputText value="${c.celular}"></h:outputText>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">Email</f:facet>
+                                        <h:outputText value="${c.email}"></h:outputText>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">Cadastro</f:facet>
+                                        <h:outputText value="${c.cadastro}"></h:outputText>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">Perfil</f:facet>
+                                        <h:outputText value="${c.usuario.perfil.nome}"></h:outputText>
                                     </p:column>                                   
 
                                     <p:column style="width:4%">  
                                         <p:commandButton id="selectButton"  icon="ui-icon-search" title="Selecionar"
-                                                         onclick="dlgCliente.hide()" ajax="false" action="#{empresaControle.carregaCep()}"/>
+                                                         onclick="dlgCliente.hide()" ajax="false" action="#{pedidoTeleControle.carregaCliente()}"/>
                                     </p:column> 
                                 </p:dataTable> 
                             </h:form>
                         </p:dialog>
 
-                        <h:outputText  value="Numero:" />
-                        <p:inputText id="numero" value="#{mesaControle.mesa.numero}" required="true" requiredMessage="Campo numero é obrigatorio! "/>
-                        <p:commandButton value="salvar" action="#{pedidoTeleControle.salvar()}" ajax="false"/>
                     </h:panelGrid>
                 </p:fieldset>
             </h:form>

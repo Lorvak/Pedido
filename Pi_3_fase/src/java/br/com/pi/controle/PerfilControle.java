@@ -70,7 +70,7 @@ public class PerfilControle {
                     "Perfil alterado com sucesso!", ""));
         }
         limpar();
-        return "cadPerfil";
+        return "pesqPerfil";
     }
 
     private void limpar() {
