@@ -4,20 +4,20 @@
  */
 package br.sc.senac.pontoeletronico.integracao;
 
-import br.sc.senac.pontoeletronico.integracao.mysql.PontoEletronicoMySQLDAOFactory;
+import br.sc.senac.pontoeletronico.integracao.mysql.DAOFactory;
 
 /**
  *
  * @author Administrador
  */
 public class DAOFactoryController {
-    private static PontoEletronicoDAOAbstractFactory daoFactory=new PontoEletronicoMySQLDAOFactory();;
+    private static DAOAbstractFactory daoFactory=new DAOFactory();;
 
-    public static PontoEletronicoDAOAbstractFactory getDaoFactory() {
+    public static DAOAbstractFactory getDaoFactory() {
         return daoFactory;
     }
 
-    public static void setDaoFactory(PontoEletronicoDAOAbstractFactory daoFactory) {
+    public static void setDaoFactory(DAOAbstractFactory daoFactory) {
         DAOFactoryController.daoFactory = daoFactory;
     }
    

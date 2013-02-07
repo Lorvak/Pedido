@@ -24,5 +24,10 @@
     <string name="listagem">Ver registros</string>
     <string name="search">Pesquisar</string>
     <string name="title_activity_activity_listar_pedidos">Sistema Pizzaria</string>
+    <string name="title_activity_pedido_form">PedidoFormActivity</string>
+    <string name="pedido">Pedido</string>
+    <string name="sabor">Sabor</string>
+    <string name="tamanho">Tamanho</string>
+    <string name="borda">Borda</string>
 
 </resources>

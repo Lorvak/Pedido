@@ -18,7 +18,7 @@ public class DataSourceMySQL {
     private void ConectaBD() throws Exception, ClassNotFoundException, SQLException {
         if (con == null) {
 	    Class.forName("com.mysql.jdbc.Driver");
-            String url = "jdbc:mysql://127.0.0.1:3306/ponto_eletronico";
+            String url = "jdbc:mysql://127.0.0.1:3306/androidpizzaria";
             String user = "root";
             String passwd = "";
             con = DriverManager.getConnection(url, user, passwd);
@@ -26,7 +26,7 @@ public class DataSourceMySQL {
     }   
     
     public EntityManager getEntityManager(){
-       EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("PontoEletronicoPU");
+       EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("AndroidPizzariaPU");
        return entityManagerFactory.createEntityManager();
     }
 }
