@@ -13,7 +13,6 @@ import br.com.pi.entidade.Logradouro;
 import br.com.pi.entidade.Moradia;
 import br.com.pi.entidade.Perfil;
 import br.com.pi.entidade.Usuario;
-import com.sun.security.ntlm.Client;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;

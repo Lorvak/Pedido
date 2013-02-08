@@ -23,6 +23,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+import javax.faces.event.ActionListener;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
@@ -50,6 +52,7 @@ public class PedidoTeleControle {
             cliente = new Cliente();
             cliente.setUsuario(new Usuario());
             cliente.getUsuario().setPerfil(new Perfil());
+            cliente.setMoradias(new ArrayList<Moradia>());
         }
         return cliente;
     }
@@ -168,6 +171,7 @@ public class PedidoTeleControle {
             List<Cliente> clientes = clienteDAO.pesquisaLikeNome(cliente.getNome());
             clienteModel = new ListDataModel(clientes);
         }
+        pesquisaMoradias();
     }
     
     public void pesquisaMoradias() {
