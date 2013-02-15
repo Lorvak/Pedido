@@ -34,69 +34,64 @@
                         <p:inputText id="login" value="#{clienteControle.cliente.usuario.login}"/>
                         <h:outputText value="Senha: " />  
                         <p:password id="senha" value="#{clienteControle.cliente.usuario.senha}"/>
-                        
+
                         <h:outputText value="Perfil: " />  
-                        <p:selectOneMenu id="perfil" value="#{clienteControle.perfil.id}" effect="fold">  
+                        <p:selectOneMenu id="perfil" value="#{clienteControle.cliente.usuario.perfil.id}" effect="fold">  
                             <f:selectItem itemLabel="Select One" itemValue="0" />  
                             <f:selectItems value="#{usuarioControle.comboPerfis}" /> 
                         </p:selectOneMenu>
                         <h:outputText value="Cadastro: " />  
                         <p:calendar id="cadastro" value="#{clienteControle.cliente.cadastro}" required="true" requiredMessage="Campo cadastro é obrigatorio! "/>
-                        <h:outputText value="Ederecos: " />  
-                        <p:commandButton id="btaddsabor" value="Adicionar Endereço" action="#{clienteControle.btNovoEndereco()}" ajax="false" />
-                        <p:commandButton id="buttonendereco" value="Pesquisar Endereços" update="form4" onclick="dlgEndereco.show();"/>
-                        <p:commandButton value="salvar" action="#{clienteControle.salvar()}" ajax="false"/>
                     </h:panelGrid>
                 </p:fieldset>
+                <p:dataTable id="tabelamoradias" value="#{clienteControle.model2}" var="d" emptyMessage="Nenhum Valor encontrado">
+                    <p:column>
+                        <f:facet name="header">Bairro</f:facet>
+                        <h:outputText value="${d.logradouro.bairro.nome}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Logradouro</f:facet>
+                        <h:outputText value="${d.logradouro.nome}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Cep</f:facet>
+                        <h:outputText value="${d.logradouro.cep}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Complemento</f:facet>
+                        <h:outputText value="${d.complemento}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Numero</f:facet>
+                        <h:outputText value="${d.numero}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Telefone</f:facet>
+                        <h:outputText value="${d.telefone}"></h:outputText>
+                    </p:column>
+                    <p:column style="width:4%">  
+                        <f:facet name="header">Deletar</f:facet>
+                        <p:commandButton id="selectButton2"  icon="ui-icon-close" title="Deletar"
+                                         onclick="dlgEndereco.hide()" ajax="false" action="#{clienteControle.deletarMoradia()}"/>
+                    </p:column> 
+                </p:dataTable>
+                <h:panelGrid id="painel2" columns="2" style="">
+                    <p:commandButton id="btaddsabor" value="Adicionar Endereço" action="#{clienteControle.btNovoEndereco()}" ajax="false" />
+                    <p:commandButton value="salvar Cliente" action="#{clienteControle.salvar()}" ajax="false"/>
+                </h:panelGrid>
             </h:form>
-            
-            <p:dialog header="Pesquisa de Endereço" widgetVar="dlgEndereco" resizable="true" appendToBody="true" width="900"> 
-                <h:form id="form4" >
-                    <p:dataTable id="tabelamoradias" value="#{clienteControle.model2}" var="d" emptyMessage="Nenhum Valor encontrado">
-                        <p:column>
-                            <f:facet name="header">Pais</f:facet>
-                            <h:outputText value="${d.logradouro.bairro.cidade.estado.pais.nome}"></h:outputText>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">Estado</f:facet>
-                            <h:outputText value="${d.logradouro.bairro.cidade.estado.nome}"></h:outputText>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">Cidade</f:facet>
-                            <h:outputText value="${d.logradouro.bairro.cidade.nome}"></h:outputText>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">Bairro</f:facet>
-                            <h:outputText value="${d.logradouro.bairro.nome}"></h:outputText>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">Logradouro</f:facet>
-                            <h:outputText value="${d.logradouro.nome}"></h:outputText>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">Cep</f:facet>
-                            <h:outputText value="${d.logradouro.cep}"></h:outputText>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">Complemento</f:facet>
-                            <h:outputText value="${d.complemento}"></h:outputText>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">Numero</f:facet>
-                            <h:outputText value="${d.numero}"></h:outputText>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">Telefone</f:facet>
-                            <h:outputText value="${d.telefone}"></h:outputText>
-                        </p:column>
-                        <p:column style="width:4%">  
-                            <f:facet name="header">Deletar</f:facet>
-                            <p:commandButton id="selectButton2"  icon="ui-icon-close" title="Deletar"
-                                             onclick="dlgEndereco.hide()" ajax="false" action="#{clienteControle.deletarMoradia()}"/>
-                        </p:column> 
-                    </p:dataTable>
-                </h:form>
+
+
+
+
+
+            <p:dialog header="Pesquisa de Endereço" widgetVar="dlgEndereco" resizable="true" appendToBody="true"> 
+                <form id="formdialog">
+
+                </form>
             </p:dialog>
+
+
         </p:layoutUnit>
     </ui:define>
 

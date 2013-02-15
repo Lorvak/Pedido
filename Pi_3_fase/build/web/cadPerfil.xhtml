@@ -33,7 +33,7 @@
                             <f:selectItem itemLabel="Acesso Total" itemValue="5" />  
                         </p:selectOneMenu>
                         <h:outputText  value="Descricao:" />
-                        <p:inputTextarea id="descricao" value="#{perfilControle.perfil.descricao}" required="true" requiredMessage="Campo descrição é obrigatorio! "/>
+                        <p:inputTextarea id="descricao" value="#{perfilControle.perfil.descricao}"/>
                         <p:commandButton value="salvar" action="#{perfilControle.salvar()}" ajax="false"/>
                     </h:panelGrid>
                 </p:fieldset>
