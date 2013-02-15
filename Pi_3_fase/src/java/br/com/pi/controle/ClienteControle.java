@@ -137,7 +137,6 @@ public class ClienteControle {
         FacesContext context = FacesContext.getCurrentInstance();
         clienteDAO = new ClienteDAOImp();
         usuario.setPerfil(perfil);
-        cliente.setUsuario(usuario);
         if (cliente.getId() == null) {
             clienteDAO.salva(cliente);
             context.addMessage(null,
@@ -236,8 +235,7 @@ public class ClienteControle {
         moradia.setLogradouro(logradouro);
         cliente.getMoradias().add(moradia);
         moradiaDAO = new MoradiaDAOImp();
-//        moradiaDAO.salva(moradia);
-//        moradia = new Moradia();
+        model2 = new ListDataModel(cliente.getMoradias());
         return "cadCliente";
     }
     
@@ -246,5 +244,14 @@ public class ClienteControle {
         cliente = (Cliente) model.getRowData();
         cliente = clienteDAO.pesquisa(cliente.getId());
         model2 = new ListDataModel(cliente.getMoradias());
+    }
+     
+     public void deletarMoradia() {
+        moradiaDAO = new MoradiaDAOImp();
+        moradia = (Moradia) model.getRowData();
+        if(moradia.getId() != null){
+            moradiaDAO.remove(moradia);
+        }
+        cliente.getMoradias().remove(moradia);
     }
 }
