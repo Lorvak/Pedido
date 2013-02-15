@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="./resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link href="./resources/css/cssLayout.css" rel="stylesheet" type="text/css" />
+        <title>Sistema SIESD</title>
+        <script type="text/javascript">
+         
+            PrimeFaces.locales['pt'] = {    
+                closeText: 'Fechar',    
+                prevText: 'Anterior',    
+                nextText: 'Próximo',    
+                currentText: 'Começo',    
+                monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],    
+                monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun', 'Jul','Ago','Set','Out','Nov','Dez'],    
+                dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],    
+                dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],    
+                dayNamesMin: ['D','S','T','Q','Q','S','S'],    
+                weekHeader: 'Semana',    
+                firstDay: 1,    
+                isRTL: false,    
+                showMonthAfterYear: false,    
+                yearSuffix: '',    
+                timeOnlyTitle: 'Só Horas',    
+                timeText: 'Tempo',    
+                hourText: 'Hora',    
+                minuteText: 'Minuto',    
+                secondText: 'Segundo',    
+                currentText: 'Data Atual',    
+                ampm: false,    
+                month: 'Mês',    
+                week: 'Semana',    
+                day: 'Dia',    
+                allDayText : 'Todo Dia'    
+            }; 
+            
+        </script>
+    </h:head>
+
+    <h:body >
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" size="125" header="SIESD" resizable="true" 
+                          closable="true" collapsible="true">
+                <div align="center" style="margin: 0px auto; width: 100%; height: 90px; 
+                     background-color: #1F8CC5; text-align: center; ">
+                     <h:panelGrid id="panelUsuario" columns="2" style="float: left; 
+                                 color: #fff; padding: 20px 0px 0px 20px; ">
+                        <h:outputText value="Olá "/>
+                        <h:outputText value="#{usuControl.nomeUsuario}"/>
+                        <h:outputText value="Perfil:"/>
+                        <h:outputText value="#{usuControl.perfilUsuario}"/>
+                    </h:panelGrid >
+                    <a href="principal.faces">
+                        <p:graphicImage value="imagem/logo.png" />                  
+                    </a>
+                   
+                </div>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="west" size="200" header="Menu" resizable="true" 
+                          closable="true" collapsible="true">
+                <h:form id="menu">
+                    <p:menu style="width: 94%">
+                        <p:submenu label="Principal">
+                            <p:menuitem value="Home" url="principal.faces"/>
+                            <p:menuitem value="Aluno" action="#{alunoControle.pesquisar()}"
+                                        ajax="false"/>
+                            <p:menuitem value="Professor" action="#{professorControle.pesquisar()}"
+                                        ajax="false"/>
+                            <p:menuitem value="Midiateca" url="midiateca.faces" ajax="false"/>
+                            <p:menuitem value="Forum" url="#" />
+                            <p:menuitem value="Turma" url="#"  />
+                        </p:submenu>
+                        <p:submenu label="Util">
+                            <p:menuitem value="Inclusao Digital Gov" url="http://www.inclusaodigital.gov.br/" 
+                                        target="_blank"/>
+                            <p:menuitem value="Perfil" action="#{perfilControle.pesquisar()}"
+                                        ajax="false"/>
+                            <p:menuitem value="Usuário" action="#"
+                                        ajax="false"/>
+                            <p:menuitem value="Imagens" url="#" />
+                            <p:menuitem value="Zip" url="#" />
+                        </p:submenu>
+                        <p:submenu>
+                            <p:menuitem value="Sair" action="#{usuControl.sair()}"
+                                        ajax="false"    icon="ui-icon ui-icon-power" />
+                        </p:submenu>
+                    </p:menu>
+                </h:form>
+            </p:layoutUnit>
+
+
+            <ui:insert name="center">
+                <p:layoutUnit position="center" size="100" header="Seja Bem Vindo!" 
+                              resizable="true" closable="true" collapsible="true">
+                    <div align="center" style="margin-top: 50px;">                           
+                        <p:graphicImage value="imagem/logoFundo.png"/>
+                    </div>
+                </p:layoutUnit>
+            </ui:insert>
+        </p:layout>
+
+
+    </h:body>
+
+</html>

@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+        <ui:composition template="./principal.xhtml">
+
+            <ui:define name="center">
+                <p:layoutUnit position="center" size="100" header="Pesquisando Perfil(s)" 
+                              resizable="true" closable="true" collapsible="true">
+                    <div align="center" style="margin-top: 1px;">
+                        <p:messages id="mensagens" showDetail="true" />
+                        <h:form id="form1">
+                            <p:toolbar>
+                                <p:toolbarGroup align="left" style="height: 30px">
+                                    <p:commandButton value="Pesquisar" image="ui-icon-search"
+                                                     action="#{perfilControle.pesquisar()}" ajax="false"/>
+
+                                    <p:commandButton value="Novo" image="ui-icon-folder-open"
+                                                     action="cadPerfil" ajax="false"/>
+
+                                </p:toolbarGroup>
+                            </p:toolbar>
+                            <p:separator style="width: 100%; height: 0px; margin-top: 10px;"/>
+
+                            <p:fieldset legend="Pesquisa" toggleable="true" style="width: 400px;">
+                                <h:panelGrid columns="2" >
+                                    <h:outputText value="Nome:" />
+                                    <p:inputText id="nome" value="#{perfilControle.perfil.nome}">
+                                        <p:focus for="nome"/>
+                                    </p:inputText>                            
+                                    <p:commandButton value="Pesquisar" image="ui-icon-search"
+                                                     update="@form" actionListener="#{perfilControle.pesquisaPerfil}"/>
+                                </h:panelGrid>
+                            </p:fieldset>
+                            <p:separator style="width: 100%; height: 0px; margin-top: 10px;"  />
+
+                            <p:dataTable id="tabelaAlunos" value="#{perfilControle.model}"
+                                         var="per" paginator="true" rows="5" rendered="#{perfilControle.pesquisa}"
+                                         emptyMessage="Nenhum valor encontrado">
+                                <f:facet name="header">
+                                    <h:outputText value="Listando Perfil(s)"/>
+                                </f:facet>
+                                <p:column>
+                                    <f:facet name="header">Nome</f:facet>
+                                    <h:outputText value="#{per.nome}" />
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">Descrição</f:facet>
+                                    <h:outputText value="#{per.descricao}" />
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">Alterar/Excluir</f:facet>
+                                    <h:commandLink action="#{perfilControle.editar()}" value="Alterar" />  /
+                                    <p:commandLink id="linkExcluir" value="excluir" 
+                                                   onclick="confirmation.show()"  />
+                                    
+                                    <p:confirmDialog id="confirmDialog" message="Tem certeza que deseja excluir?" appendToBody="true" 
+                                                     header="Excluir Perfil" severity="alert"  widgetVar="confirmation" >
+                                        <p:commandButton id="confirm" value="Sim" update="mensagens tabelaAlunos"  oncomplete="confirmation.hide()"  
+                                                         actionListener="#{perfilControle.excluir}"/>  
+                                        <p:commandButton id="decline" value="Não" onclick="confirmation.hide()" type="button" />   
+
+                                    </p:confirmDialog> 
+                                    
+                                </p:column>                                
+                            </p:dataTable>
+
+                        </h:form>
+                        <!--                        <h:form id="form2">                            
+                                                   
+                                                </h:form>-->
+                    </div>
+
+                </p:layoutUnit>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
