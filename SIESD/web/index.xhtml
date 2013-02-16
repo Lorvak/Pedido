@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Entrando SIESD</title>
+    </h:head>
+    <h:body>
+        <div style="margin: 50px auto 0; width: 350px; height: auto">
+            <a href="template.faces">
+                <p:graphicImage value="imagem/logar.png"/>
+            </a>
+            <h:form id="form_loga">
+                <p:panelGrid columns="2">
+                    <p:outputLabel for="login" value="Usuário:"/>
+                    <p:inputText id="login" value="#{usuControl.usuario.login}" required="true"
+                                 requiredMessage="login é obrigatório"/>
+                    <p:outputLabel for="senha" value="Senha:"/>
+                    <p:password id="senha" value="#{usuControl.usuario.senha}" required="true"
+                                requiredMessage="senha é obrigatório"/>
+                    <span> </span>
+                    <p:commandButton value="Logar" action="#{usuControl.loga()}" ajax="false"/>
+                </p:panelGrid>
+                <p:messages id="mensagens" showSummary="true" />
+            </h:form>
+        </div>
+    </h:body>
+</html>
+

@@ -6,6 +6,8 @@ package br.com.pi.controle;
 
 import br.com.pi.dao.ClienteDAO;
 import br.com.pi.dao.ClienteDAOImp;
+import br.com.pi.dao.LogradouroDAO;
+import br.com.pi.dao.LogradouroDAOImp;
 import br.com.pi.dao.MoradiaDAO;
 import br.com.pi.dao.MoradiaDAOImp;
 import br.com.pi.entidade.Cliente;
@@ -36,7 +38,9 @@ public class ClienteControle {
     private DataModel model;
     private DataModel model2;
     private Moradia moradia;
+    private List<Moradia> moradias;
     private MoradiaDAO moradiaDAO;
+    private LogradouroDAO logradouroDAO;
     private Logradouro logradouro;
     private Usuario usuario;
     private Perfil perfil;
@@ -136,8 +140,6 @@ public class ClienteControle {
     public String salvar() {
         FacesContext context = FacesContext.getCurrentInstance();
         clienteDAO = new ClienteDAOImp();
-        usuario.setPerfil(perfil);
-        cliente.setUsuario(usuario);
         if (cliente.getId() == null) {
             clienteDAO.salva(cliente);
             context.addMessage(null,
@@ -148,6 +150,12 @@ public class ClienteControle {
             context.addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO,
                     "Cliente alterado com sucesso!", ""));
+        }
+        if(moradias != null){
+            moradiaDAO = new MoradiaDAOImp();
+            for (Moradia object : moradias) {
+                moradiaDAO.remove(object);
+            }
         }
         limpar();
         return "pesqCliente";
@@ -185,8 +193,11 @@ public class ClienteControle {
     }
 
     public String novoCliente() {
-        cliente = new Cliente();
-        usuario = new Usuario();
+        cliente = null;
+        usuario = null;
+        perfil = null;
+        moradia = null;
+        model2 = null;
         return "cadCliente";
     }
 
@@ -196,7 +207,6 @@ public class ClienteControle {
             clienteDAO = new ClienteDAOImp();
             cliente = (Cliente) model.getRowData();
             clienteDAO.remove(cliente);
-
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
                     "Cliente excluído com sucesso!", ""));
         } catch (Exception e) {
@@ -208,19 +218,15 @@ public class ClienteControle {
 
     public String alterar() {
         FacesContext context = FacesContext.getCurrentInstance();
-        usuario = cliente.getUsuario();
-        perfil = usuario.getPerfil();
         cliente = (Cliente) model.getRowData();
-        setCliente(cliente);
-        context.addMessage(null,
-                new FacesMessage(FacesMessage.SEVERITY_INFO,
-                "Cliente alterado com sucesso!", ""));
+        model2 = new ListDataModel(cliente.getMoradias());
         return "cadCliente";
 
     }
 
     public String btPesquisar() {
         cliente = null;
+        model = null;
         return "pesqCliente";
     }
 
@@ -233,11 +239,12 @@ public class ClienteControle {
         if(cliente.getMoradias()==null){
             cliente.setMoradias(new ArrayList<Moradia>());
         }
+        logradouroDAO = new LogradouroDAOImp();
+        logradouro = logradouroDAO.pesquisa(logradouro.getId());
         moradia.setLogradouro(logradouro);
         cliente.getMoradias().add(moradia);
         moradiaDAO = new MoradiaDAOImp();
-//        moradiaDAO.salva(moradia);
-//        moradia = new Moradia();
+        model2 = new ListDataModel(cliente.getMoradias());
         return "cadCliente";
     }
     
@@ -246,5 +253,17 @@ public class ClienteControle {
         cliente = (Cliente) model.getRowData();
         cliente = clienteDAO.pesquisa(cliente.getId());
         model2 = new ListDataModel(cliente.getMoradias());
+    }
+     
+     public void deletarMoradia() {
+        moradiaDAO = new MoradiaDAOImp();
+        moradia = (Moradia) model2.getRowData();
+        cliente.getMoradias().remove(moradia);
+        if(moradia.getId() != null){
+            if(moradias == null){
+                moradias = new ArrayList<Moradia>();
+            }
+            moradias.add(moradia);
+        }
     }
 }

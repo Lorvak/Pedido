@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+        <ui:composition template="./principal.xhtml">
+            <ui:define name="center">
+               <p:layoutUnit position="center" size="100" header="Pesquisando Professor(es)" 
+                              resizable="true" closable="true" collapsible="true">
+                   <div align="center" style="margin-top: 1px;">
+                <h:form id="form1">
+                    <p:toolbar>
+                        <p:toolbarGroup align="left" style="height: 30px">
+                            <p:commandButton value="Pesquisar" image="ui-icon-search"
+                                             action="#{professorControle.pesquisar()}" ajax="false"/>
+                            
+                            <p:commandButton value="Novo" image="ui-icon-folder-open"
+                                             action="cadProfessor" ajax="false"/>
+
+                        </p:toolbarGroup>
+                    </p:toolbar>
+                    <p:separator style="width: 100%; height: 0px; margin-top: 10px;"/>
+                    <p:messages id="mensagens" showDetail="true" />
+                    <p:fieldset legend="Pesquisa" toggleable="true" style="width: 400px;">
+                        <h:panelGrid columns="2" >
+                            <h:outputText value="Nome:" />
+                            <p:inputText id="nome" value="#{professorControle.professor.nome}"
+                                         size="">
+                                <p:focus for="nome"/>
+                            </p:inputText>
+                            <h:outputText value="CPF:" />
+                            <p:inputText id="cpf" value="#{professorControle.professor.cpf}" />
+                           <p:commandButton value="Pesquisar" image="ui-icon-search"
+                                  update="tabelaProfessores, mensagens" actionListener="#{professorControle.pesquisaProfessor()}"/>
+                        </h:panelGrid>
+                    </p:fieldset>
+                    <p:separator style="width: 100%; height: 0px; margin-top: 10px;"  />
+
+                    <p:dataTable id="tabelaProfessores" value="#{professorControle.model}"
+                        var="prof" paginator="true" rows="5" 
+                                 emptyMessage="Nenhum valor encontrado">
+                        <f:facet name="header">
+                            <h:outputText value="Listando Professores(s)"/>
+                        </f:facet>
+                        <p:column>
+                            <f:facet name="header">Nome</f:facet>
+                            <h:outputText value="#{prof.nome}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">E-mail</f:facet>
+                            <h:outputText value="#{prof.email}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">CPF</f:facet>
+                            <h:outputText value="#{prof.cpf}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Alterar</f:facet>                           
+                            <h:commandLink action="#{professorControle.atualiza()}" >
+                                <h:outputText value="alterar" />
+                            </h:commandLink>
+                        </p:column>
+                    </p:dataTable>
+
+                </h:form>
+            </div>
+                    
+                </p:layoutUnit>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

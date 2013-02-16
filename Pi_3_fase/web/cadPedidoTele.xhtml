@@ -29,7 +29,7 @@
 
                         <h:outputText value="Endereco: " style="margin-right: 45px" />
                         <p:inputText id="endereco" value="#{pedidoTeleControle.moradia.telefone}" readonly="true" style="margin-right: 15px"/>
-                        <p:commandButton id="buttonendereco" value="Pesquisar" action="#{pedidoTeleControle.pesquisaMoradias()}" onclick="dlgEndereco.show();"/>
+                        <p:commandButton id="buttonendereco" value="Pesquisar" onclick="dlgEndereco.show();"/>
 
                         <p:commandButton value="salvar" action="#{pedidoTeleControle.salvar()}" ajax="false"/>
 
@@ -87,7 +87,7 @@
             
             <p:dialog header="Pesquisa de Endereço" widgetVar="dlgEndereco" resizable="true" appendToBody="true" width="900"> 
                 <h:form id="form4" >
-                    <p:dataTable id="tabelamoradias" value="#{pedidoTeleControle.model2}" var="d" emptyMessage="Nenhum Valor encontrado">
+                    <p:dataTable id="tabelamoradias" value="#{pedidoTeleControle.cliente.moradias}" var="d" emptyMessage="Nenhum Valor encontrado">
                         <p:column>
                             <f:facet name="header">Pais</f:facet>
                             <h:outputText value="${d.logradouro.bairro.cidade.estado.pais.nome}"></h:outputText>

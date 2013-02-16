@@ -176,7 +176,6 @@ public class PedidoTeleControle {
     
     public void pesquisaMoradias() {
         clienteDAO = new ClienteDAOImp();
-        cliente = (Cliente) model.getRowData();
         cliente = clienteDAO.pesquisa(cliente.getId());
         model2 = new ListDataModel(cliente.getMoradias());
     }

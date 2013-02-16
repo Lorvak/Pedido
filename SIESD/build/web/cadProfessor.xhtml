@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./principal.xhtml">
+
+            <ui:define name="center">
+               
+                <p:layoutUnit position="center" size="100" header="Cadastro Professor" 
+                              resizable="true" closable="true" collapsible="true">
+                    <h:form>
+                        <div align="center" style="margin-top: 0px;">
+                            <p:toolbar style="margin-top: 0px">
+                                <p:toolbarGroup align="left" style="height: 30px" >
+                                    <p:commandButton value="Pesquisar" image="ui-icon-search"
+                                                     action="#{professorControle.pesquisar()}" ajax="false"
+                                                     immediate="true"/>
+
+                                    <p:commandButton value="Novo" image="ui-icon-folder-open"
+                                                     action="#{professorControle.novoProfessor()}"  ajax="false"/>
+                                </p:toolbarGroup>
+                            </p:toolbar>                            
+
+                            <p:growl id="growl" sticky="true" showDetail="true"/>
+
+                        </div>
+                    </h:form>
+                    <div style="margin-top: 10px; width: 900px">
+                        <h:form>
+                            <p:focus for="nome" />
+                            <p:fieldset legend="Dados do Professor" toggleable="true" 
+                                        style=" width:400px; float:left; height: 240px;">
+                                <h:panelGrid columns="2">
+                                    <h:outputText value="Nome:" />
+                                    <p:inputText id="nome" value="#{professorControle.professor.nome}"
+                                                 required="true" requiredMessage="nome obrigatório"
+                                                 size="45"/>
+
+                                    <h:outputText value="E-mail:" />
+                                    <p:inputText id="email" value="#{professorControle.professor.email}"
+                                                 required="true" requiredMessage="e-mail obrigatório" size="45"/>
+
+                                    <h:outputText value="CPF:" />
+                                    <p:inputMask id="cpf" value="#{professorControle.professor.cpf}"
+                                                 mask="999.999.999-99"
+                                                 required="true" requiredMessage="cpf obrigatório"/>
+
+                                    <h:outputText value="Nascimento:"/>
+                                    <p:calendar locale="pt" showButtonPanel="true" navigator="true" id="ptCal" 
+                                                value="#{professorControle.professor.nascimento}" pattern="dd/MM/yyyy"
+                                                required="true" requiredMessage="nascimento obrigatório" yearRange="1950"/>
+
+                                    <h:outputText value="Telefone:"/>
+                                    <p:inputMask id="telefone" value="#{professorControle.professor.telefone}"
+                                                 mask="(99)9999-9999"  required="true" requiredMessage="telefone obrigatório"/>
+
+                                    <h:outputText value="Valor Horas:"/>
+                                    <p:inputText id="vlHoras" value="#{professorControle.professor.vlHoras}"
+                                         required="true" requiredMessage="valor hora é obrigatório" 
+                                                />
+
+                                    <h:outputText value="Total horas:"/>
+                                    <p:inputMask id="totalHoras" value="#{professorControle.professor.totalHoras}"
+                                             mask="999"   required="true" requiredMessage="total horas é obrigatório" 
+                                                />
+
+                                </h:panelGrid>
+                            </p:fieldset>
+
+                            <p:fieldset id="cadEndereco" legend="Endereço:" toggleable="true"
+
+                                        style="width:400px; float:right; height: 240px;" >
+                                <h:panelGrid columns="2" >
+                                    <h:outputText value="Rua:" />
+                                    <h:inputText id="rua" value="#{professorControle.endereco.rua}"
+                                                 required="true" requiredMessage="rua obrigatório" size="45"/>
+
+                                    <h:outputText value="Bairro:" />
+                                    <h:inputText id="bairro" value="#{professorControle.endereco.bairro}"
+                                                 required="true" requiredMessage="bairro obrigatório"/>
+
+                                    <h:outputText value="Cidade:" />
+                                    <h:inputText id="cidade" value="#{professorControle.endereco.cidade}"
+                                                 required="true" requiredMessage="cidade obrigatório"/>
+
+                                    <h:outputText value="CEP:" />
+                                    <p:inputMask id="cep" value="#{professorControle.endereco.cep}"
+                                                 mask="99999-999" required="true" requiredMessage="cep obrigatório"/>
+                                </h:panelGrid>
+                            </p:fieldset>
+                            <p:commandButton value="Confirmar" image="ui-icon-disk"
+                                             action="#{professorControle.salvar()}" ajax="false"
+                                             style="clear: both; margin:10px 0px 0px 50px " />
+                        </h:form>
+                    </div>
+                </p:layoutUnit>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
