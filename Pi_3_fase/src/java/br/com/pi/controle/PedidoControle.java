@@ -33,7 +33,7 @@ import javax.faces.model.SelectItem;
  */
 @ManagedBean
 @SessionScoped
-public class PizzaControle {
+public class PedidoControle {
 
     private Pizza pizza;
     private PizzaDAO dao;
@@ -128,28 +128,6 @@ public class PizzaControle {
         this.pizza = usuario;
     }
 
-    public List<SaborSelecionado> getSaboresSelecionados() {
-        if (saboresSelecionados == null) {
-            saboresSelecionados = new ArrayList<SaborSelecionado>();
-        }
-        return saboresSelecionados;
-    }
-
-    public void setSaboresSelecionados(List<SaborSelecionado> saboresSelecionados) {
-        this.saboresSelecionados = saboresSelecionados;
-    }
-
-    public SaborSelecionado getSaborSelecionado() {
-        if (saborSelecionado == null) {
-            saborSelecionado = new SaborSelecionado();
-        }
-        return saborSelecionado;
-    }
-
-    public void setSaborSelecionado(SaborSelecionado saborSelecionado) {
-        this.saborSelecionado = saborSelecionado;
-    }
-
     private void limpar() {
         pizza = null;
         model = null;
@@ -173,10 +151,10 @@ public class PizzaControle {
     }
 
     public String salvaSabor() {
-        saboresSelecionados.add(saborSelecionado);
+        sabores.add(sabor);
         tDao = new TamanhoDAOImp();
         pizza.setTamanho(tDao.pesquisa(tamanho.getId()));
-        if (saboresSelecionados.size() == pizza.getTamanho().getNsabores()) {
+        if (sabores.size() == pizza.getTamanho().getNsabores()) {
             btSabor = true;
         }
         return "cadPizza.faces";

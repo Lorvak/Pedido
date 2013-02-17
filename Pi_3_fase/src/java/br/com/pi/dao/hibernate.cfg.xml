@@ -21,6 +21,7 @@
     <mapping class="br.com.pi.entidade.Borda"/>
     <mapping class="br.com.pi.entidade.Mesa"/>
     <mapping class="br.com.pi.entidade.Sabor"/>
+    <mapping class="br.com.pi.entidade.SaborSelecionado"/>
     <mapping class="br.com.pi.entidade.Tamanho"/>
     <mapping class="br.com.pi.entidade.Pizza"/>
     <mapping class="br.com.pi.entidade.Pedido"/>

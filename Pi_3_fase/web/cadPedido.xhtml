@@ -8,12 +8,12 @@
                 xmlns:c="http://java.sun.com/jsp/jstl/core">
 
     <ui:define name="center">
-        <p:layoutUnit position="center" header="Cadstro Pizza">
+        <p:layoutUnit position="center" header="Cadstro de Pedido">
             <h:form id="form1">
                 <p:toolbar>
                     <p:toolbarGroup align="left" style="height: 25px;">
-                        <p:commandButton value="Pesquisar" image="ui-icon-search" action="#{pizzaControle.pesq()}" ajax="false" style="margin: 0px;"/>
-                        <p:commandButton value="Novo" image="ui-icon-folder-open" action="#{pizzaControle.novo()}" ajax="false" style="margin: 0px;" disabled="true"/>
+                        <p:commandButton value="Pesquisar" image="ui-icon-search" action="#{pedidoControle.pesq()}" ajax="false" style="margin: 0px;"/>
+                        <p:commandButton value="Novo" image="ui-icon-folder-open" action="#{pedidoControle.novo()}" ajax="false" style="margin: 0px;" disabled="true"/>
                     </p:toolbarGroup>
                 </p:toolbar>
             </h:form>
@@ -23,21 +23,22 @@
                 <p:fieldset legend="Cadastro" toggleable="true" style="width: 400px; margin: 0 auto;">
                     <h:panelGrid id="painel" columns="2">
                         
-                        
+                        <h:outputText  value="Observações:"/>
+                        <p:inputTextarea id="obs" value="#{pedidoControle.pizza.obs}"/>
                         <h:outputText value="Borda: " />  
-                        <p:selectOneMenu id="borda" value="#{pizzaControle.borda.id}" effect="fold">  
+                        <p:selectOneMenu id="borda" value="#{pedidoControle.borda.id}" effect="fold">  
                             <f:selectItem itemLabel="Select One" itemValue="0" />  
-                            <f:selectItems value="#{pizzaControle.comboBorda}" />  
+                            <f:selectItems value="#{pedidoControle.comboBorda}" />  
                         </p:selectOneMenu>
                         <h:outputText value="Tamanho: " />  
-                        <p:selectOneMenu id="tamanho" value="#{pizzaControle.tamanho.id}" effect="fold">  
+                        <p:selectOneMenu id="tamanho" value="#{pedidoControle.tamanho.id}" effect="fold">  
                             <f:selectItem itemLabel="Select One" itemValue="0" />  
-                            <f:selectItems value="#{pizzaControle.comboTamanho}" /> 
+                            <f:selectItems value="#{pedidoControle.comboTamanho}" /> 
                             <f:ajax execute="tamanho" render="btaddsabor"/>
                         </p:selectOneMenu>
-                        <p:commandButton id="btaddsabor" value="Adicionar Sabor" action="#{pizzaControle.novoSabor()}" ajax="false" 
-                                         disabled="#{pizzaControle.tamanho.id == 0 || pizzaControle.tamanho.id == null || pizzaControle.btSabor}"/>
-                        <p:commandButton value="salvar" action="#{pizzaControle.salvar()}" ajax="false"/>
+                        <p:commandButton id="btaddsabor" value="Adicionar Sabor" action="#{pedidoControle.novoSabor()}" ajax="false" 
+                                         disabled="#{pedidoControle.tamanho.id == 0 || pedidoControle.tamanho.id == null || pedidoControle.btSabor}"/>
+                        <p:commandButton value="salvar" action="#{pedidoControle.salvar()}" ajax="false"/>
                     </h:panelGrid>
                 </p:fieldset>
             </h:form>

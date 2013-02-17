@@ -12,34 +12,26 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 /**
  *
  * @author Eduardo M. Silveira
  */
 @Entity
-public class Sabor implements Serializable {
+public class SaborSelecionado implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(nullable=true,precision=2)
-    private Double preco;
-    @Column(nullable=false)
-    private String nome;
+    @Column(nullable=true)
+    private String obs;
+    @ManyToMany(mappedBy = "sabores")
+    private List<Pizza> pizzas;
+    @ManyToOne
+    private Sabor sabor;
 
-    public Sabor() {
-    }
-
-    public Sabor(Double preco, String nome) {
-        this.preco = preco;
-        this.nome = nome;
-    }
-
-    public Sabor(Long id, Double preco, String nome) {
-        this.id = id;
-        this.preco = preco;
-        this.nome = nome;
+    public SaborSelecionado() {
     }
 
     public Long getId() {
@@ -50,20 +42,28 @@ public class Sabor implements Serializable {
         this.id = id;
     }
 
-    public Double getPreco() {
-        return preco;
+    public String getObs() {
+        return obs;
     }
 
-    public void setPreco(Double preco) {
-        this.preco = preco;
+    public void setObs(String obs) {
+        this.obs = obs;
     }
 
-    public String getNome() {
-        return nome;
+    public List<Pizza> getPizzas() {
+        return pizzas;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setPizzas(List<Pizza> pizzas) {
+        this.pizzas = pizzas;
+    }
+
+    public Sabor getSabor() {
+        return sabor;
+    }
+
+    public void setSabor(Sabor sabor) {
+        this.sabor = sabor;
     }
 
     @Override
@@ -76,10 +76,10 @@ public class Sabor implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Sabor)) {
+        if (!(object instanceof SaborSelecionado)) {
             return false;
         }
-        Sabor other = (Sabor) object;
+        SaborSelecionado other = (SaborSelecionado) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

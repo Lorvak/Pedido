@@ -15,6 +15,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 /**
  *
@@ -31,33 +33,30 @@ public class Pizza implements Serializable {
     @OneToOne
     private Borda borda;
     @ManyToMany(fetch= FetchType.EAGER)
-    private List<Sabor> sabores;
+    @Cascade(CascadeType.ALL)
+    private List<SaborSelecionado> sabores;
     @Transient
     private Double precoFinal;
-    @Column(nullable=true)
-    private String obs;
     @Transient
     private Boolean brinde;
 
     public Pizza() {
     }
 
-    public Pizza(Tamanho tamanho, Borda borda, List<Sabor> sabores, Double precoFinal, String obs, Boolean brinde) {
+    public Pizza(Tamanho tamanho, Borda borda, List<SaborSelecionado> sabores, Double precoFinal, String obs, Boolean brinde) {
         this.tamanho = tamanho;
         this.borda = borda;
         this.sabores = sabores;
         this.precoFinal = precoFinal;
-        this.obs = obs;
         this.brinde = brinde;
     }
 
-    public Pizza(Long id, Tamanho tamanho, Borda borda, List<Sabor> sabores, Double precoFinal, String obs, Boolean brinde) {
+    public Pizza(Long id, Tamanho tamanho, Borda borda, List<SaborSelecionado> sabores, Double precoFinal, String obs, Boolean brinde) {
         this.id = id;
         this.tamanho = tamanho;
         this.borda = borda;
         this.sabores = sabores;
         this.precoFinal = precoFinal;
-        this.obs = obs;
         this.brinde = brinde;
     }
 
@@ -87,11 +86,11 @@ public class Pizza implements Serializable {
         this.borda = borda;
     }
 
-    public List<Sabor> getSabores() {
+    public List<SaborSelecionado> getSabores() {
         return sabores;
     }
 
-    public void setSabores(List<Sabor> sabores) {
+    public void setSabores(List<SaborSelecionado> sabores) {
         this.sabores = sabores;
     }
 
@@ -101,14 +100,6 @@ public class Pizza implements Serializable {
 
     public void setPrecoFinal(Double precoFinal) {
         this.precoFinal = precoFinal;
-    }
-
-    public String getObs() {
-        return obs;
-    }
-
-    public void setObs(String obs) {
-        this.obs = obs;
     }
 
     public Boolean getBrinde() {
