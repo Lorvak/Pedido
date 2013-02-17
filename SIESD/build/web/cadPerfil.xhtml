@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./principal.xhtml">
+
+            <ui:define name="center">
+                <p:layoutUnit position="center" size="100" header="Cadastro Perfil" 
+                              resizable="true" closable="true" collapsible="true">
+                    <h:form id="form_topo">
+                        <div align="center" style="margin-top: 0px;">
+                            <p:toolbar style="margin-top: 0px">
+                                <p:toolbarGroup align="left" style="height: 30px" >
+                                    <p:commandButton value="Pesquisar" image="ui-icon-search"
+                                                     action="#{perfilControle.pesquisar()}" ajax="false"
+                                                     immediate="true"/>
+
+                                    <p:commandButton value="Novo" image="ui-icon-folder-open"
+                                                     action="#{perfilControle.novoPerfil()}"  ajax="false"/>
+                                </p:toolbarGroup>
+                            </p:toolbar>                            
+
+                            <p:growl id="growl" sticky="true" showDetail="true"/>
+                                                                              
+                        </div>
+                    </h:form>
+                    <div style="margin-top: 10px; width: 900px">
+                        <h:form id="form_cad">
+                            <p:focus for="nome" />
+                            <p:fieldset legend="Dados do Perfil" toggleable="true" 
+                                        style=" width:400px;  height: 120px;">
+                                <h:panelGrid columns="2">
+                                    <h:outputText value="Nome:" />
+                                    <p:inputText id="nome" value="#{perfilControle.perfil.nome}"
+                                                 required="true" requiredMessage="nome é obrigatório"
+                                                 size="45"/>
+
+                                    <h:outputText value="Descrição:" />
+                                    <p:inputText id="descricao" value="#{perfilControle.perfil.descricao}"
+                                                 required="true" requiredMessage="descricao é obrigatório" size="45"/>
+                                </h:panelGrid>
+                            </p:fieldset>
+                            
+                            <p:commandButton value="Confirmar" image="ui-icon-disk"
+                                             action="#{perfilControle.salvar()}" ajax="false"
+                                   style=" margin:10px 0px 0px 50px " />
+                        </h:form>
+                    </div>
+                </p:layoutUnit>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

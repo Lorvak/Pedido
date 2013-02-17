@@ -7,26 +7,131 @@
                 xmlns:f="http://java.sun.com/jsf/core">
 
     <ui:define name="center">
-        <p:layoutUnit position="center" header="Cadstro Mesa">
+        <p:layoutUnit position="center" header="Tele Entrega">
             <h:form id="form1">
                 <p:toolbar>
                     <p:toolbarGroup align="left" style="height: 25px;">
-                        <p:commandButton value="Pesquisar" image="ui-icon-search" action="#{mesaControle.pesq()}" ajax="false" style="margin: 0px;"/>
-                        <p:commandButton value="Novo" image="ui-icon-folder-open" action="#{mesaControle.novo()}" ajax="false" style="margin: 0px;" disabled="true"/>
+                        <p:commandButton value="Pesquisar" image="ui-icon-search" action="#{pedidoTeleControle.pesq()}" ajax="false" style="margin: 0px;"/>
+                        <p:commandButton value="Novo" image="ui-icon-folder-open" action="#{pedidoTeleControle.novo()}" ajax="false" style="margin: 0px;" disabled="true"/>
                     </p:toolbarGroup>
                 </p:toolbar>
             </h:form>
+            
             <h:form id="form2">
                 <p:separator style="width: 100%; height: 5px; margin: 5px 0px;"/>
                 <p:messages id="menssages" showSummary="true"/>
-                <p:fieldset legend="Cadastro" toggleable="true" style="width: 400px; margin: 0 auto;">
-                    <h:panelGrid id="painel" columns="2">
-                        <h:outputText  value="Numero:" />
-                        <p:inputText id="numero" value="#{mesaControle.mesa.numero}" required="true" requiredMessage="Campo numero é obrigatorio! "/>
-                        <p:commandButton value="salvar" action="#{mesaControle.salvar()}" ajax="false"/>
+                <p:fieldset legend="Pedido" toggleable="true" style="width: 400px; margin: 0 auto;">
+                    <h:panelGrid id="painel" columns="3">
+
+                        <h:outputText value="Cliente: " style="margin-right: 45px" />
+                        <p:inputText id="cliente" value="#{pedidoTeleControle.cliente.nome}" size="15" readonly="true" style="margin-right: 15px"/>
+                        <p:commandButton id="buttoncliente" value="Pesquisar" onclick="dlgCliente.show();"/>
+
+                        <h:outputText value="Endereco: " style="margin-right: 45px" />
+                        <p:inputText id="endereco" value="#{pedidoTeleControle.moradia.telefone}" readonly="true" style="margin-right: 15px"/>
+                        <p:commandButton id="buttonendereco" value="Pesquisar" onclick="dlgEndereco.show();"/>
+
+                        <p:commandButton value="salvar" action="#{pedidoTeleControle.salvar()}" ajax="false"/>
+
                     </h:panelGrid>
                 </p:fieldset>
+
             </h:form>
+            
+            <p:dialog header="Pesquisa de Cliente" widgetVar="dlgCliente" resizable="true" appendToBody="true" width="800"> 
+                <h:form id="form3" >
+                    <h:panelGrid columns="3" >
+                        <h:outputText value="Cliente:" />
+                        <p:inputText id="nomeCliente" value="#{pedidoTeleControle.cliente.nome}"  />
+                        <p:commandButton value="Pesquisar" image="ui-icon-search" update="form3" actionListener="#{pedidoTeleControle.pesquisaCliente()}"/>
+                    </h:panelGrid>
+                    <p:dataTable id="gridEstado" value="#{pedidoTeleControle.clienteModel}"
+                                 var="c" paginator="true" rows="4" 
+                                 emptyMessage="Nenhum valor encontrado">
+                        <f:facet name="header">
+                            <h:outputText value="Listando cliente(s)"/>
+                        </f:facet>
+                        <p:column>
+                            <f:facet name="header">Nome</f:facet>
+                            <h:outputText value="${c.nome}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Nascimento</f:facet>
+                            <h:outputText value="${c.nascimento}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Celular</f:facet>
+                            <h:outputText value="${c.celular}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Email</f:facet>
+                            <h:outputText value="${c.email}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Cadastro</f:facet>
+                            <h:outputText value="${c.cadastro}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Perfil</f:facet>
+                            <h:outputText value="${c.usuario.perfil.nome}"></h:outputText>
+                        </p:column>                                   
+
+                        <p:column style="width:4%">  
+                            <f:facet name="header">Selecionar</f:facet>
+                            <p:commandButton id="selectButton"  icon="ui-icon-search" title="Selecionar"
+                                             onclick="dlgCliente.hide()" ajax="false" action="#{pedidoTeleControle.carregaCliente()}"/>
+                        </p:column> 
+                    </p:dataTable> 
+                </h:form>
+            </p:dialog>
+            
+            <p:dialog header="Pesquisa de Endereço" widgetVar="dlgEndereco" resizable="true" appendToBody="true" width="900"> 
+                <h:form id="form4" >
+                    <p:dataTable id="tabelamoradias" value="#{pedidoTeleControle.cliente.moradias}" var="d" emptyMessage="Nenhum Valor encontrado">
+                        <p:column>
+                            <f:facet name="header">Pais</f:facet>
+                            <h:outputText value="${d.logradouro.bairro.cidade.estado.pais.nome}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Estado</f:facet>
+                            <h:outputText value="${d.logradouro.bairro.cidade.estado.nome}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Cidade</f:facet>
+                            <h:outputText value="${d.logradouro.bairro.cidade.nome}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Bairro</f:facet>
+                            <h:outputText value="${d.logradouro.bairro.nome}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Logradouro</f:facet>
+                            <h:outputText value="${d.logradouro.nome}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Cep</f:facet>
+                            <h:outputText value="${d.logradouro.cep}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Complemento</f:facet>
+                            <h:outputText value="${d.complemento}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Numero</f:facet>
+                            <h:outputText value="${d.numero}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Telefone</f:facet>
+                            <h:outputText value="${d.telefone}"></h:outputText>
+                        </p:column>
+                        <p:column style="width:4%">  
+                            <f:facet name="header">Selecionar</f:facet>
+                            <p:commandButton id="selectButton2"  icon="ui-icon-search" title="Selecionar"
+                                             onclick="dlgEndereco.hide()" ajax="false" action="#{pedidoTeleControle.carregaMoradia()}"/>
+                        </p:column> 
+                    </p:dataTable>
+                </h:form>
+            </p:dialog>
         </p:layoutUnit>
     </ui:define>
 

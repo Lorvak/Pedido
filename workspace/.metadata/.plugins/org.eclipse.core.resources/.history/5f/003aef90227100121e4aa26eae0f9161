@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Sistema Pizzaria</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Configurações</string>
+    <string name="title_activity_main">Sistema Pizzaria</string>
+    <string name="sistema">Sistema Pizzaria</string>
+    <string name="save">Salvar</string>
+    <string name="cancel">Limpar</string>
+    <string name="project">Projeto</string>
+    <string name="title_activity_tela_sucesso">TelaSucesso</string>
+    <string name="sucesso">Dados enviados com sucesso!</string>
+    <string name="voltar">Voltar</string>
+    <string name="title_activity_authentication">Sistema Pizzaria - Autenticação</string>
+    <string name="entrar">Entrar</string>
+    <string name="Login">Login</string>
+    <string name="senha">Senha</string>
+    <string name="dicaSenha">Sua senha</string>
+    <string name="seuUsuario">Seu usuário</string>
+    <string name="dicaTempo">Quantas horas?</string>
+    <string name="dicaDescricao">O que você fez?</string>
+    <string name="title_activity_activity_listagem">Listagem de Registros</string>
+    <string name="listagem">Ver registros</string>
+    <string name="search">Pesquisar</string>
+    <string name="title_activity_activity_listar_pedidos">Sistema Pizzaria</string>
+    <string name="title_activity_pedido_form">PedidoFormActivity</string>
+    <string name="pedido">Pedido</string>
+
+</resources>

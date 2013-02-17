@@ -22,10 +22,6 @@
                 <p:messages id="menssages" showSummary="true"/>
                 <p:fieldset legend="Cadastro" toggleable="true" style="width: 400px; margin: 0 auto;">
                     <h:panelGrid id="painel" columns="2">
-                        <h:outputText  value="Nome:" />
-                        <p:inputText id="nome" value="#{logradouroControle.logradouro.nome}" required="true" requiredMessage="Campo nome é obrigatorio! "/>
-                        <h:outputText  value="Cep:" />
-                        <p:inputText id="cep" value="#{logradouroControle.logradouro.cep}" required="true" requiredMessage="Campo cep é obrigatorio! "/>
                         <h:outputText value="Pais: " />  
                         <p:selectOneMenu id="pais" value="#{logradouroControle.pais.id}" effect="fold" required="true" requiredMessage="Campo Pais é obrigatorio! ">  
                             <f:selectItem itemLabel="Select One" itemValue="0" />  
@@ -33,22 +29,29 @@
                             <f:ajax execute="pais" render="IDestado"/>
                         </p:selectOneMenu>
                         <h:outputText value="Estado: " />  
-                        <p:selectOneMenu id="IDestado" value="#{logradouroControle.estado.id}" effect="fold" required="true" requiredMessage="Campo Estado é obrigatorio! " disabled="#{logradouroControle.pais.id==0}">  
+                        <p:selectOneMenu id="IDestado" value="#{logradouroControle.estado.id}" effect="fold" required="true" requiredMessage="Campo Estado é obrigatorio! " 
+                                         disabled="#{logradouroControle.pais.id == 0 || logradouroControle.pais.id == null}">  
                             <f:selectItem itemLabel="Select One" itemValue="0" />  
                             <f:selectItems value="#{logradouroControle.comboEstado}" />  
                             <f:ajax execute="IDestado" render="cidade"/>
                         </p:selectOneMenu>
                         <h:outputText value="Cidade: " />  
-                        <p:selectOneMenu id="cidade" value="#{logradouroControle.cidade.id}" effect="fold" required="true" requiredMessage="Campo Cidade é obrigatorio! " disabled="#{logradouroControle.estado.id==0}">  
+                        <p:selectOneMenu id="cidade" value="#{logradouroControle.cidade.id}" effect="fold" required="true" requiredMessage="Campo Cidade é obrigatorio! " 
+                                         disabled="#{logradouroControle.estado.id == 0 || logradouroControle.estado.id == null}">  
                             <f:selectItem itemLabel="Select One" itemValue="0" />  
                             <f:selectItems value="#{logradouroControle.comboCidade}" />   
                             <f:ajax execute="cidade" render="logradouro"/>
                         </p:selectOneMenu>
                         <h:outputText value="Bairro: " />  
-                        <p:selectOneMenu id="logradouro" value="#{logradouroControle.bairro.id}" effect="fold" required="true" requiredMessage="Campo Bairro é obrigatorio! " disabled="#{logradouroControle.cidade.id==0}">  
+                        <p:selectOneMenu id="logradouro" value="#{logradouroControle.bairro.id}" effect="fold" required="true" requiredMessage="Campo Bairro é obrigatorio! " 
+                                         disabled="#{logradouroControle.cidade.id == 0 || logradouroControle.cidade.id == null}">  
                             <f:selectItem itemLabel="Select One" itemValue="" />  
                             <f:selectItems value="#{logradouroControle.comboBairro}" />  
                         </p:selectOneMenu>
+                        <h:outputText  value="Nome:" />
+                        <p:inputText id="nome" value="#{logradouroControle.logradouro.nome}" required="true" requiredMessage="Campo nome é obrigatorio! "/>
+                        <h:outputText  value="Cep:" />
+                        <p:inputText id="cep" value="#{logradouroControle.logradouro.cep}" required="true" requiredMessage="Campo cep é obrigatorio! "/>
                         <p:commandButton value="salvar" action="#{logradouroControle.salvar()}" ajax="false"/>
                     </h:panelGrid>
                 </p:fieldset>

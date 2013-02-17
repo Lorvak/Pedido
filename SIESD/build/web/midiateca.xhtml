@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="./principal.xhtml">
+        <ui:define name="center">
+            <p:layoutUnit position="center" size="100" header="Midiateca" 
+                          resizable="true" closable="true" collapsible="true">
+                <h:form id="form_principal" enctype="multipart/form-data" >  
+                    <p:messages id="messages" showSummary="true"/> 
+
+
+                    <div align="center">  
+                        <p:panel header="Arquivos" style="width:100%"  >  
+
+
+                            <p:fileUpload label="procurar..." fileUploadListener="#{upDon.fileUploadAction}"  
+                                          update="display, messages" multiple="true" />  
+                            <br />  
+                            ´  
+
+
+                            <p:dataTable id="display" var="arquivo" value="#{upDon.listArquivos}"  
+                                         widgetVar="arquivosTable"  paginator="true" rows="4"
+                                         emptyMessage="Nenhum arquivos Encontrado Nessas Condições"  
+                                         rowStyleClass="#{empty rowIx or rowIx  
+                                                          mod 2 ne 0 ? 'even-row' : 'odd-row'}"  
+                                         rowIndexVar="rowIx" >  
+
+                                <f:facet name="header">  
+                                    <p:outputPanel>  
+                                        <h:outputText value="Procurar em todos os campos:" />  
+                                        <p:inputText id="globalFilter" onkeyup="arquivosTable.filter()" />  
+                                    </p:outputPanel>  
+                                </f:facet>  
+
+                                <p:column filterBy="#{arquivo.id}" headerText="Código" footerText="Código"  
+                                          filterMatchMode="contains" style="width: 40px">  
+                                    <h:outputText value="#{arquivo.id}" style="width: 40px" />  
+                                </p:column>  
+
+                                <p:column filterBy="#{arquivo.nome}" headerText="Descrição"  
+                                          footerText="Descrição" filterMatchMode="contains">  
+                                    <h:outputText value="#{arquivo.nome}" />  
+                                </p:column>  
+
+                                <p:column filterBy="#{arquivo.tipo}" headerText="Tipo"  
+                                          footerText="Tipo" filterMatchMode="contains" style="width: 40px">  
+                                    <h:outputText value="#{arquivo.tipo}" style="width: 40px" />  
+                                </p:column>  
+
+                                <p:column filterBy="#{arquivo.tamanho}" headerText="Tamanho"  
+                                          footerText="Tamanho" filterMatchMode="contains"  
+                                          style="width: 140px">  
+                                    <h:outputText value="#{arquivo.tamanho}" style="width: 140px" />  
+                                </p:column>  
+
+
+
+                                <p:column style="width:100px; margin: 0px">  
+                                    <h:panelGrid columns="2" styleClass="actions" cellpadding="2">   
+
+                                        <p:commandButton image="ui-icon-disk" title="Download"  
+                                                         ajax="false">  
+                                            <f:setPropertyActionListener value="#{arquivo.id}"  
+                                                                         target="#{upDon.arquivo.id}" />  
+                                            <p:fileDownload value="#{upDon.file}" />  
+                                        </p:commandButton>  
+
+                                        <p:commandButton image="ui-icon-trash" title="Excluir"  
+                                                         onclick="confirmation.show()" >  
+                                            <f:setPropertyActionListener value="#{arquivo.id}"  
+                                                                         target="#{upDon.arquivo.id}" />  
+                                        </p:commandButton>  
+                                    </h:panelGrid>  
+                                </p:column>  
+                            </p:dataTable>  
+
+
+
+                            <style>  
+                                .ui-datatable .ui-datatable-data .even-row td {  
+                                    background-color: #fcefa1;  
+                                    border-right: solid 0px #4e6769;  
+                                }  
+
+                                .ui-datatable .ui-datatable-data .odd-row td {  
+                                    background-color: #f7f7f7;  
+                                    border-right: solid 0px #4e6769;  
+                                }  
+                            </style>  
+                        </p:panel>
+
+                    </div> 
+                    <p:confirmDialog id="confirmDialog" message="Confirma Exclusão?"  
+                                     severity="alert" widgetVar="confirmation" appendToBody="true">  
+                        <p:commandButton id="confirm" value="Sim"  oncomplete="confirmation.hide()"  
+                                         action="#{upDon.excluir}" process="@form" update="form_principal" />  
+                        <p:commandButton id="decline" value="Não"  
+                                         onclick="confirmation.hide()" type="button" />  
+                    </p:confirmDialog>
+                </h:form > 
+                
+                
+            </p:layoutUnit>
+
+        </ui:define>
+    </ui:composition>
+
+</html>

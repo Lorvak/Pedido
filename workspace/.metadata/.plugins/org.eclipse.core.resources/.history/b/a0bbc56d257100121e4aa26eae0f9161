@@ -1,0 +1,51 @@
+package com.example.androidapp;
+
+import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapSerializationEnvelope;
+import org.ksoap2.transport.HttpTransportSE;
+
+import com.example.androipapp.services.WebServicesProperties;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+import android.view.View;
+
+public class PedidoFormActivity extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_pedido_form);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.activity_pedido_form, menu);
+		return true;
+	}
+	
+	public void salvar(View view){
+		String wsdlURL =WebServicesProperties.WSDL_URL_PEDIDO;
+	 	String namespace = WebServicesProperties.NAMESPACE_PEDIDO; // namespace on WSDL
+	 	String soapAction = WebServicesProperties.SOAPACTION_PEDIDO; //portType tag on WSDL
+	 	String methodName = "insere";  //operation on WSDL
+ 	  
+		SoapObject request = new SoapObject(namespace, methodName); 
+		request.addProperty("id", id);
+		SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11); 
+		envelope.setOutputSoapObject(request);
+		HttpTransportSE androidHttpTransport = new HttpTransportSE(wsdlURL);
+	
+		ServiceRequester sr= new ServiceRequester(androidHttpTransport,envelope,namespace+soapAction);
+		//androidHttpTransport.call(namespace+soapAction, envelope);
+		sr.start();
+		sr.waitToThreadFinish();
+		SoapObject retornoRequisicao = (SoapObject) envelope.bodyIn;	
+		String resp =retornoRequisicao.getProperty(0).toString();
+		return Integer.valueOf(resp);
+	}
+
+}

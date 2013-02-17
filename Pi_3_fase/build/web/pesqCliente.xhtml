@@ -25,7 +25,7 @@
                         <p:inputText id="login" value="#{clienteControle.cliente.nome}">
                             <p:focus for="login"/>
                         </p:inputText>
-                        <p:commandButton value="Pesquisar" image="ui-icon-search" update="tabelacidade" action="#{clienteControle.pesquisaLike()}" ajax="false"/>
+                        <p:commandButton value="Pesquisar" image="ui-icon-search" update="tabelacliente" action="#{clienteControle.pesquisaLike()}" ajax="false"/>
                     </h:panelGrid>
                 </p:fieldset>
                 <p:separator style="width: 100%; height: 5px; margin: 5px 0px 5px 0px;"/>
@@ -35,32 +35,78 @@
                     </f:facet>
                     <p:column>
                         <f:facet name="header">Nome</f:facet>
-                        <h:outputText value="${c.cliente.nome}"></h:outputText>
+                        <h:outputText value="${c.nome}"></h:outputText>
                     </p:column>
                     <p:column>
                         <f:facet name="header">Nascimento</f:facet>
-                        <h:outputText value="${c.cliente.nascimento}"></h:outputText>
+                        <h:outputText value="${c.nascimento}"></h:outputText>
                     </p:column>
                     <p:column>
                         <f:facet name="header">Celular</f:facet>
-                        <h:outputText value="${c.cliente.celular}"></h:outputText>
+                        <h:outputText value="${c.celular}"></h:outputText>
                     </p:column>
                     <p:column>
                         <f:facet name="header">Email</f:facet>
-                        <h:outputText value="${c.cliente.email}"></h:outputText>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">Enderecos</f:facet>
-                        <h:outputText value="${c.cliente.moradias}"></h:outputText>
+                        <h:outputText value="${c.email}"></h:outputText>
                     </p:column>
                     <p:column>
                         <f:facet name="header">Cadastro</f:facet>
-                        <h:outputText value="${c.cliente.cadastro}"></h:outputText>
+                        <h:outputText value="${c.cadastro}"></h:outputText>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Perfil</f:facet>
+                        <h:outputText value="${c.usuario.perfil.nome}"></h:outputText>
                     </p:column>
                     <p:column>
                         <f:facet name="header">Alterar/Excluir</f:facet>
                         <p:commandButton action="#{clienteControle.alterar()}" value="Alterar" ajax="false"/>
-                        <p:commandButton action="#{clienteControle.excluir()}" update="tabelacidade" value="Excluir" ajax="false"/>
+
+                        <p:commandButton id="cbPesqPizza" action="#{clienteControle.pesquisaMoradias()}" oncomplete="show.show()" update="showDialog"  value="Mostrar Enderecos"/>
+                        <p:confirmDialog id="showDialog" appendToBody="true" header="Endereços" message="Enderecos de ${c.nome}"
+                                         widgetVar="show">
+
+                            <p:dataTable id="tabelamoradias" value="#{clienteControle.model2}" var="d" emptyMessage="Nenhum Valor encontrado">
+                                <p:column>
+                                    <f:facet name="header">Pais</f:facet>
+                                    <h:outputText value="${d.logradouro.bairro.cidade.estado.pais.nome}"></h:outputText>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">Estado</f:facet>
+                                    <h:outputText value="${d.logradouro.bairro.cidade.estado.nome}"></h:outputText>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">Cidade</f:facet>
+                                    <h:outputText value="${d.logradouro.bairro.cidade.nome}"></h:outputText>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">Bairro</f:facet>
+                                    <h:outputText value="${d.logradouro.bairro.nome}"></h:outputText>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">Logradouro</f:facet>
+                                    <h:outputText value="${d.logradouro.nome}"></h:outputText>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">Cep</f:facet>
+                                    <h:outputText value="${d.logradouro.cep}"></h:outputText>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">Complemento</f:facet>
+                                    <h:outputText value="${d.complemento}"></h:outputText>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">Numero</f:facet>
+                                    <h:outputText value="${d.numero}"></h:outputText>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">Telefone</f:facet>
+                                    <h:outputText value="${d.telefone}"></h:outputText>
+                                </p:column>
+                            </p:dataTable> <br/>
+
+                            <p:commandButton id="fechar" value="Fechar" onclick="show.hide()" type="button"/>
+                        </p:confirmDialog>
+
                     </p:column>
                 </p:dataTable>
             </h:form>

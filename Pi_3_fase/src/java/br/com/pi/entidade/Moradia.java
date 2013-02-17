@@ -5,7 +5,9 @@
 package br.com.pi.entidade;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.*;
+import org.hibernate.annotations.Cascade;
 
 /**
  *

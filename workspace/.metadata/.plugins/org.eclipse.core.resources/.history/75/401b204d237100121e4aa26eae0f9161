@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.androidapp"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="15" />
+
+    <uses-permission android:name="android.permission.INTERNET" >
+    </uses-permission>
+
+    <application
+        android:icon="@drawable/clock"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.androidapp.AuthenticationActivity"
+            android:label="@string/app_name" >
+<!--  
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+ -->
+        </activity>
+        <activity
+            android:name="com.example.androidapp.MainActivity"
+            android:label="@string/title_activity_main" >
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+               
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name="com.example.androidapp.TelaSucesso"
+            android:label="@string/title_activity_tela_sucesso" >
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name="com.example.androidapp.ActivityListagem"
+            android:label="@string/title_activity_activity_listagem" >
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name="com.example.androidapp.ActivityListarPedidos"
+            android:label="@string/title_activity_activity_listar_pedidos" >
+        </activity>
+        <activity
+            android:name="com.example.androidapp.PedidoFormActivity"
+            android:label="@string/title_activity_pedido_form" >
+             <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
