@@ -2919,3 +2919,13 @@ org.eclipse.core.internal.resources.ResourceException: Resource '/Pedido_pizzari
 
 !ENTRY com.android.ide.eclipse.adt 2 0 2013-02-07 10:34:07.953
 !MESSAGE activity_pedido_form.xml: Couldn't resolve resource @string/borda
+!SESSION 2013-02-18 08:39:22.765 -----------------------------------------------
+eclipse.buildId=v21.0.0-531062
+java.version=1.7.0_09
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=pt_BR
+Framework arguments:  -product com.android.ide.eclipse.adt.package.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.android.ide.eclipse.adt.package.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2013-02-18 08:43:14.136
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.

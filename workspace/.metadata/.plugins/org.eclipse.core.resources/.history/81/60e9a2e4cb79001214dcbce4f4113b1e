@@ -1,0 +1,10 @@
+package com.example.androidapp.bean;
+
+public class Sabor {
+	private Long id;
+	private String nome;
+	private String borda;
+	
+	
+
+}
