@@ -72,7 +72,7 @@
                     <p:column style="width:4%">  
                         <f:facet name="header">Deletar</f:facet>
                         <p:commandButton id="selectButton2"  icon="ui-icon-close" title="Deletar"
-                                         onclick="dlgEndereco.hide()" ajax="false" action="#{clienteControle.deletarMoradia()}"/>
+                                         ajax="false" action="#{clienteControle.deletarMoradia()}"/>
                     </p:column> 
                 </p:dataTable>
                 <h:panelGrid id="painel2" columns="2" style="">
@@ -85,11 +85,7 @@
 
 
 
-            <p:dialog header="Pesquisa de Endereço" widgetVar="dlgEndereco" resizable="true" appendToBody="true"> 
-                <form id="formdialog">
-
-                </form>
-            </p:dialog>
+            
 
 
         </p:layoutUnit>
