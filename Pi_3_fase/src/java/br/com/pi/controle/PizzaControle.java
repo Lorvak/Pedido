@@ -169,6 +169,10 @@ public class PizzaControle {
         if (sabores == null) {
             sabores = new ArrayList<Sabor>();
         }
+        saborSelecionado = null;
+        if (saboresSelecionados == null) {
+            saboresSelecionados = new ArrayList<SaborSelecionado>();
+        }
         return "addSabor.faces";
     }
 

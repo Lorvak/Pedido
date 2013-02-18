@@ -43,7 +43,7 @@ public class Pizza implements Serializable {
     public Pizza() {
     }
 
-    public Pizza(Tamanho tamanho, Borda borda, List<SaborSelecionado> sabores, Double precoFinal, String obs, Boolean brinde) {
+    public Pizza(Tamanho tamanho, Borda borda, List<SaborSelecionado> sabores, Double precoFinal, Boolean brinde) {
         this.tamanho = tamanho;
         this.borda = borda;
         this.sabores = sabores;
@@ -51,7 +51,7 @@ public class Pizza implements Serializable {
         this.brinde = brinde;
     }
 
-    public Pizza(Long id, Tamanho tamanho, Borda borda, List<SaborSelecionado> sabores, Double precoFinal, String obs, Boolean brinde) {
+    public Pizza(Long id, Tamanho tamanho, Borda borda, List<SaborSelecionado> sabores, Double precoFinal, Boolean brinde) {
         this.id = id;
         this.tamanho = tamanho;
         this.borda = borda;
