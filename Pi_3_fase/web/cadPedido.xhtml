@@ -24,13 +24,13 @@
                     <h:panelGrid id="painel" columns="2">
 
                         <h:outputText value="Mesa: " />  
-                        <p:selectOneMenu id="mesa" value="#{pedidoControle.mesa.id}" effect="fold">  
+                        <p:selectOneMenu id="mesa" value="#{pedidoControle.pedido.mesa.id}" effect="fold">  
                             <f:selectItem itemLabel="Select One" itemValue="0" />  
                             <f:selectItems value="#{pedidoControle.comboMesa}" />  
                         </p:selectOneMenu>
                         <h:outputText value="Funcionario: " /> 
 
-                        <p:dataTable id="tabelabebidas" value="#{pedidoControle.model2}" var="bebida" emptyMessage="Nenhum Valor encontrado">
+                        <p:dataTable id="tabelabebidas" value="#{pedidoControle.model4}" var="bebida" emptyMessage="Nenhum Valor encontrado">
                             <f:facet name="header">
                                 <h:outputText value="Listando bebida(s)"/>
                             </f:facet>
@@ -45,12 +45,12 @@
                             <p:column style="width:4%">  
                                 <f:facet name="header">Deletar</f:facet>
                                 <p:commandButton id="selectButton1"  icon="ui-icon-close" title="Deletar"
-                                                 onclick="dlgEndereco.hide()" ajax="false" action="#{pedidoControle.deletarBebida()}"/>
+                                                 ajax="false" action="#{pedidoControle.deletarBebida()}"/>
                             </p:column> 
                         </p:dataTable>
                         <p:commandButton id="btaddbebida" value="Adicionar Bebida" action="#{pedidoControle.btNovaBebida()}" ajax="false" />
 
-                        <p:dataTable id="tabelapizzas" value="#{pedidoControle.model3}" var="pizza" emptyMessage="Nenhum Valor encontrado">
+                        <p:dataTable id="tabelapizzas" value="#{pedidoControle.model5}" var="pizza" emptyMessage="Nenhum Valor encontrado">
                             <f:facet name="header">
                                 <h:outputText value="Listando pizza(s)"/>
                             </f:facet>
@@ -89,7 +89,7 @@
                             <p:column style="width:4%">  
                                 <f:facet name="header">Deletar</f:facet>
                                 <p:commandButton id="selectButton2"  icon="ui-icon-close" title="Deletar"
-                                                 onclick="dlgEndereco.hide()" ajax="false" action="#{pedidoControle.deletarPizza()}"/>
+                                                 ajax="false" action="#{pedidoControle.deletarPizza()}"/>
                             </p:column> 
                         </p:dataTable>
                         <p:commandButton id="btaddpizza" value="Adicionar Pizza" action="#{pedidoControle.btNovaPizza()}" ajax="false" />
