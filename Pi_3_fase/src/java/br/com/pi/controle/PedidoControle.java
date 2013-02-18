@@ -4,15 +4,21 @@
  */
 package br.com.pi.controle;
 
+import br.com.pi.dao.BebidaDAO;
+import br.com.pi.dao.BebidaDAOImp;
 import br.com.pi.dao.BordaDAO;
 import br.com.pi.dao.BordaDAOImp;
+import br.com.pi.dao.MesaDAO;
+import br.com.pi.dao.MesaDAOImp;
 import br.com.pi.dao.PizzaDAO;
 import br.com.pi.dao.PizzaDAOImp;
 import br.com.pi.dao.SaborDAO;
 import br.com.pi.dao.SaborDAOImp;
 import br.com.pi.dao.TamanhoDAO;
 import br.com.pi.dao.TamanhoDAOImp;
+import br.com.pi.entidade.Bebida;
 import br.com.pi.entidade.Borda;
+import br.com.pi.entidade.Mesa;
 import br.com.pi.entidade.Pizza;
 import br.com.pi.entidade.Sabor;
 import br.com.pi.entidade.SaborSelecionado;
@@ -38,6 +44,8 @@ public class PedidoControle {
     private Pizza pizza;
     private PizzaDAO dao;
     private TamanhoDAO tDao;
+    private BebidaDAO bDao;
+    private MesaDAO mDao;
     private DataModel model;
     private DataModel model2;
     private List<Sabor> sabores;
@@ -45,6 +53,8 @@ public class PedidoControle {
     private Sabor sabor;
     private SaborSelecionado saborSelecionado;
     private Borda borda;
+    private Bebida bebida;
+    private Mesa mesa;
     private Tamanho tamanho;
     private boolean btSabor;
 
@@ -128,6 +138,51 @@ public class PedidoControle {
         this.pizza = usuario;
     }
 
+    public Bebida getBebida() {
+        if (bebida == null) {
+            bebida = new Bebida();
+        }
+        return bebida;
+    }
+
+    public void setBebida(Bebida bebida) {
+        this.bebida = bebida;
+    }
+
+    public Mesa getMesa() {
+        if (mesa == null) {
+            mesa = new Mesa();
+        }
+        return mesa;
+    }
+
+    public void setMesa(Mesa mesa) {
+        this.mesa = mesa;
+    }
+
+    public List<SaborSelecionado> getSaboresSelecionados() {
+        if (saboresSelecionados == null) {
+            saboresSelecionados = new ArrayList<SaborSelecionado>();
+        }
+        return saboresSelecionados;
+    }
+
+    public void setSaboresSelecionados(List<SaborSelecionado> saboresSelecionados) {
+        this.saboresSelecionados = saboresSelecionados;
+    }
+
+    public SaborSelecionado getSaborSelecionado() {
+        if (saborSelecionado == null) {
+            saborSelecionado = new SaborSelecionado();
+            saborSelecionado.setSabor(new Sabor());
+        }
+        return saborSelecionado;
+    }
+
+    public void setSaborSelecionado(SaborSelecionado saborSelecionado) {
+        this.saborSelecionado = saborSelecionado;
+    }
+
     private void limpar() {
         pizza = null;
         model = null;
@@ -135,6 +190,14 @@ public class PedidoControle {
     }
 
     public String novo() {
+        pizza = new Pizza();
+        borda = new Borda();
+        tamanho = new Tamanho();
+        sabores = new ArrayList<Sabor>();
+        return "cadPedido.faces";
+    }
+    
+    public String novaPizza() {
         pizza = new Pizza();
         borda = new Borda();
         tamanho = new Tamanho();
@@ -147,14 +210,18 @@ public class PedidoControle {
         if (sabores == null) {
             sabores = new ArrayList<Sabor>();
         }
+        saborSelecionado = null;
+        if (saboresSelecionados == null) {
+            saboresSelecionados = new ArrayList<SaborSelecionado>();
+        }
         return "addSabor.faces";
     }
 
     public String salvaSabor() {
-        sabores.add(sabor);
+        saboresSelecionados.add(saborSelecionado);
         tDao = new TamanhoDAOImp();
         pizza.setTamanho(tDao.pesquisa(tamanho.getId()));
-        if (sabores.size() == pizza.getTamanho().getNsabores()) {
+        if (saboresSelecionados.size() == pizza.getTamanho().getNsabores()) {
             btSabor = true;
         }
         return "cadPizza.faces";
@@ -280,6 +347,26 @@ public class PedidoControle {
         List<SelectItem> listaCombo = new ArrayList<SelectItem>();
         for (Borda forn : list) {
             listaCombo.add(new SelectItem(forn.getId(), forn.getNome()));
+        }
+        return listaCombo;
+    }
+    
+    public List<SelectItem> getComboBebida() {
+        BebidaDAO bdao = new BebidaDAOImp();
+        List<Bebida> list = bdao.getTodos();
+        List<SelectItem> listaCombo = new ArrayList<SelectItem>();
+        for (Bebida forn : list) {
+            listaCombo.add(new SelectItem(forn.getId(), forn.getNome()));
+        }
+        return listaCombo;
+    }
+    
+    public List<SelectItem> getComboMesa() {
+        MesaDAO mdao = new MesaDAOImp();
+        List<Mesa> list = mdao.getTodos();
+        List<SelectItem> listaCombo = new ArrayList<SelectItem>();
+        for (Mesa forn : list) {
+            listaCombo.add(new SelectItem(forn.getId(), forn.getNumero()));
         }
         return listaCombo;
     }

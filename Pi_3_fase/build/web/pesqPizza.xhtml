@@ -38,10 +38,6 @@
                         <h:outputText value="${c.borda.nome}"></h:outputText>
                     </p:column>
                     <p:column>
-                        <f:facet name="header">Obs</f:facet>
-                        <h:outputText value="${c.obs}"></h:outputText>
-                    </p:column>
-                    <p:column>
                         <f:facet name="header">Alterar/Excluir</f:facet>
                         <p:commandButton action="#{pizzaControle.alterar()}" value="Alterar" ajax="false"/>
                         <p:commandButton onclick="confirmation.show()" value="Excluir Conf"/>
@@ -53,7 +49,7 @@
                         </p:confirmDialog>
 
                         <p:commandButton id="cbPesqPizza" action="#{pizzaControle.pesquisapizza()}" oncomplete="show.show()" update="showDialog"  value="Mostrar Pizza"/>
-                        <p:confirmDialog id="showDialog" appendToBody="true" header="Pizza" message="Obs: #{pizzaControle.pizza.obs}"
+                        <p:confirmDialog id="showDialog" appendToBody="true" header="Pizza" message=""
                                          widgetVar="show">
 
                             <h:outputText value="Tamanho: #{pizzaControle.pizza.tamanho.nome}" /> <br/>
@@ -63,7 +59,11 @@
                             <p:dataTable id="tabelapizza" value="#{pizzaControle.model2}" var="d" emptyMessage="Nenhum Valor encontrado">
                                 <p:column>
                                     <f:facet name="header">Sabores</f:facet>
-                                    <h:outputText value="${d.nome}"></h:outputText>
+                                    <h:outputText value="${d.sabor.nome}"></h:outputText>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">Obs</f:facet>
+                                    <h:outputText value="${d.obs}"></h:outputText>
                                 </p:column>
                             </p:dataTable> <br/>
 

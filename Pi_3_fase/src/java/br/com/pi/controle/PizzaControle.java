@@ -142,6 +142,7 @@ public class PizzaControle {
     public SaborSelecionado getSaborSelecionado() {
         if (saborSelecionado == null) {
             saborSelecionado = new SaborSelecionado();
+            saborSelecionado.setSabor(new Sabor());
         }
         return saborSelecionado;
     }
