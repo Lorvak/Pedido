@@ -6,7 +6,6 @@
 <fullyQualifiedTypeName name="android.content.Intent"/>
 <fullyQualifiedTypeName name="br.com.senac.teste_aula.ProximaTela"/>
 <fullyQualifiedTypeName name="br.com.senac.pedido.mesa"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="android.test.suitebuilder.annotation.LargeTest"/>
 <fullyQualifiedTypeName name="android.widget.TextView"/>
@@ -14,4 +13,6 @@
 <fullyQualifiedTypeName name="android.widget.ListView"/>
 <fullyQualifiedTypeName name="br.com.senac.pedido.Bebida"/>
 <fullyQualifiedTypeName name="android.widget.Toast"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="java.util.List"/>
 </qualifiedTypeNameHistroy>
