@@ -26,6 +26,7 @@ import br.com.pi.entidade.Pizza;
 import br.com.pi.entidade.Sabor;
 import br.com.pi.entidade.SaborSelecionado;
 import br.com.pi.entidade.Tamanho;
+import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -49,7 +50,9 @@ public class PedidoControle {
     private PedidoDAO pdao;
     private TamanhoDAO tDao;
     private BebidaDAO bDao;
+    private BordaDAO borDao;
     private MesaDAO mDao;
+    private SaborDAO sDao;
     private DataModel model;
     private DataModel model2;
     private DataModel model3;
@@ -57,7 +60,9 @@ public class PedidoControle {
     private DataModel model5;
     private List<Sabor> sabores;
     private List<Bebida> bebidas;
+    private List<Bebida> bebidas2;
     private List<Pizza> pizzas;
+    private List<Pizza> pizzas2;
     private List<SaborSelecionado> saboresSelecionados;
     private Sabor sabor;
     private SaborSelecionado saborSelecionado;
@@ -67,6 +72,15 @@ public class PedidoControle {
     private Mesa mesa;
     private Tamanho tamanho;
     private boolean btSabor;
+    private String Funcionario;
+
+    public String getFuncionario() {
+        return Funcionario;
+    }
+
+    public void setFuncionario(String Funcionario) {
+        this.Funcionario = Funcionario;
+    }
 
     public boolean isBtSabor() {
         return btSabor;
@@ -79,7 +93,6 @@ public class PedidoControle {
     public Pedido getPedido() {
         if (pedido == null) {
             pedido = new Pedido();
-            pedido.setMesa(new Mesa());
         }
         return pedido;
     }
@@ -239,36 +252,35 @@ public class PedidoControle {
     }
 
     public String novo() {
+        limpar();
         pedido = new Pedido();
         pizza = new Pizza();
         borda = new Borda();
+        mesa = new Mesa();
         tamanho = new Tamanho();
         sabores = new ArrayList<Sabor>();
         return "cadPedido.faces";
     }
     
-    public String btNovaPizza() {
+    public String novaPizza() {
         pizza = new Pizza();
         borda = new Borda();
         tamanho = new Tamanho();
         sabores = new ArrayList<Sabor>();
+        saboresSelecionados = new ArrayList<SaborSelecionado>();
+        btSabor = false;
         return "addPizza.faces";
     }
     
-    public String btNovaBebida() {
-        pizza = new Pizza();
-        borda = new Borda();
-        tamanho = new Tamanho();
-        sabores = new ArrayList<Sabor>();
+    public String novaBebida() {
         return "addBebida.faces";
     }
 
     public String novoSabor() {
-        sabor = null;
+        saborSelecionado = null;
         if (sabores == null) {
             sabores = new ArrayList<Sabor>();
         }
-        saborSelecionado = null;
         if (saboresSelecionados == null) {
             saboresSelecionados = new ArrayList<SaborSelecionado>();
         }
@@ -276,16 +288,51 @@ public class PedidoControle {
     }
 
     public String salvaSabor() {
+        if(saboresSelecionados == null){
+            saboresSelecionados = new ArrayList<SaborSelecionado>();
+        }
         saboresSelecionados.add(saborSelecionado);
         tDao = new TamanhoDAOImp();
         pizza.setTamanho(tDao.pesquisa(tamanho.getId()));
         if (saboresSelecionados.size() == pizza.getTamanho().getNsabores()) {
             btSabor = true;
         }
+        
         return "addPizza.faces";
+    }
+    
+    public String salvaPizza() {
+        if(pizzas == null){
+            pizzas = new ArrayList<Pizza>();
+        }
+        pizza.setBorda(borda);
+        pizza.setSabores(saboresSelecionados);
+        pizza.setTamanho(tamanho);
+        tDao = new TamanhoDAOImp();
+        borDao = new BordaDAOImp();
+        sDao = new SaborDAOImp();
+        pizza.setBorda(borDao.pesquisa(pizza.getBorda().getId()));
+        pizza.setTamanho(tDao.pesquisa(pizza.getTamanho().getId()));
+        pizzas.add(pizza);    
+        model5 = new ListDataModel(pizzas);
+        return "cadPedido.faces";
+    }
+    
+    public String salvaBebida() {
+        if(bebidas == null){
+            bebidas = new ArrayList<Bebida>();
+        }
+        bDao = new BebidaDAOImp();
+        bebidas.add(bDao.pesquisa(bebida.getId()));  
+        model4 = new ListDataModel(bebidas);
+        return "cadPedido.faces";
     }
 
     public String voltar() {
+        return "cadPedido.faces";
+    }
+    
+    public String voltar2() {
         return "addPizza.faces";
     }
 
@@ -303,6 +350,9 @@ public class PedidoControle {
     public String salvar() {
         pdao = new PedidoDAOImp();
         FacesContext context = FacesContext.getCurrentInstance();
+        pedido.setMesa(mesa);
+        pedido.setPizzas(pizzas);
+        pedido.setBebidas(bebidas);
         if (pedido.getId() == null) {
             pdao.salva(pedido);
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Pizza Salvo Com Sucesso!", ""));
@@ -368,6 +418,9 @@ public class PedidoControle {
 
     public String alterar() {
         pedido = (Pedido) model.getRowData();
+        mesa = pedido.getMesa();
+        pizzas = pedido.getPizzas();
+        bebidas = pedido.getBebidas();
         return "cadPedido.faces";
     }
 
@@ -432,23 +485,25 @@ public class PedidoControle {
     
     public void deletarBebida() {
         bebida = (Bebida) model4.getRowData();
-        pedido.getBebidas().remove(bebida);
+        bebidas.remove(bebida);
         if(bebida.getId() != null){
-            if(bebida == null){
-                bebidas = new ArrayList<Bebida>();
+            if(bebidas2 == null){
+                bebidas2 = new ArrayList<Bebida>();
             }
-            bebidas.add(bebida);
+            bebidas2.add(bebida);
         }
+        model4 = new ListDataModel(bebidas);
     }
     
     public void deletarPizza() {
         pizza = (Pizza) model5.getRowData();
-        pedido.getPizzas().remove(pizza);
+        pizzas.remove(pizza);
         if(pizza.getId() != null){
-            if(pizza == null){
-                pizzas = new ArrayList<Pizza>();
+            if(pizzas2 == null){
+                pizzas2 = new ArrayList<Pizza>();
             }
-            pizzas.add(pizza);
+            pizzas2.add(pizza);
         }
+        model5 = new ListDataModel(pizzas);
     }
 }

@@ -24,75 +24,77 @@
                     <h:panelGrid id="painel" columns="2">
 
                         <h:outputText value="Mesa: " />  
-                        <p:selectOneMenu id="mesa" value="#{pedidoControle.pedido.mesa.id}" effect="fold">  
-                            <f:selectItem itemLabel="Select One" itemValue="0" />  
+                        <p:selectOneMenu id="mesa" value="#{pedidoControle.mesa.id}" effect="fold">  
+                            <f:selectItem itemLabel="Select One" itemValue="" />  
                             <f:selectItems value="#{pedidoControle.comboMesa}" />  
                         </p:selectOneMenu>
-                        <h:outputText value="Funcionario: " /> 
+                        <h:outputText value="ID de Funcionario: " /> 
+                        <p:inputText id="idfuncionario" value="#{pedidoControle.funcionario}"/>
+                    </h:panelGrid>
+                    <p:dataTable id="tabelabebidas" value="#{pedidoControle.model4}" var="bebida" emptyMessage="Nenhum Valor encontrado">
+                        <f:facet name="header">
+                            <h:outputText value="Listando bebida(s)"/>
+                        </f:facet>
+                        <p:column>
+                            <f:facet name="header">Nome</f:facet>
+                            <h:outputText value="${bebida.nome}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Preço</f:facet>
+                            <h:outputText value="${bebida.preco}"></h:outputText>
+                        </p:column>
+                        <p:column style="width:4%">  
+                            <f:facet name="header">Deletar</f:facet>
+                            <p:commandButton id="selectButton1"  icon="ui-icon-close" title="Deletar"
+                                             ajax="false" action="#{pedidoControle.deletarBebida()}"/>
+                        </p:column> 
+                    </p:dataTable>
+                    <p:commandButton id="btaddbebida" value="Adicionar Bebida" action="#{pedidoControle.novaBebida()}" ajax="false" />
 
-                        <p:dataTable id="tabelabebidas" value="#{pedidoControle.model4}" var="bebida" emptyMessage="Nenhum Valor encontrado">
-                            <f:facet name="header">
-                                <h:outputText value="Listando bebida(s)"/>
-                            </f:facet>
-                            <p:column>
-                                <f:facet name="header">Nome</f:facet>
-                                <h:outputText value="${bebida.nome}"></h:outputText>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">Preço</f:facet>
-                                <h:outputText value="${bebida.preco}"></h:outputText>
-                            </p:column>
-                            <p:column style="width:4%">  
-                                <f:facet name="header">Deletar</f:facet>
-                                <p:commandButton id="selectButton1"  icon="ui-icon-close" title="Deletar"
-                                                 ajax="false" action="#{pedidoControle.deletarBebida()}"/>
-                            </p:column> 
-                        </p:dataTable>
-                        <p:commandButton id="btaddbebida" value="Adicionar Bebida" action="#{pedidoControle.btNovaBebida()}" ajax="false" />
+                    <p:dataTable id="tabelapizzas" value="#{pedidoControle.model5}" var="pizzas" emptyMessage="Nenhum Valor encontrado">
+                        <f:facet name="header">
+                            <h:outputText value="Listando pizza(s)"/>
+                        </f:facet>
+                        <p:column>
+                            <f:facet name="header">Tamanho</f:facet>
+                            <h:outputText value="${pizzas.tamanho.nome}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Borda</f:facet>
+                            <h:outputText value="${pizzas.borda.nome}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Listar Sarbores</f:facet>
+                            <p:commandButton id="cbPesqPizza" action="#{pedidoControle.pesquisasabor()}" oncomplete="show.show()" update="showDialog"  value="Mostrar Pizza"/>
+                            <p:confirmDialog id="showDialog" appendToBody="true" header="Pizza" message="" widgetVar="show">
 
-                        <p:dataTable id="tabelapizzas" value="#{pedidoControle.model5}" var="pizza" emptyMessage="Nenhum Valor encontrado">
-                            <f:facet name="header">
-                                <h:outputText value="Listando pizza(s)"/>
-                            </f:facet>
-                            <p:column>
-                                <f:facet name="header">Tamanho</f:facet>
-                                <h:outputText value="${c.tamanho.nome}"></h:outputText>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">Borda</f:facet>
-                                <h:outputText value="${c.borda.nome}"></h:outputText>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">Listar Sarbores</f:facet>
-                                <p:commandButton id="cbPesqPizza" action="#{pedidoControle.pesquisapizza()}" oncomplete="show.show()" update="showDialog"  value="Mostrar Pizza"/>
-                                <p:confirmDialog id="showDialog" appendToBody="true" header="Pizza" message="" widgetVar="show">
+                                <h:outputText value="Tamanho: #{pedidoControle.pizza.tamanho.nome}" /> <br/>
+                                <h:outputText value="Borda: #{pedidoControle.pizza.borda.nome}" /> <br/>
+                                <h:outputText value="Preço Final: #{pedidoControle.pizza.precoFinal}" /> <br/> 
 
-                                    <h:outputText value="Tamanho: #{pedidoControle.pizza.tamanho.nome}" /> <br/>
-                                    <h:outputText value="Borda: #{pedidoControle.pizza.borda.nome}" /> <br/>
-                                    <h:outputText value="Preço Final: #{pedidoControle.pizza.precoFinal}" /> <br/> 
+                                <p:dataTable id="tabelapizza" value="#{pedidoControle.model2}" var="sabores" emptyMessage="Nenhum Valor encontrado">
+                                    <p:column>
+                                        <f:facet name="header">Sabores</f:facet>
+                                        <h:outputText value="${sabores.sabor.nome}"></h:outputText>
+                                    </p:column>
+                                    <p:column>
+                                        <f:facet name="header">Obs</f:facet>
+                                        <h:outputText value="${sabores.obs}"></h:outputText>
+                                    </p:column>
+                                </p:dataTable> <br/>
 
-                                    <p:dataTable id="tabelapizza" value="#{pedidoControle.model2}" var="sabores" emptyMessage="Nenhum Valor encontrado">
-                                        <p:column>
-                                            <f:facet name="header">Sabores</f:facet>
-                                            <h:outputText value="${sabores.sabor.nome}"></h:outputText>
-                                        </p:column>
-                                        <p:column>
-                                            <f:facet name="header">Obs</f:facet>
-                                            <h:outputText value="${sabores.obs}"></h:outputText>
-                                        </p:column>
-                                    </p:dataTable> <br/>
+                                <p:commandButton id="fechar" value="Fechar" onclick="show.hide()" type="button"/>
+                            </p:confirmDialog>
 
-                                    <p:commandButton id="fechar" value="Fechar" onclick="show.hide()" type="button"/>
-                                </p:confirmDialog>
-
-                            </p:column>
-                            <p:column style="width:4%">  
-                                <f:facet name="header">Deletar</f:facet>
-                                <p:commandButton id="selectButton2"  icon="ui-icon-close" title="Deletar"
-                                                 ajax="false" action="#{pedidoControle.deletarPizza()}"/>
-                            </p:column> 
-                        </p:dataTable>
-                        <p:commandButton id="btaddpizza" value="Adicionar Pizza" action="#{pedidoControle.btNovaPizza()}" ajax="false" />
+                        </p:column>
+                        <p:column style="width:4%">  
+                            <f:facet name="header">Deletar</f:facet>
+                            <p:commandButton id="selectButton2"  icon="ui-icon-close" title="Deletar"
+                                             ajax="false" action="#{pedidoControle.deletarPizza()}"/>
+                        </p:column> 
+                    </p:dataTable>
+                    <p:commandButton id="btaddpizza" value="Adicionar Pizza" action="#{pedidoControle.novaPizza()}" ajax="false" />
+                    <h:panelGrid id="painel2" columns="2">
                         <p:commandButton value="salvar" action="#{pedidoControle.salvar()}" ajax="false"/>
                     </h:panelGrid>
                 </p:fieldset>
