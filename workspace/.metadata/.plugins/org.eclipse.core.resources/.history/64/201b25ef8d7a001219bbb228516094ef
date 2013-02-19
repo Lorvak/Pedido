@@ -1,0 +1,57 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PedidoFormActivity" >
+
+    <EditText
+        android:id="@+id/editTextSabor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="@string/sabor" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="70dp"
+        android:onClick="salvar"
+        android:text="@string/save" />
+
+    <EditText
+        android:id="@+id/editTextBebida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextBorda"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:text="@string/txtbebida" />
+
+    <EditText
+        android:id="@+id/editTextBorda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextTamanho"
+        android:layout_below="@+id/editTextTamanho"
+        android:ems="10"
+        android:hint="@string/borda" />
+
+    <EditText
+        android:id="@+id/editTextTamanho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextSabor"
+        android:layout_below="@+id/editTextSabor"
+        android:ems="10"
+        android:hint="@string/tamanho" >
+
+        <requestFocus />
+    </EditText>
+
+</RelativeLayout>

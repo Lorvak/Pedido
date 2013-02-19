@@ -19,7 +19,7 @@ import javax.jws.WebParam;
 public class PedidoWebService {
 
     
-    @WebMethod(operationName = "hello")
+    @WebMethod(operationName = "Bem vindo!")
     public void hello(@WebParam(name = "name") Pedido txt) {
         PedidoDAO pedidoDAO = new PedidoDAOImp();
         pedidoDAO.salva(txt);

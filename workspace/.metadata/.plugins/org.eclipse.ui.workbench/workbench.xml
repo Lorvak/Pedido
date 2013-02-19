@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="16" version="2.0">
+<workbench progressCount="23" version="2.0">
 <workbenchAdvisor/>
-<window height="768" maximized="true" width="1024" x="132" y="2">
+<window height="768" maximized="true" minimized="true" width="1024" x="132" y="2">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="250"/>
@@ -102,7 +102,6 @@
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
 <category IMemento.internal.id="Warnings (23 items)"/>
-<category IMemento.internal.id="Warnings"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="75" org.eclipse.ui.ide.markerType="75" org.eclipse.ui.ide.pathField="100" org.eclipse.ui.ide.resourceField="75" org.eclipse.ui.ide.severityAndDescriptionField="250"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -147,7 +146,7 @@
 <view id="com.android.ide.eclipse.ddms.views.AllocTrackerView" partName="Allocation Tracker"/>
 <view id="org.eclipse.jdt.ui.JavadocView" partName="Javadoc"/>
 </views>
-<perspectives activePart="com.android.ide.eclipse.editors.CommonXmlEditor" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
+<perspectives activePart="org.eclipse.jdt.ui.PackageExplorer" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="0" fixed="0" version="0.016">
 <descriptor class="com.android.ide.eclipse.ddms.Perspective" id="com.android.ide.eclipse.ddms.Perspective" label="DDMS"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
@@ -372,162 +371,164 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Pedido_pizzaria/src/com/example/androidapp/bean/Registro.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Pedido_pizzaria/src/com/example/androidapp/bean/Pedido.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Pedido_pizzaria/src/com/example/androidapp/bean/Pizza.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Pedido_pizzaria/src/com/example/androidapp/bean/Bebida.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Pedido_pizzaria/src/com/example/androidapp/bean/Mesa.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Pedido_pizzaria/src/com/example/androidapp/bean/Sabor.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/Pedido_pizzaria/res/layout/activity_pedido_form.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="" path="/Pedido_pizzaria/res/layout/activity_pedido_form.xml"/>
 </editors>
-<item historyLabel="Registro.java" index="0">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Pedido.java" index="1">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Pedido.java" index="1">
-<position info="not_deleted" x="639" y="0"/>
-</item>
-<item historyLabel="Pedido.java" index="1">
+<item historyLabel="Pedido.java" index="0">
 <position info="not_deleted" x="125" y="0"/>
 </item>
-<item historyLabel="Pedido.java" index="1">
+<item historyLabel="Pedido.java" index="0">
 <position info="not_deleted" x="639" y="0"/>
 </item>
-<item historyLabel="Pedido.java" index="1">
+<item historyLabel="Pedido.java" index="0">
 <position info="not_deleted" x="120" y="5"/>
 </item>
-<item historyLabel="Pizza.java" index="2">
+<item historyLabel="Pizza.java" index="1">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Pedido.java" index="1">
+<item historyLabel="Pedido.java" index="0">
 <position info="not_deleted" x="120" y="5"/>
 </item>
-<item historyLabel="Pedido.java" index="1">
+<item historyLabel="Pedido.java" index="0">
 <position info="not_deleted" x="637" y="0"/>
 </item>
-<item historyLabel="Pedido.java" index="1">
+<item historyLabel="Pedido.java" index="0">
 <position info="not_deleted" x="598" y="6"/>
 </item>
-<item historyLabel="Bebida.java" index="3">
+<item historyLabel="Bebida.java" index="2">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Pedido.java" index="1">
+<item historyLabel="Pedido.java" index="0">
 <position info="not_deleted" x="598" y="6"/>
 </item>
-<item historyLabel="Pedido.java" index="1">
+<item historyLabel="Pedido.java" index="0">
 <position info="not_deleted" x="635" y="0"/>
 </item>
-<item historyLabel="Pedido.java" index="1">
+<item historyLabel="Pedido.java" index="0">
 <position info="not_deleted" x="623" y="4"/>
 </item>
-<item historyLabel="Mesa.java" index="4">
+<item historyLabel="Mesa.java" index="3">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Pedido.java" index="1">
+<item historyLabel="Pedido.java" index="0">
 <position info="not_deleted" x="135" y="0"/>
 </item>
-<item historyLabel="Pizza.java" index="2">
+<item historyLabel="Pizza.java" index="1">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Pizza.java" index="2">
+<item historyLabel="Pizza.java" index="1">
 <position info="not_deleted" x="524" y="0"/>
 </item>
-<item historyLabel="Pizza.java" index="2">
+<item historyLabel="Pizza.java" index="1">
 <position info="not_deleted" x="121" y="5"/>
 </item>
-<item historyLabel="Sabor.java" index="5">
+<item historyLabel="Sabor.java" index="4">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Pedido.java" index="1">
+<item historyLabel="Pedido.java" index="0">
 <position info="not_deleted" x="135" y="0"/>
 </item>
-<item historyLabel="Pizza.java" index="2">
+<item historyLabel="Pizza.java" index="1">
 <position info="not_deleted" x="164" y="0"/>
 </item>
-<item historyLabel="Pedido.java" index="1">
+<item historyLabel="Pedido.java" index="0">
 <position info="not_deleted" x="135" y="0"/>
 </item>
-<item historyLabel="Pizza.java" index="2">
+<item historyLabel="Pizza.java" index="1">
 <position info="not_deleted" x="164" y="0"/>
 </item>
-<item historyLabel="Bebida.java" index="3">
+<item historyLabel="Bebida.java" index="2">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Bebida.java" index="3">
+<item historyLabel="Bebida.java" index="2">
 <position info="not_deleted" x="459" y="0"/>
 </item>
-<item historyLabel="Pedido.java" index="1">
+<item historyLabel="Pedido.java" index="0">
 <position info="not_deleted" x="135" y="0"/>
 </item>
-<item historyLabel="Bebida.java" index="3">
+<item historyLabel="Bebida.java" index="2">
 <position info="not_deleted" x="133" y="0"/>
 </item>
-<item historyLabel="Mesa.java" index="4">
+<item historyLabel="Mesa.java" index="3">
 <position info="not_deleted" x="322" y="0"/>
 </item>
-<item historyLabel="Sabor.java" index="5">
+<item historyLabel="Sabor.java" index="4">
 <position info="not_deleted" x="455" y="0"/>
 </item>
-<item historyLabel="Pedido.java" index="1">
+<item historyLabel="Pedido.java" index="0">
 <position info="not_deleted" x="135" y="0"/>
 </item>
-<item historyLabel="Pizza.java" index="2">
+<item historyLabel="Pizza.java" index="1">
 <position info="not_deleted" x="164" y="0"/>
 </item>
-<item historyLabel="Sabor.java" index="5">
+<item historyLabel="Sabor.java" index="4">
 <position info="not_deleted" x="452" y="0"/>
 </item>
-<item historyLabel="Bebida.java" index="3">
+<item historyLabel="Bebida.java" index="2">
 <position info="not_deleted" x="133" y="0"/>
 </item>
-<item historyLabel="Sabor.java" index="5">
+<item historyLabel="Sabor.java" index="4">
 <position info="not_deleted" x="129" y="0"/>
 </item>
-<item historyLabel="Mesa.java" index="4">
+<item historyLabel="Mesa.java" index="3">
 <position info="not_deleted" x="322" y="0"/>
 </item>
-<item historyLabel="Sabor.java" index="5">
+<item historyLabel="Sabor.java" index="4">
 <position info="not_deleted" x="129" y="0"/>
 </item>
-<item historyLabel="Sabor.java" index="5">
+<item historyLabel="Sabor.java" index="4">
 <position info="not_deleted" x="97" y="4"/>
 </item>
-<item historyLabel="Bebida.java" index="3">
+<item historyLabel="Bebida.java" index="2">
 <position info="not_deleted" x="133" y="0"/>
 </item>
-<item historyLabel="Pizza.java" index="2">
+<item historyLabel="Pizza.java" index="1">
 <position info="not_deleted" x="164" y="0"/>
 </item>
-<item historyLabel="Pedido.java" index="1">
+<item historyLabel="Pedido.java" index="0">
 <position info="not_deleted" x="135" y="0"/>
 </item>
-<item historyLabel="Sabor.java" index="5">
+<item historyLabel="Sabor.java" index="4">
 <position info="not_deleted" x="97" y="4"/>
 </item>
-<item historyLabel="Bebida.java" index="3">
+<item historyLabel="Bebida.java" index="2">
 <position info="not_deleted" x="133" y="0"/>
 </item>
-<item historyLabel="Bebida.java" index="3">
+<item historyLabel="Bebida.java" index="2">
 <position info="not_deleted" x="40" y="0"/>
 </item>
-<item historyLabel="Pedido.java" index="1">
+<item historyLabel="Pedido.java" index="0">
 <position info="not_deleted" x="135" y="0"/>
 </item>
-<item historyLabel="Pizza.java" index="2">
+<item historyLabel="Pizza.java" index="1">
 <position info="not_deleted" x="164" y="0"/>
 </item>
-<item historyLabel="Bebida.java" index="3">
+<item historyLabel="Bebida.java" index="2">
 <position info="not_deleted" x="40" y="0"/>
 </item>
-<item historyLabel="Mesa.java" index="4">
+<item historyLabel="Mesa.java" index="3">
 <position info="not_deleted" x="322" y="0"/>
 </item>
-<item historyLabel="Sabor.java" index="5">
+<item historyLabel="Sabor.java" index="4">
 <position info="not_deleted" x="97" y="4"/>
 </item>
-<item active="true" historyLabel="activity_pedido_form.xml" index="6"/>
+<item historyLabel="activity_pedido_form.xml" index="5">
+<position info="not_deleted" x="1225" y="0"/>
+</item>
+<item historyLabel="activity_pedido_form.xml" index="6">
+<position info="not_deleted" x="1352" y="318"/>
+</item>
+<item historyLabel="activity_pedido_form.xml" index="6">
+<position info="not_deleted" x="1174" y="0"/>
+</item>
+<item active="true" historyLabel="activity_pedido_form.xml" index="6">
+<position info="not_deleted" x="967" y="9"/>
+</item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
