@@ -4,9 +4,17 @@
  */
 package br.com.pi.controle;
 
+import br.com.pi.dao.ClienteDAOImp;
 import br.com.pi.dao.FuncionarioDAO;
 import br.com.pi.dao.FuncionarioDAOImp;
+import br.com.pi.dao.LogradouroDAO;
+import br.com.pi.dao.LogradouroDAOImp;
+import br.com.pi.dao.MoradiaDAO;
+import br.com.pi.dao.MoradiaDAOImp;
 import br.com.pi.entidade.Funcionario;
+import br.com.pi.entidade.Logradouro;
+import br.com.pi.entidade.Moradia;
+import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -27,6 +35,34 @@ public class FuncionarioControle {
     private Funcionario funcionario;
     private FuncionarioDAO funcionarioDAO;
     private DataModel model;
+    private DataModel model2;
+    private LogradouroDAOImp logradouroDAO;
+    private Moradia moradia;
+    private List<Moradia> moradias;
+    private MoradiaDAO moradiaDAO;
+    private Logradouro logradouro;
+    
+    public Moradia getMoradia() {
+        if (moradia == null) {
+            moradia = new Moradia();
+        }
+        return moradia;
+    }
+
+    public void setMoradia(Moradia moradia) {
+        this.moradia = moradia;
+    }
+
+    public Logradouro getLogradouro() {
+        if (logradouro == null) {
+            logradouro = new Logradouro();
+        }
+        return logradouro;
+    }
+
+    public void setLogradouro(Logradouro logradouro) {
+        this.logradouro = logradouro;
+    }
 
     public Funcionario getFuncionario() {
         if (funcionario == null) {
@@ -53,6 +89,17 @@ public class FuncionarioControle {
 
     public void setModel(DataModel model) {
         this.model = model;
+    }
+    
+    public DataModel getModel2() {
+        if(model2 == null){
+            model2 = new ListDataModel();
+        }
+        return model2;
+    }
+
+    public void setModel2(DataModel model2) {
+        this.model2 = model2;
     }
 
     public String salvar() {
@@ -120,6 +167,7 @@ public class FuncionarioControle {
     public String alterar() {
         FacesContext context = FacesContext.getCurrentInstance();
         funcionario = (Funcionario) model.getRowData();
+        model2 = new ListDataModel(funcionario.getMoradias());
         setFuncionario(funcionario);
         context.addMessage(null,
                 new FacesMessage(FacesMessage.SEVERITY_INFO,
@@ -131,5 +179,42 @@ public class FuncionarioControle {
     public String btPesquisar() {
         funcionario = null;
         return "pesqFuncionario";
+    }
+    
+    public String btNovoEndereco() {
+        moradia = new Moradia();
+        return "cadNMoradia";
+    }
+
+    public String salvarNovoEndereco() {
+        if(funcionario.getMoradias()==null){
+            funcionario.setMoradias(new ArrayList<Moradia>());
+        }
+        logradouroDAO = new LogradouroDAOImp();
+        logradouro = logradouroDAO.pesquisa(logradouro.getId());
+        moradia.setLogradouro(logradouro);
+        funcionario.getMoradias().add(moradia);
+        moradiaDAO = new MoradiaDAOImp();
+        model2 = new ListDataModel(funcionario.getMoradias());
+        return "cadCliente";
+    }
+    
+     public void pesquisaMoradias() {
+        funcionarioDAO = new FuncionarioDAOImp();
+        funcionario = (Funcionario) model.getRowData();
+        funcionario = funcionarioDAO.pesquisa(funcionario.getId());
+        model2 = new ListDataModel(funcionario.getMoradias());
+    }
+     
+     public void deletarMoradia() {
+        moradiaDAO = new MoradiaDAOImp();
+        moradia = (Moradia) model2.getRowData();
+        funcionario.getMoradias().remove(moradia);
+        if(moradia.getId() != null){
+            if(moradias == null){
+                moradias = new ArrayList<Moradia>();
+            }
+            moradias.add(moradia);
+        }
     }
 }
