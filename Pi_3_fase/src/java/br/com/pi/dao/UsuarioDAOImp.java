@@ -41,4 +41,14 @@ public class UsuarioDAOImp extends BaseDAOImp<Usuario, Long> implements UsuarioD
         fechaConexao();
         return bairros;
     }
+
+    @Override
+    public Usuario pesquisaLoginSenha(String login, String senha) {
+        abreConexao();
+        Query query = session.createQuery("FROM Usuario u WHERE u.login = :login AND u.senha = :senha");
+        query.setString("login", login);
+        query.setString("senha", senha);
+        Usuario usuario = (Usuario) query.uniqueResult();
+        return usuario;
+    }
 }

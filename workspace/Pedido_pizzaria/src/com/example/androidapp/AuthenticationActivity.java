@@ -15,16 +15,17 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class AuthenticationActivity extends Activity {
-	private static int idUsuario=-1;
+	private static Long idFuncionario;
 		
-    public static int getIdUsuario() {
-		return idUsuario;
+    public static Long getIdUsuario() {
+		return idFuncionario;
 	}
 
-	public static void setIdUsuario(int idUsuario) {
-		AuthenticationActivity.idUsuario = idUsuario;
+	public static void setIdUsuario(Long idFuncionario) {
+		AuthenticationActivity.idFuncionario = idFuncionario;
 	}
 
 	@Override
@@ -45,12 +46,13 @@ public class AuthenticationActivity extends Activity {
     	String login=campoLogin.getText().toString();
     	String senha= campoSenha.getText().toString();
     	try{
-    		idUsuario=autentica(login, senha);
+    		idFuncionario=autentica(login, senha);
     	}catch(Exception e){
-    		idUsuario=-1;
+    		idFuncionario=null;
     	}
     	
-    	if(idUsuario!=-1){
+    	if(idFuncionario!=null){
+    		Toast.makeText(getBaseContext(), idFuncionario.toString(), Toast.LENGTH_SHORT).show();
     		Intent navegador=  new Intent(this, MainActivity.class);
     		startActivity(navegador);
     	}else{
@@ -62,11 +64,12 @@ public class AuthenticationActivity extends Activity {
     	
     }
     
-    public int autentica(String login,String senha) throws Exception{
-         	String wsdlURL =WebServicesProperties.WSDL_URL_USUARIO;
-        	String namespace = WebServicesProperties.NAMESPACE_USUARIO; // namespace on WSDL
-        	String soapAction = WebServicesProperties.SOAPACTION_USUARIO; //portType tag on WSDL
-        	String methodName = "autentica";  //operation on WSDL
+    public Long autentica(String login,String senha) throws Exception{
+    		Long id = null;
+         	String wsdlURL =WebServicesProperties.WSDL_URL_LOGAR;
+        	String namespace = WebServicesProperties.NAMESPACE_LOGAR; // namespace on WSDL
+        	String soapAction = WebServicesProperties.SOAPACTION_LOGAR; //portType tag on WSDL
+        	String methodName = "logar";  //operation on WSDL
         	  
     		SoapObject request = new SoapObject(namespace, methodName); 
     		request.addProperty("login", login);
@@ -82,7 +85,11 @@ public class AuthenticationActivity extends Activity {
     		sr.waitToThreadFinish();
     		SoapObject retornoRequisicao = (SoapObject) envelope.bodyIn;
     		Log.e("web", "recebeu a resposta");
-    		int id = Integer.valueOf(retornoRequisicao.getProperty(0).toString());
+    		String aux = retornoRequisicao.getProperty(0).toString();
+    		if(!aux.equals("0")){
+    			id = Long.parseLong(aux);
+    		}
+    		Log.e("web", "valor do id: " + id.toString());
     		return id;
     }
 }

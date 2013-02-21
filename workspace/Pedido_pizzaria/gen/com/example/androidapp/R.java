@@ -15,23 +15,19 @@ public final class R {
         public static final int ic_action_search=0x7f020001;
     }
     public static final class id {
+        public static final int btMainCadPedido=0x7f070009;
         public static final int btSearch=0x7f070001;
+        public static final int btVoltar=0x7f07000d;
         public static final int button1=0x7f070003;
-        public static final int button2=0x7f07000d;
-        public static final int datePickerData=0x7f07000c;
         public static final int datePickerFiltro=0x7f070000;
         public static final int editText1=0x7f070005;
         public static final int editText2=0x7f070007;
-        public static final int editTextBebida=0x7f07000f;
-        public static final int editTextBorda=0x7f070010;
-        public static final int editTextDescricao=0x7f070009;
-        public static final int editTextHoras=0x7f07000a;
-        public static final int editTextSabor=0x7f07000e;
-        public static final int editTextTamanho=0x7f070011;
         public static final int imageView1=0x7f070004;
         public static final int listViewRegistros=0x7f070002;
-        public static final int menu_settings=0x7f070012;
-        public static final int spinnerProjeto=0x7f07000b;
+        public static final int menu_settings=0x7f07000e;
+        public static final int spnBebida=0x7f07000c;
+        public static final int spnMesa=0x7f07000a;
+        public static final int spnPizza=0x7f07000b;
         public static final int textView1=0x7f070006;
         public static final int textView2=0x7f070008;
     }
@@ -79,6 +75,7 @@ public final class R {
         public static final int title_activity_main=0x7f040003;
         public static final int title_activity_pedido_form=0x7f040017;
         public static final int title_activity_tela_sucesso=0x7f040008;
+        public static final int txtBtMainCadPaedido=0x7f04001d;
         public static final int txtbebida=0x7f04001c;
         public static final int voltar=0x7f04000a;
     }

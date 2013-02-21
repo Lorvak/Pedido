@@ -13,4 +13,5 @@ import java.util.List;
  */
 public interface UsuarioDAO extends BaseDAO<Usuario, Long> {
     List<Usuario> pesquisaLikeLogin(String login);
+    Usuario pesquisaLoginSenha(String login, String senha);
 }

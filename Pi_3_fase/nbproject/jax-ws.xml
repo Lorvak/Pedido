@@ -4,6 +4,9 @@
     <service name="PedidoWebService">
       <implementation-class>br.com.pi.webServices.PedidoWebService</implementation-class>
     </service>
+    <service name="LogarService">
+      <implementation-class>br.com.pi.webServices.LogarService</implementation-class>
+    </service>
   </services>
   <clients/>
 </jax-ws>

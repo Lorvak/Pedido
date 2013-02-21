@@ -4,56 +4,34 @@
     android:layout_height="match_parent"
     tools:context=".PedidoFormActivity" >
 
-    <EditText
-        android:id="@+id/editTextSabor"
+    <Spinner
+        android:id="@+id/spnMesa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:ems="10"
-        android:hint="@string/sabor" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" />
+
+    <Spinner
+        android:id="@+id/spnPizza"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/spnMesa" />
+
+    <Spinner
+        android:id="@+id/spnBebida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/spnPizza" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/btVoltar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="70dp"
-        android:onClick="salvar"
-        android:text="@string/save" />
-
-    <EditText
-        android:id="@+id/editTextBebida"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        
-        android:layout_alignLeft="@+id/editTextSabor"
-        android:layout_below="@+id/editTextBorda"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:text="@string/txtbebida" />
-
-    <EditText
-        android:id="@+id/editTextBorda"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editTextTamanho"
-        android:layout_below="@+id/editTextTamanho"
-        android:ems="10"
-        android:hint="@string/borda" />
-
-    <EditText
-        android:id="@+id/editTextTamanho"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editTextSabor"
-        android:layout_below="@+id/editTextSabor"
-        android:ems="10"
-        android:hint="@string/tamanho" >
-
-        <requestFocus />
-    </EditText>
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/spnBebida"
+        android:text="Button" />
 
 </RelativeLayout>

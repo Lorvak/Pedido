@@ -58,6 +58,14 @@ public class ClienteControle {
         this.cliente = cliente;
     }
 
+    public ClienteDAO getClienteDAO() {
+        return clienteDAO;
+    }
+
+    public void setClienteDAO(ClienteDAO clienteDAO) {
+        this.clienteDAO = clienteDAO;
+    }
+
     public DataModel getModel() {
         return model;
     }
