@@ -123,9 +123,9 @@ public class ActivityListarPedidos extends Activity {
     	String methodName = "getRegistros";  //operation on WSDL
     	  
 		SoapObject request = new SoapObject(namespace, methodName); 
-//		request.addProperty("dia", String.valueOf(data.getDate()));
-//		request.addProperty("mes", String.valueOf(data.getMonth()));
-//		request.addProperty("ano", String.valueOf(data.getYear()));
+		request.addProperty("dia", String.valueOf(data.getDate()));
+		request.addProperty("mes", String.valueOf(data.getMonth()));
+		request.addProperty("ano", String.valueOf(data.getYear()));
 		request.addProperty("idUsuario", AuthenticationActivity.getIdUsuario());
 		SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11); 
 		envelope.setOutputSoapObject(request);
