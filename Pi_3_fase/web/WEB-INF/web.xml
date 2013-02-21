@@ -4,24 +4,39 @@
         <param-name>javax.faces.PROJECT_STAGE</param-name>
         <param-value>Development</param-value>
     </context-param>-->
+    
+    <!--Filtro de sessao    
+    <filter>  
+        <filter-name>VerificaSession</filter-name>  
+        <filter-class>seupacote.SecFilter</filter-class>  
+    </filter>  
+    <filter-mapping>  
+        <filter-name>VerificaSession</filter-name>  
+        <url-pattern>/sistema/*</url-pattern>  
+    </filter-mapping> -->
+    
     <context-param>
         <param-name>org.primefaces.themes</param-name>
         <param-value>pepper-grinder</param-value>
     </context-param>
+    
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.faces</url-pattern>
     </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    
     <welcome-file-list>
         <welcome-file>index.faces</welcome-file>
     </welcome-file-list>
