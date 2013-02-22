@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 /**
  *
@@ -35,25 +36,29 @@ public class Pedido implements Serializable {
     private Mesa mesa;
     @OneToOne
     private Funcionario funcionario;
+    @Transient
+    private Double valorFinal;
 
     public Pedido() {
     }
 
-    public Pedido(Double preco, List<Pizza> pizzas, List<Bebida> bebidas, Mesa mesa, Funcionario funcionario) {
-        this.preco = preco;
-        this.pizzas = pizzas;
-        this.bebidas = bebidas;
-        this.mesa = mesa;
-        this.funcionario = funcionario;
-    }
-    
-    public Pedido(Long id, Double preco, List<Pizza> pizzas, List<Bebida> bebidas, Mesa mesa, Funcionario funcionario) {
+    public Pedido(Long id, Double preco, Boolean aberto, List<Pizza> pizzas, List<Bebida> bebidas, Mesa mesa, Funcionario funcionario, Double valorFinal) {
         this.id = id;
         this.preco = preco;
+        this.aberto = aberto;
         this.pizzas = pizzas;
         this.bebidas = bebidas;
         this.mesa = mesa;
         this.funcionario = funcionario;
+        this.valorFinal = valorFinal;
+    }
+
+    public Double getValorFinal() {
+        return valorFinal;
+    }
+
+    public void setValorFinal(Double valorFinal) {
+        this.valorFinal = valorFinal;
     }
 
     public Long getId() {

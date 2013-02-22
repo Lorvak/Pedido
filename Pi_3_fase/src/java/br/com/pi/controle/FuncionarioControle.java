@@ -42,6 +42,30 @@ public class FuncionarioControle {
     private List<Moradia> moradias;
     private MoradiaDAO moradiaDAO;
     private Logradouro logradouro;
+    private Perfil perfil;
+    private Usuario usuario;
+
+    public Usuario getUsuario() {
+        if(usuario == null){
+            usuario = new Usuario();
+        }
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Perfil getPerfil() {
+        if(perfil == null){
+            perfil = new Perfil();
+        }
+        return perfil;
+    }
+
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
+    }
     
     public Moradia getMoradia() {
         if (moradia == null) {
@@ -68,8 +92,6 @@ public class FuncionarioControle {
     public Funcionario getFuncionario() {
         if (funcionario == null) {
             funcionario = new Funcionario();
-            funcionario.setUsuario(new Usuario());
-            funcionario.getUsuario().setPerfil(new Perfil());
         }
         return funcionario;
     }
@@ -108,6 +130,8 @@ public class FuncionarioControle {
     public String salvar() {
         FacesContext context = FacesContext.getCurrentInstance();
         funcionarioDAO = new FuncionarioDAOImp();
+        funcionario.setUsuario(usuario);
+        funcionario.getUsuario().setPerfil(perfil);
         if (funcionario.getId() == null) {
             funcionarioDAO.salva(funcionario);
             context.addMessage(null,
@@ -170,6 +194,8 @@ public class FuncionarioControle {
     public String alterar() {
         FacesContext context = FacesContext.getCurrentInstance();
         funcionario = (Funcionario) model.getRowData();
+        usuario = funcionario.getUsuario();
+        perfil = funcionario.getUsuario().getPerfil();
         model2 = new ListDataModel(funcionario.getMoradias());
         setFuncionario(funcionario);
         context.addMessage(null,

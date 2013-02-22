@@ -36,7 +36,7 @@
                         <p:password id="senha" value="#{funcionarioControle.funcionario.usuario.senha}"/>
 
                         <h:outputText value="Perfil: " />  
-                        <p:selectOneMenu id="perfil2" value="#{funcionarioControle.funcionario.usuario.perfil.id}" effect="fold">  
+                        <p:selectOneMenu id="perfil" value="#{funcionarioControle.perfil.id}" effect="fold">  
                             <f:selectItem itemLabel="Select One" itemValue="0" />  
                             <f:selectItems value="#{usuarioControle.comboPerfis}" /> 
                         </p:selectOneMenu>

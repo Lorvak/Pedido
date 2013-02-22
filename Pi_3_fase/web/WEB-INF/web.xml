@@ -5,16 +5,6 @@
         <param-value>Development</param-value>
     </context-param>
     
-    <!--Filtro de sessao    
-    <filter>  
-        <filter-name>VerificaSession</filter-name>  
-        <filter-class>seupacote.SecFilter</filter-class>  
-    </filter>  
-    <filter-mapping>  
-        <filter-name>VerificaSession</filter-name>  
-        <url-pattern>/sistema/*</url-pattern>  
-    </filter-mapping> -->
-    
     <context-param>
         <param-name>org.primefaces.themes</param-name>
         <param-value>pepper-grinder</param-value>

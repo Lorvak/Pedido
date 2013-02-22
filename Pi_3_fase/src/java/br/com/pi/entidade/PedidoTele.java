@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
+import javax.persistence.Transient;
 import org.hibernate.annotations.Cascade;
 
 /**
@@ -44,29 +45,39 @@ public class PedidoTele implements Serializable {
     private Moradia moradia;
     @OneToOne
     private Entregador entregador;
+    @Transient
+    private Double valorFinal;
 
     public PedidoTele() {
     }
 
-    public PedidoTele(Double preco, List<Pizza> pizzas, List<Bebida> bebidas, Cliente cliente, Funcionario funcionario, Moradia moradia, Entregador entregador) {
-        this.preco = preco;
-        this.pizzas = pizzas;
-        this.bebidas = bebidas;
-        this.cliente = cliente;
-        this.funcionario = funcionario;
-        this.moradia = moradia;
-        this.entregador = entregador;
-    }
-
-    public PedidoTele(Long id, Double preco, List<Pizza> pizzas, List<Bebida> bebidas, Cliente cliente, Funcionario funcionario, Moradia moradia, Entregador entregador) {
+    public PedidoTele(Long id, Double preco, Date horaPedido, List<Pizza> pizzas, List<Bebida> bebidas, Cliente cliente, Funcionario funcionario, Moradia moradia, Entregador entregador, Double valorFinal) {
         this.id = id;
         this.preco = preco;
+        this.horaPedido = horaPedido;
         this.pizzas = pizzas;
         this.bebidas = bebidas;
         this.cliente = cliente;
         this.funcionario = funcionario;
         this.moradia = moradia;
         this.entregador = entregador;
+        this.valorFinal = valorFinal;
+    }
+
+    public Date getHoraPedido() {
+        return horaPedido;
+    }
+
+    public void setHoraPedido(Date horaPedido) {
+        this.horaPedido = horaPedido;
+    }
+
+    public Double getValorFinal() {
+        return valorFinal;
+    }
+
+    public void setValorFinal(Double valorFinal) {
+        this.valorFinal = valorFinal;
     }
 
     public Long getId() {
