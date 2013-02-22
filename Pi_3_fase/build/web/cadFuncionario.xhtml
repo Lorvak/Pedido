@@ -24,24 +24,67 @@
                         <h:outputText  value="Nome:"/>
                         <p:inputText id="nome" value="#{funcionarioControle.funcionario.nome}" required="true" requiredMessage="Campo nome é obrigatorio! "/>
                         <h:outputText  value="Nascimento:"/>
-                        <p:inputText id="nascimento" value="#{funcionarioControle.funcionario.nascimento}" required="true" requiredMessage="Campo nascimento é obrigatorio! "/>
-                        <h:outputText value="Cpf: " />  
-                        <p:inputText id="cpf" value="#{funcionarioControle.funcionario.cpf}" required="true" requiredMessage="Campo celular é obrigatorio! "/>
+                        <p:calendar locale="pt" showButtonPanel="true" navigator="true" yearRange="1920" id="nascimento" 
+                                    value="#{funcionarioControle.funcionario.nascimento}" required="true" requiredMessage="Campo nascimento é obrigatorio! "/>
                         <h:outputText value="Celular: " />  
                         <p:inputText id="celular" value="#{funcionarioControle.funcionario.celular}" required="true" requiredMessage="Campo celular é obrigatorio! "/>
                         <h:outputText value="Email: " />  
                         <p:inputText id="email" value="#{funcionarioControle.funcionario.email}" required="true" requiredMessage="Campo email é obrigatorio! "/>
-                        <h:outputText value="Ederecos: " />  
-                        <p:inputText id="endrecos" value="#{funcionarioControle.funcionario.moradias}" required="true" requiredMessage="Campo enderecos é obrigatorio! "/>
+                        <h:outputText value="Usuario: " />  
+                        <p:inputText id="login" value="#{funcionarioControle.funcionario.usuario.login}"/>
+                        <h:outputText value="Senha: " />  
+                        <p:password id="senha" value="#{funcionarioControle.funcionario.usuario.senha}"/>
+
+                        <h:outputText value="Perfil: " />  
+                        <p:selectOneMenu id="perfil2" value="#{funcionarioControle.funcionario.usuario.perfil.id}" effect="fold">  
+                            <f:selectItem itemLabel="Select One" itemValue="0" />  
+                            <f:selectItems value="#{usuarioControle.comboPerfis}" /> 
+                        </p:selectOneMenu>
+                        <h:outputText value="Cpf: " />  
+                        <p:inputText id="cpf" value="#{funcionarioControle.funcionario.cpf}" required="true" requiredMessage="Campo celular é obrigatorio! "/>
                         <h:outputText value="Pis: " />  
                         <p:inputText id="pis" value="#{funcionarioControle.funcionario.pis}" required="true" requiredMessage="Campo cadastro é obrigatorio! "/>
                         <h:outputText value="Carteira de Trabalho: " />  
                         <p:inputText id="CarteiraTrabalho" value="#{funcionarioControle.funcionario.carteiraTrabalho}" required="true" requiredMessage="Campo cadastro é obrigatorio! "/>
                         <h:outputText value="Cracha: " />  
                         <p:inputText id="cracha" value="#{funcionarioControle.funcionario.cracha}" required="true" requiredMessage="Campo cadastro é obrigatorio! "/>
-                        <p:commandButton value="salvar" action="#{funcionarioControle.salvar()}" ajax="false"/>
                     </h:panelGrid>
                 </p:fieldset>
+                    <p:dataTable id="tabelamoradias" value="#{funcionarioControle.model2}" var="d" emptyMessage="Nenhum Valor encontrado">
+                        <p:column>
+                            <f:facet name="header">Bairro</f:facet>
+                            <h:outputText value="${d.logradouro.bairro.nome}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Logradouro</f:facet>
+                            <h:outputText value="${d.logradouro.nome}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Cep</f:facet>
+                            <h:outputText value="${d.logradouro.cep}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Complemento</f:facet>
+                            <h:outputText value="${d.complemento}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Numero</f:facet>
+                            <h:outputText value="${d.numero}"></h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Telefone</f:facet>
+                            <h:outputText value="${d.telefone}"></h:outputText>
+                        </p:column>
+                        <p:column style="width:4%">  
+                            <f:facet name="header">Deletar</f:facet>
+                            <p:commandButton id="selectButton2"  icon="ui-icon-close" title="Deletar"
+                                             ajax="false" action="#{funcionarioControle.deletarMoradia()}"/>
+                        </p:column> 
+                    </p:dataTable>
+                    <h:panelGrid id="painel2" columns="2" style="margin: 0px auto">
+                        <p:commandButton id="btaddsabor" value="Adicionar Endereço" action="#{funcionarioControle.btNovoEndereco()}" ajax="false" />
+                        <p:commandButton value="salvar" action="#{funcionarioControle.salvar()}" ajax="false"/>
+                    </h:panelGrid>
             </h:form>
         </p:layoutUnit>
     </ui:define>

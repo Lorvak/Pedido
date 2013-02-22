@@ -20,12 +20,11 @@ import javax.servlet.http.HttpSession;
  *
  * @author hugo
  */
-@WebFilter(servletNames = {"Faces Servlet"})
+//@WebFilter(servletNames = {"Faces Servlet"})
 public class LoginFiltro implements Filter {
 
     @Override
     public void init(FilterConfig fc) throws ServletException {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
@@ -43,6 +42,5 @@ public class LoginFiltro implements Filter {
 
     @Override
     public void destroy() {
-        
     }
 }
