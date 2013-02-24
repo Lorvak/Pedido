@@ -4,8 +4,7 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="./index.xhtml"
                 xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:c="http://java.sun.com/jsp/jstl/core">
+                xmlns:f="http://java.sun.com/jsf/core">
 
     <ui:define name="center">
         <p:layoutUnit position="center" header="Cadstro de Pedido">
@@ -28,9 +27,10 @@
                             <f:selectItem itemLabel="Select One" itemValue="" />  
                             <f:selectItems value="#{pedidoControle.comboMesa}" />  
                         </p:selectOneMenu>
-                        <h:outputText value="ID de Funcionario: " /> 
+                        <h:outputText value="Cracha de Funcionario: " /> 
                         <p:inputText id="idfuncionario" value="#{pedidoControle.funcionario}"/>
                     </h:panelGrid>
+                    <h:panelGrid id="painel2" columns="1">
                     <p:dataTable id="tabelabebidas" value="#{pedidoControle.model4}" var="bebida" emptyMessage="Nenhum Valor encontrado">
                         <f:facet name="header">
                             <h:outputText value="Listando bebida(s)"/>
@@ -68,9 +68,9 @@
                             <p:commandButton id="cbPesqPizza" action="#{pedidoControle.pesquisasabor()}" oncomplete="show.show()" update="showDialog"  value="Mostrar Pizza"/>
                             <p:confirmDialog id="showDialog" appendToBody="true" header="Pizza" message="" widgetVar="show">
 
-                                <h:outputText value="Tamanho: #{pedidoControle.pizza.tamanho.nome}" /> <br/>
-                                <h:outputText value="Borda: #{pedidoControle.pizza.borda.nome}" /> <br/>
-                                <h:outputText value="Preço Final: #{pedidoControle.pizza.precoFinal}" /> <br/> 
+                                <h:outputText value="Tamanho: #{pedidoControle.pizza.tamanho.nome}"/>
+                                <h:outputText value="Borda: #{pedidoControle.pizza.borda.nome}"/>
+                                <h:outputText value="Preço Final: #{pedidoControle.pizza.precoFinal}"/>
 
                                 <p:dataTable id="tabelapizza" value="#{pedidoControle.model2}" var="sabores" emptyMessage="Nenhum Valor encontrado">
                                     <p:column>
@@ -81,7 +81,7 @@
                                         <f:facet name="header">Obs</f:facet>
                                         <h:outputText value="${sabores.obs}"></h:outputText>
                                     </p:column>
-                                </p:dataTable> <br/>
+                                </p:dataTable>
 
                                 <p:commandButton id="fechar" value="Fechar" onclick="show.hide()" type="button"/>
                             </p:confirmDialog>
@@ -94,7 +94,8 @@
                         </p:column> 
                     </p:dataTable>
                     <p:commandButton id="btaddpizza" value="Adicionar Pizza" action="#{pedidoControle.novaPizza()}" ajax="false" />
-                    <h:panelGrid id="painel2" columns="2">
+                    </h:panelGrid>
+                    <h:panelGrid id="painel3" columns="1">
                         <p:commandButton value="salvar" action="#{pedidoControle.salvar()}" ajax="false"/>
                     </h:panelGrid>
                 </p:fieldset>

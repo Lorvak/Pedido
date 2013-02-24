@@ -58,7 +58,6 @@
                     <p:panelMenu style="width:200px">
                         <p:submenu label="Navegação" >
                             <p:menuitem value="HOME" url="index.faces" icon="ui-icon-star"/>
-                            <p:menuitem value="Prime Faces" url="http://www.primefaces.org" icon="ui-icon-star"/>
                             <p:submenu label="Endereco" icon="ui-icon-extlink">
                                 <p:submenu label="Pais" icon="ui-icon-extlink">
                                     <p:menuitem value="Cadastrar" action="#{paisControle.novo()}" ajax="false" icon="ui-icon-star"/>
@@ -80,11 +79,6 @@
                                     <p:menuitem value="Cadastrar" action="#{logradouroControle.novo()}" ajax="false" icon="ui-icon-star"/>
                                     <p:menuitem value="Pesquisar por nome" action="#{logradouroControle.pesq()}" ajax="false" icon="ui-icon-star"/>
                                     <p:menuitem value="Pesquisar por cep" action="#{logradouroControle.pesqCep()}" ajax="false" icon="ui-icon-star"/>
-                                </p:submenu>
-                                <p:submenu label="Moradia" icon="ui-icon-extlink">
-                                    <p:menuitem value="Cadastrar" action="#{moradiaControle.novo()}" ajax="false" icon="ui-icon-star"/>
-                                    <p:menuitem value="Pesquisar por Numero" action="#{moradiaControle.pesq()}" ajax="false" icon="ui-icon-star"/>
-                                    <p:menuitem value="Pesquisar por Telefone" action="#{moradiaControle.pesqFone()}" ajax="false" icon="ui-icon-star"/>
                                 </p:submenu>
                             </p:submenu>
                             <p:submenu label="Pedido" icon="ui-icon-extlink">
@@ -129,10 +123,6 @@
                                 <p:submenu label="Cliente" icon="ui-icon-extlink">
                                     <p:menuitem value="Cadastrar" action="#{clienteControle.novoCliente()}" ajax="false" icon="ui-icon-star"/>
                                     <p:menuitem value="Pesquisar" action="#{clienteControle.btPesquisar()}" ajax="false" icon="ui-icon-star"/>
-                                </p:submenu>
-                                <p:submenu label="Usuario" icon="ui-icon-extlink">
-                                    <p:menuitem value="Cadastrar" action="#{usuarioControle.novoUsuario()}" ajax="false" icon="ui-icon-star"/>
-                                    <p:menuitem value="Pesquisar" action="#{usuarioControle.btPesquisar()}" ajax="false" icon="ui-icon-star"/>
                                 </p:submenu>
                                 <p:submenu label="Funcionario" icon="ui-icon-extlink">
                                     <p:menuitem value="Cadastrar" action="#{funcionarioControle.novoFuncionario()}" ajax="false" icon="ui-icon-star"/>

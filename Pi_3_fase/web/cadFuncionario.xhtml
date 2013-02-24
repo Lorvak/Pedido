@@ -31,9 +31,9 @@
                         <h:outputText value="Email: " />  
                         <p:inputText id="email" value="#{funcionarioControle.funcionario.email}" required="true" requiredMessage="Campo email é obrigatorio! "/>
                         <h:outputText value="Usuario: " />  
-                        <p:inputText id="login" value="#{funcionarioControle.funcionario.usuario.login}"/>
+                        <p:inputText id="login" value="#{funcionarioControle.usuario.login}"/>
                         <h:outputText value="Senha: " />  
-                        <p:password id="senha" value="#{funcionarioControle.funcionario.usuario.senha}"/>
+                        <p:password id="senha" value="#{funcionarioControle.usuario.senha}"/>
 
                         <h:outputText value="Perfil: " />  
                         <p:selectOneMenu id="perfil" value="#{funcionarioControle.perfil.id}" effect="fold">  

@@ -92,6 +92,8 @@ public class FuncionarioControle {
     public Funcionario getFuncionario() {
         if (funcionario == null) {
             funcionario = new Funcionario();
+            funcionario.setUsuario(new Usuario());
+            funcionario.getUsuario().setPerfil(new Perfil());
         }
         return funcionario;
     }
@@ -144,7 +146,7 @@ public class FuncionarioControle {
                     "Funcionario alterado com sucesso!", ""));
         }
         limpar();
-        return "cadFuncionario";
+        return "pesqFuncionario";
     }
 
     private void limpar() {
@@ -212,7 +214,7 @@ public class FuncionarioControle {
     
     public String btNovoEndereco() {
         moradia = new Moradia();
-        return "cadNMoradia";
+        return "cadMoradia";
     }
 
     public String salvarNovoEndereco() {
@@ -225,7 +227,7 @@ public class FuncionarioControle {
         funcionario.getMoradias().add(moradia);
         moradiaDAO = new MoradiaDAOImp();
         model2 = new ListDataModel(funcionario.getMoradias());
-        return "cadCliente";
+        return "cadFuncionario";
     }
     
      public void pesquisaMoradias() {
