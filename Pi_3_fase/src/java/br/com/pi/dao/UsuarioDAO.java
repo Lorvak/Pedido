@@ -4,6 +4,7 @@
  */
 package br.com.pi.dao;
 
+import br.com.pi.entidade.Pessoa;
 import br.com.pi.entidade.Usuario;
 import java.util.List;
 
@@ -12,6 +13,8 @@ import java.util.List;
  * @author Liana
  */
 public interface UsuarioDAO extends BaseDAO<Usuario, Long> {
-    List<Usuario> pesquisaLikeLogin(String login);
-    Usuario pesquisaLoginSenha(String login, String senha);
+    public List<Usuario> pesquisaLikeLogin(String login);
+    public Usuario loga(Usuario usu);
+    public Pessoa usuario(String login);
+    public Usuario pesquisaLoginSenha(String login, String senha);
 }

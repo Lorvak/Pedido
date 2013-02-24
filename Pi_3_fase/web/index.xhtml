@@ -12,7 +12,7 @@
                 font-size: 12px !important;
             }
         </style>
-         <script type="text/javascript">
+        <script type="text/javascript">
             PrimeFaces.locales['pt'] = {    
                 closeText: 'Fechar',    
                 prevText: 'Anterior',    
@@ -46,8 +46,16 @@
     <h:body>
         <p:layout fullPage="true">
             <p:layoutUnit position="north" size="180" header="SENAC" resizable="true" closable="true" collapsible="true">
-                
                 <div id="topo" style="width: 100%; text-align: center;">
+                    <div id="controleUsuario" style="float: left; width: 100px;">
+                        <h:form id="formusu">
+                            <h:panelGrid id="painelUsuario" columns="2">
+                                <h:outputText value="Usuario: "/>
+                                <h:outputText value="#{usuarioControle.pessoa.nome}"/>
+                                <p:commandButton value="sair" action="#{usuarioControle.sair()}" ajax="false"/>
+                            </h:panelGrid>
+                        </h:form>
+                    </div>
                 </div>
             </p:layoutUnit>
             <p:layoutUnit position="west"  header="Menu" 

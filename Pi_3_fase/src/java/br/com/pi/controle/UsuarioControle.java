@@ -9,6 +9,7 @@ import br.com.pi.dao.PerfilDAOImp;
 import br.com.pi.dao.UsuarioDAO;
 import br.com.pi.dao.UsuarioDAOImp;
 import br.com.pi.entidade.Perfil;
+import br.com.pi.entidade.Pessoa;
 import br.com.pi.entidade.Usuario;
 import br.com.pi.util.Cripto;
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ import javax.faces.event.ActionEvent;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -34,8 +36,17 @@ public class UsuarioControle {
     private List<Usuario> usuarios;
     private UsuarioDAO usuarioDAO;
     private Perfil perfil;
+    private Pessoa pessoa;
     private DataModel model;
     private Cripto cripto;
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
 
     public Usuario getUsuario() {
         if (usuario == null) {
@@ -171,28 +182,36 @@ public class UsuarioControle {
         return listaCombo;
     }
 
-    public String logar() {
-        FacesContext context = FacesContext.getCurrentInstance();
+    public String logar() throws Exception {
         usuarioDAO = new UsuarioDAOImp();
-        usuarios = usuarioDAO.getTodos();
         cripto = new Cripto();
-        for (Usuario usuario1 : usuarios) {
-            if (usuario.getLogin().equals(usuario1.getLogin())) {
-                usuario.setSenha(cripto.criptoGraf(usuario.getSenha()));
-                if (usuario.getSenha().equals(usuario1.getSenha())) {
-                    if (!usuario1.isLogado()) {
-                        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario Logado com Sucesso!", ""));
-                        return "index";
-                    } else {
-                        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Usuario ja esta Logado!", ""));
-                    }
-                } else {
-                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Usuario Invalido!", ""));
-                }
+        String pagina = null;
+        usuario.setSenha(cripto.criptoGraf(usuario.getSenha()));
+        if (usuario.getLogin() != null) {
+            usuario = usuarioDAO.loga(usuario);
+            if (usuario.isLogado()) {
+                HttpSession session = (HttpSession) FacesContext.
+                        getCurrentInstance().getExternalContext().getSession(false);
+                session.setAttribute("autenticado", true);
+                pessoa = usuarioDAO.usuario(usuario.getLogin());
+                pagina = "index";
             } else {
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Usuario Invalido!", ""));
+                pagina = "login";
+                FacesContext context = FacesContext.getCurrentInstance();
+                context.addMessage(null,
+                        new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                        "Login ou Senha incorreto!", ""));
             }
         }
+        return pagina;
+    }
+
+    public String sair() {
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, pessoa.getNome() + " Desconectou", ""));
+        session.removeAttribute("autenticado");
+        pessoa = null;
         return "login";
     }
 }

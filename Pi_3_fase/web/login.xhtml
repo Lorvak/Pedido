@@ -6,7 +6,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       >
     <h:head>
-        <title>Loguin</title>
+        <title>Login</title>
         <style type="text/css">
             .ui-widget{
                 font-size: 12px !important;
@@ -15,10 +15,8 @@
     </h:head>
     <h:body>
         <div style="margin: 50px auto 0; width: 350px; height: auto">
-            <a href="template.faces">
-                <p:graphicImage value="imagem/logar.png"/>
-            </a>
             <h:form id="form_loga">
+                <p:growl id="messages" autoUpdate="true"/>
                 <h:panelGrid columns="2">
                     <p:outputLabel for="login" value="Usuário:"/>
                     <p:inputText id="login" value="#{usuarioControle.usuario.login}" required="true"
@@ -29,7 +27,6 @@
                     <span> </span>
                     <p:commandButton value="Logar" action="#{usuarioControle.logar()}" ajax="false"/>
                 </h:panelGrid>
-                <p:messages id="mensagens" showSummary="true" />
             </h:form>
         </div>
     </h:body>
