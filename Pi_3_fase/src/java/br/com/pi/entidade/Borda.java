@@ -23,7 +23,7 @@ public class Borda implements Serializable {
     private Long id;
     @Column(nullable=true,precision=2)
     private Double preco;
-    @Column(nullable=false)
+    @Column(nullable=false,unique=true)
     private String nome;
 
     public Borda() {

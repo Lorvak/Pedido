@@ -23,14 +23,14 @@
                     <h:panelGrid id="painel" columns="2">
                         <h:outputText value="Pais: "/>  
                         <p:selectOneMenu id="pais" value="#{cidadeControle.pais.id}" effect="fold" required="true" requiredMessage="Campo Pais é obrigatorio! ">  
-                            <f:selectItem itemLabel="Select One" itemValue="0" />  
+                            <f:selectItem itemLabel="Selecione Um" itemValue="0" />  
                             <f:selectItems value="#{cidadeControle.comboPais}"/>
                             <f:ajax execute="pais" render="IDestado"/>
                         </p:selectOneMenu>
                         <h:outputText value="Estado: "/>  
                         <p:selectOneMenu id="IDestado" value="#{cidadeControle.estado.id}" effect="fold" required="true" requiredMessage="Campo Estado é obrigatorio! " 
                                          disabled="#{cidadeControle.pais.id == 0 || cidadeControle.pais.id == null}">  
-                            <f:selectItem itemLabel="Select One" itemValue="0" />  
+                            <f:selectItem itemLabel="Selecione Um" itemValue="0" />  
                             <f:selectItems value="#{cidadeControle.comboEstado}" />  
                         </p:selectOneMenu>
                         <h:outputText  value="Nome:"/>

@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.HashMap;  
 import java.util.Map;
+import javax.persistence.Column;
 
 /**
  *
@@ -22,6 +23,7 @@ public class Perfil implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(nullable=false,unique=true)
     private String nome;
     private String descricao;
     private Long acesso;

@@ -37,7 +37,7 @@ public class PaisControle {
     public void setNome(String nome) {
         this.nome = nome;
     }
-        
+
     public DataModel getModel() {
         return model;
     }
@@ -56,27 +56,32 @@ public class PaisControle {
     public void setPais(Pais usuario) {
         this.pais = usuario;
     }
-    
+
     private void limpar() {
         pais = null;
         model = null;
     }
-    
+
     public String novo() {
         pais = new Pais();
         return "cadPais.faces";
     }
-    
+
     public String pesq() {
         limpar();
         return "pesqPais.faces";
     }
-    
+
     public String salvar() {
         dao = new PaisDAOImp();
         FacesContext context = FacesContext.getCurrentInstance();
         if (pais.getId() == null) {
-            dao.salva(pais);
+            try {
+                dao.salva(pais);
+            } catch (Exception e) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Pais ja Cadastrado!", ""));
+                return "cadPais.faces";
+            }
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Pais Salvo Com Sucesso!", ""));
         } else {
             dao.altera(pais);
@@ -85,7 +90,7 @@ public class PaisControle {
         limpar();
         return "pesqPais.faces";
     }
-    
+
     public void pesquisaLike() {
         dao = new PaisDAOImp();
         List<Pais> paises = dao.pesquisaLikeNome(nome);
@@ -96,7 +101,7 @@ public class PaisControle {
             limpar();
         }
     }
-    
+
     public String excluir() {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
@@ -110,7 +115,7 @@ public class PaisControle {
         limpar();
         return "";
     }
-    
+
     public String alterar() {
         pais = (Pais) model.getRowData();
         return "cadPais.faces";

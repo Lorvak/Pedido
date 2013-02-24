@@ -21,7 +21,7 @@ public class Moradia implements Serializable{
     private Long id;
     @Column(nullable = false)
     private String numero;
-    @Column(nullable = false)
+    @Column(nullable=false)
     private String telefone;
     @Column(nullable = false)
     private String complemento;

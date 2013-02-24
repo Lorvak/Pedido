@@ -178,10 +178,10 @@ public class MoradiaControle {
         moradia.setLogradouro(logradouro);
         if (moradia.getId() == null) {
             dao.salva(moradia);
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Moradia Salvo Com Sucesso!", ""));
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Endereço Salvo Com Sucesso!", ""));
         } else {
             dao.altera(moradia);
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Moradia Alterado Com Sucesso!", ""));
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Endereço Alterado Com Sucesso!", ""));
         }
         limpar();
         return "pesqMoradia.faces";
@@ -193,7 +193,7 @@ public class MoradiaControle {
         model = new ListDataModel(moradias);
         FacesContext context = FacesContext.getCurrentInstance();
         if (moradias.isEmpty()) {
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Moradia inesistente!", "Moradia inesistente!"));
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Endereço inesistente!", "Endereço inesistente!"));
             limpar();
         }
     }
@@ -204,7 +204,7 @@ public class MoradiaControle {
         model = new ListDataModel(moradias);
         FacesContext context = FacesContext.getCurrentInstance();
         if (moradias.isEmpty()) {
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Moradia inesistente!", "Moradia inesistente!"));
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Endereço inesistente!", "Endereço inesistente!"));
             limpar();
         }
     }
@@ -215,7 +215,7 @@ public class MoradiaControle {
             dao = new MoradiaDAOImp();
             moradia = (Moradia) model.getRowData();
             dao.remove(moradia);
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Moradia Excluido com sucesso!", ""));
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Endereço Excluido com sucesso!", ""));
         } catch (Exception e) {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "não foi posivel executar a exclusão!", ""));
         }

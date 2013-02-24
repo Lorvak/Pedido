@@ -67,11 +67,16 @@ public class MesaControle {
         dao = new MesaDAOImp();
         FacesContext context = FacesContext.getCurrentInstance();
         if (mesa.getId() == null) {
-            dao.salva(mesa);
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Mesa Salvo Com Sucesso!", ""));
+            try {
+                dao.salva(mesa);
+            } catch (Exception e) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Mesa ja Cadastrada!", ""));
+                return "cadMesa.faces";
+            }
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Mesa Salva Com Sucesso!", ""));
         } else {
             dao.altera(mesa);
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Mesa Alterado Com Sucesso!", ""));
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Mesa Alterada Com Sucesso!", ""));
         }
         limpar();
         return "pesqMesa.faces";

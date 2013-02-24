@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+    <h:head>
+        <title>Loguin</title>
+        <style type="text/css">
+            .ui-widget{
+                font-size: 12px !important;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <div style="margin: 50px auto 0; width: 350px; height: auto">
+            <a href="template.faces">
+                <p:graphicImage value="imagem/logar.png"/>
+            </a>
+            <h:form id="form_loga">
+                <h:panelGrid columns="2">
+                    <p:outputLabel for="login" value="Usuário:"/>
+                    <p:inputText id="login" value="#{usuarioControle.usuario.login}" required="true"
+                                 requiredMessage="login é obrigatório"/>
+                    <p:outputLabel for="senha" value="Senha:"/>
+                    <p:password id="senha" value="#{usuarioControle.usuario.senha}" required="true"
+                                requiredMessage="senha é obrigatório"/>
+                    <span> </span>
+                    <p:commandButton value="Logar" action="#{usuarioControle.logar()}" ajax="false"/>
+                </h:panelGrid>
+                <p:messages id="mensagens" showSummary="true" />
+            </h:form>
+        </div>
+    </h:body>
+</html>
+

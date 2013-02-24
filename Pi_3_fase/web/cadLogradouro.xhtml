@@ -24,28 +24,28 @@
                     <h:panelGrid id="painel" columns="2">
                         <h:outputText value="Pais: " />  
                         <p:selectOneMenu id="pais" value="#{logradouroControle.pais.id}" effect="fold" required="true" requiredMessage="Campo Pais é obrigatorio! ">  
-                            <f:selectItem itemLabel="Select One" itemValue="0" />  
+                            <f:selectItem itemLabel="Selecione Um" itemValue="0" />  
                             <f:selectItems value="#{logradouroControle.comboPais}"/>
                             <f:ajax execute="pais" render="IDestado"/>
                         </p:selectOneMenu>
                         <h:outputText value="Estado: " />  
                         <p:selectOneMenu id="IDestado" value="#{logradouroControle.estado.id}" effect="fold" required="true" requiredMessage="Campo Estado é obrigatorio! " 
                                          disabled="#{logradouroControle.pais.id == 0 || logradouroControle.pais.id == null}">  
-                            <f:selectItem itemLabel="Select One" itemValue="0" />  
+                            <f:selectItem itemLabel="Selecione Um" itemValue="0" />  
                             <f:selectItems value="#{logradouroControle.comboEstado}" />  
                             <f:ajax execute="IDestado" render="cidade"/>
                         </p:selectOneMenu>
                         <h:outputText value="Cidade: " />  
                         <p:selectOneMenu id="cidade" value="#{logradouroControle.cidade.id}" effect="fold" required="true" requiredMessage="Campo Cidade é obrigatorio! " 
                                          disabled="#{logradouroControle.estado.id == 0 || logradouroControle.estado.id == null}">  
-                            <f:selectItem itemLabel="Select One" itemValue="0" />  
+                            <f:selectItem itemLabel="Selecione Um" itemValue="0" />  
                             <f:selectItems value="#{logradouroControle.comboCidade}" />   
                             <f:ajax execute="cidade" render="logradouro"/>
                         </p:selectOneMenu>
                         <h:outputText value="Bairro: " />  
                         <p:selectOneMenu id="logradouro" value="#{logradouroControle.bairro.id}" effect="fold" required="true" requiredMessage="Campo Bairro é obrigatorio! " 
                                          disabled="#{logradouroControle.cidade.id == 0 || logradouroControle.cidade.id == null}">  
-                            <f:selectItem itemLabel="Select One" itemValue="" />  
+                            <f:selectItem itemLabel="Selecione Um" itemValue="" />  
                             <f:selectItems value="#{logradouroControle.comboBairro}" />  
                         </p:selectOneMenu>
                         <h:outputText  value="Nome:" />

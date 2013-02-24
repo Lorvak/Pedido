@@ -5,6 +5,7 @@
 package br.com.pi.entidade;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,12 +22,22 @@ public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(nullable=false,unique=true)
     private String login;
     private String senha;
     @OneToOne(mappedBy = "usuario")
     private Pessoa pessoa;
     @OneToOne
     private Perfil perfil;
+    private boolean logado;
+
+    public boolean isLogado() {
+        return logado;
+    }
+
+    public void setLogado(boolean logado) {
+        this.logado = logado;
+    }
 
     public Long getId() {
         return id;

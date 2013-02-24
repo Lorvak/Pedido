@@ -67,7 +67,12 @@ public class TamanhoControle {
         dao = new TamanhoDAOImp();
         FacesContext context = FacesContext.getCurrentInstance();
         if (tamanho.getId() == null) {
-            dao.salva(tamanho);
+            try {
+                dao.salva(tamanho);
+            } catch (Exception e) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Tamanho ja Cadastrado!", ""));
+                return "cadTamanho.faces";
+            }
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Tamanho Salvo Com Sucesso!", ""));
         } else {
             dao.altera(tamanho);

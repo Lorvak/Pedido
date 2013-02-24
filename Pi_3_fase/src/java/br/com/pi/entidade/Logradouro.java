@@ -19,7 +19,7 @@ public class Logradouro implements Serializable{
     private Long id;
     @Column(nullable = false)
     private String nome;
-    @Column(nullable = false,length=9)
+    @Column(nullable=false,unique=true,length=9)
     private String cep;
     @JoinColumn(name="idBairro")
     @ManyToOne

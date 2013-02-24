@@ -15,6 +15,7 @@ import br.com.pi.entidade.Logradouro;
 import br.com.pi.entidade.Moradia;
 import br.com.pi.entidade.Perfil;
 import br.com.pi.entidade.Usuario;
+import br.com.pi.util.Cripto;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -44,6 +45,7 @@ public class ClienteControle {
     private Logradouro logradouro;
     private Usuario usuario;
     private Perfil perfil;
+    private Cripto cripto;
 
     public Cliente getCliente() {
         if (cliente == null) {
@@ -138,15 +140,28 @@ public class ClienteControle {
     }
 
     public String salvar() {
+        cripto = new Cripto();
         FacesContext context = FacesContext.getCurrentInstance();
         clienteDAO = new ClienteDAOImp();
         if (cliente.getId() == null) {
-            clienteDAO.salva(cliente);
+            try {
+                cliente.getUsuario().setSenha(cripto.criptoGraf(cliente.getUsuario().getSenha()));
+                clienteDAO.salva(cliente);
+            } catch (Exception e) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Cliente ja Cadastrado!", ""));
+                return "cadCliente.faces";
+            }
             context.addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO,
                     "Cliente salvo com sucesso!", ""));
         } else {
-            clienteDAO.altera(cliente);
+            try {
+                cliente.getUsuario().setSenha(cripto.criptoGraf(cliente.getUsuario().getSenha()));
+                clienteDAO.altera(cliente);
+            } catch (Exception e) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alteração Invalida!", ""));
+                return "cadCliente.faces";
+            }
             context.addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO,
                     "Cliente alterado com sucesso!", ""));

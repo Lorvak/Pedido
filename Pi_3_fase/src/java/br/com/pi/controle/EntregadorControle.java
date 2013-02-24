@@ -6,7 +6,9 @@ package br.com.pi.controle;
 
 import br.com.pi.dao.EntregadorDAO;
 import br.com.pi.dao.EntregadorDAOImp;
+import br.com.pi.dao.MoradiaDAOImp;
 import br.com.pi.entidade.Entregador;
+import br.com.pi.entidade.Moradia;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -59,7 +61,12 @@ public class EntregadorControle {
         FacesContext context = FacesContext.getCurrentInstance();
         entregadorDAO = new EntregadorDAOImp();
         if (entregador.getId() == null) {
-            entregadorDAO.salva(entregador);
+            try {
+                entregadorDAO.salva(entregador);
+            } catch (Exception e) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Entregador ja Cadastrado!", ""));
+                return "cadEntregador.faces";
+            }
             context.addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO,
                     "Entregador salvo com sucesso!", ""));

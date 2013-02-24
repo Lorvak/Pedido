@@ -151,7 +151,12 @@ public class LogradouroControle {
         FacesContext context = FacesContext.getCurrentInstance();
         logradouro.setBairro(bairro);
         if (logradouro.getId() == null) {
-            dao.salva(logradouro);
+            try {
+                dao.salva(logradouro);
+            } catch (Exception e) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Logradouro ja Cadastrado!", ""));
+                return "cadLogradouro.faces";
+            }
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Logradouro Salvo Com Sucesso!", ""));
         } else {
             dao.altera(logradouro);

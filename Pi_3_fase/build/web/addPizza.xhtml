@@ -26,12 +26,12 @@
                         
                         <h:outputText value="Borda: " />  
                         <p:selectOneMenu id="borda" value="#{pedidoControle.borda.id}" effect="fold">  
-                            <f:selectItem itemLabel="Select One" itemValue="0" />  
+                            <f:selectItem itemLabel="Selecione Um" itemValue="0" />  
                             <f:selectItems value="#{pedidoControle.comboBorda}" />  
                         </p:selectOneMenu>
                         <h:outputText value="Tamanho: " />  
                         <p:selectOneMenu id="tamanho" value="#{pedidoControle.tamanho.id}" effect="fold">  
-                            <f:selectItem itemLabel="Select One" itemValue="0" />  
+                            <f:selectItem itemLabel="Selecione Um" itemValue="0" />  
                             <f:selectItems value="#{pedidoControle.comboTamanho}" /> 
                             <f:ajax execute="tamanho" render="btaddsabor"/>
                         </p:selectOneMenu>

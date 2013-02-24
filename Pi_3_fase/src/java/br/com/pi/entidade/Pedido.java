@@ -14,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 /**
  *
@@ -28,8 +30,10 @@ public class Pedido implements Serializable {
     @Column(nullable=true,precision=2)
     private Double preco;
     private Boolean aberto;
+    @Cascade(CascadeType.ALL)
     @OneToMany
     private List<Pizza> pizzas;
+    @Cascade(CascadeType.ALL)
     @OneToMany
     private List<Bebida> bebidas;
     @OneToOne

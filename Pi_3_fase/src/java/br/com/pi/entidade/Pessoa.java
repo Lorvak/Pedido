@@ -34,11 +34,11 @@ public class Pessoa implements Serializable {
     private Long id;
     @Column(nullable = false)
     private String nome;
-    @Column(nullable = false)
     private String celular;
     @Column(nullable = false)
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date nascimento;
+    @Column(nullable=false,unique=true)
     private String email;
     @ManyToMany(fetch= FetchType.EAGER)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)

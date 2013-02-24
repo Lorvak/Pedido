@@ -41,7 +41,7 @@ public class EstadoControle {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
+
     public DataModel getModel() {
         return model;
     }
@@ -71,30 +71,35 @@ public class EstadoControle {
     public void setEstado(Estado usuario) {
         this.estado = usuario;
     }
-    
+
     private void limpar() {
         estado = null;
         pais = null;
         model = null;
     }
-    
+
     public String novo() {
         estado = new Estado();
         pais = new Pais();
         return "cadEstado.faces";
     }
-    
+
     public String pesq() {
         limpar();
         return "pesqEstado.faces";
     }
-    
+
     public String salvar() {
         dao = new EstadoDAOImp();
         FacesContext context = FacesContext.getCurrentInstance();
         estado.setPais(pais);
         if (estado.getId() == null) {
-            dao.salva(estado);
+            try {
+                dao.salva(estado);
+            } catch (Exception e) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Estado ja Cadastrado!", ""));
+                return "cadEstado.faces";
+            }
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Estado Salvo Com Sucesso!", ""));
         } else {
             dao.altera(estado);
@@ -103,7 +108,7 @@ public class EstadoControle {
         limpar();
         return "pesqEstado.faces";
     }
-    
+
     public void pesquisaLike() {
         dao = new EstadoDAOImp();
         List<Estado> estadoes = dao.pesquisaLikeNome(nome);
@@ -114,7 +119,7 @@ public class EstadoControle {
             limpar();
         }
     }
-    
+
     public String excluir() {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
@@ -128,19 +133,19 @@ public class EstadoControle {
         limpar();
         return "";
     }
-    
+
     public String paginapesq() {
         limpar();
         return "pesEstado.faces";
     }
-    
+
     public String alterar() {
         estado = (Estado) model.getRowData();
         pais = estado.getPais();
         return "cadEstado.faces";
     }
-    
-    public List<SelectItem> getComboPais(){
+
+    public List<SelectItem> getComboPais() {
         PaisDAO pdao = new PaisDAOImp();
         List<Pais> paises = pdao.getTodos();
         List<SelectItem> listaCombo = new ArrayList<SelectItem>();
@@ -149,5 +154,4 @@ public class EstadoControle {
         }
         return listaCombo;
     }
-    
 }

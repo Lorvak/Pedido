@@ -5,6 +5,7 @@
 package br.com.pi.entidade;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 
@@ -16,9 +17,13 @@ import javax.persistence.PrimaryKeyJoinColumn;
 @PrimaryKeyJoinColumn(name = "idpessoa")
 public class Funcionario extends Pessoa implements Serializable{
     private static final long serialVersionUID = 1L;
+    @Column(nullable=false,unique=true)
     private String cracha;
+    @Column(nullable=false,unique=true)
     private String cpf;
+    @Column(nullable=false,unique=true)
     private String CarteiraTrabalho;
+    @Column(nullable=false,unique=true)
     private String pis;
 
     public String getCracha() {

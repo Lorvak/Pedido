@@ -23,7 +23,7 @@
                     <h:panelGrid id="painel" columns="2">
                         <h:outputText value="Bebida: " />  
                         <p:selectOneMenu id="mesa" value="#{pedidoControle.bebida.id}" effect="fold">  
-                            <f:selectItem itemLabel="Select One" itemValue="" />  
+                            <f:selectItem itemLabel="Selecione Um" itemValue="" />  
                             <f:selectItems value="#{pedidoControle.comboBebida}" />  
                         </p:selectOneMenu>
                         <p:commandButton value="salvar" action="#{pedidoControle.salvaBebida()}" ajax="false"/>

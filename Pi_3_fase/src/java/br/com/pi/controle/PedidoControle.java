@@ -8,6 +8,8 @@ import br.com.pi.dao.BebidaDAO;
 import br.com.pi.dao.BebidaDAOImp;
 import br.com.pi.dao.BordaDAO;
 import br.com.pi.dao.BordaDAOImp;
+import br.com.pi.dao.FuncionarioDAO;
+import br.com.pi.dao.FuncionarioDAOImp;
 import br.com.pi.dao.MesaDAO;
 import br.com.pi.dao.MesaDAOImp;
 import br.com.pi.dao.PedidoDAO;
@@ -53,6 +55,7 @@ public class PedidoControle {
     private BordaDAO borDao;
     private MesaDAO mDao;
     private SaborDAO sDao;
+    private FuncionarioDAO fDao;
     private DataModel model;
     private DataModel model2;
     private DataModel model3;
@@ -152,7 +155,7 @@ public class PedidoControle {
     public void setModel(DataModel model) {
         this.model = model;
     }
-    
+
     public DataModel getModel2() {
         return model2;
     }
@@ -261,7 +264,7 @@ public class PedidoControle {
         sabores = new ArrayList<Sabor>();
         return "cadPedido.faces";
     }
-    
+
     public String novaPizza() {
         pizza = new Pizza();
         borda = new Borda();
@@ -271,7 +274,7 @@ public class PedidoControle {
         btSabor = false;
         return "addPizza.faces";
     }
-    
+
     public String novaBebida() {
         return "addBebida.faces";
     }
@@ -288,7 +291,7 @@ public class PedidoControle {
     }
 
     public String salvaSabor() {
-        if(saboresSelecionados == null){
+        if (saboresSelecionados == null) {
             saboresSelecionados = new ArrayList<SaborSelecionado>();
         }
         saboresSelecionados.add(saborSelecionado);
@@ -297,12 +300,12 @@ public class PedidoControle {
         if (saboresSelecionados.size() == pizza.getTamanho().getNsabores()) {
             btSabor = true;
         }
-        
+
         return "addPizza.faces";
     }
-    
+
     public String salvaPizza() {
-        if(pizzas == null){
+        if (pizzas == null) {
             pizzas = new ArrayList<Pizza>();
         }
         pizza.setBorda(borda);
@@ -313,17 +316,17 @@ public class PedidoControle {
         sDao = new SaborDAOImp();
         pizza.setBorda(borDao.pesquisa(pizza.getBorda().getId()));
         pizza.setTamanho(tDao.pesquisa(pizza.getTamanho().getId()));
-        pizzas.add(pizza);    
+        pizzas.add(pizza);
         model5 = new ListDataModel(pizzas);
         return "cadPedido.faces";
     }
-    
+
     public String salvaBebida() {
-        if(bebidas == null){
+        if (bebidas == null) {
             bebidas = new ArrayList<Bebida>();
         }
         bDao = new BebidaDAOImp();
-        bebidas.add(bDao.pesquisa(bebida.getId()));  
+        bebidas.add(bDao.pesquisa(bebida.getId()));
         model4 = new ListDataModel(bebidas);
         return "cadPedido.faces";
     }
@@ -331,7 +334,7 @@ public class PedidoControle {
     public String voltar() {
         return "cadPedido.faces";
     }
-    
+
     public String voltar2() {
         return "addPizza.faces";
     }
@@ -349,10 +352,17 @@ public class PedidoControle {
 
     public String salvar() {
         pdao = new PedidoDAOImp();
+        fDao = new FuncionarioDAOImp();
         FacesContext context = FacesContext.getCurrentInstance();
         pedido.setMesa(mesa);
         pedido.setPizzas(pizzas);
         pedido.setBebidas(bebidas);
+        try {
+            pedido.setFuncionario(fDao.pesquisaLikecracha(Funcionario));
+        } catch (Exception e) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Cracha Incorreto!", ""));
+            return "cadPedido.faces";
+        }
         if (pedido.getId() == null) {
             pdao.salva(pedido);
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Pizza Salvo Com Sucesso!", ""));
@@ -372,7 +382,7 @@ public class PedidoControle {
         for (Pedido item : pedidos) {
             flag = true;
             for (Pedido item2 : pedidos2) {
-                if(item.getId().longValue() == item2.getId().longValue()){
+                if (item.getId().longValue() == item2.getId().longValue()) {
                     flag = false;
                 }
             }
@@ -387,14 +397,14 @@ public class PedidoControle {
             limpar();
         }
     }
-    
+
     public void pesquisapizza() {
         pdao = new PedidoDAOImp();
         pedido = (Pedido) model.getRowData();
         pedido = pdao.pesquisa(pedido.getId());
         model5 = new ListDataModel(pedido.getPizzas());
     }
-    
+
     public void pesquisasabor() {
         dao = new PizzaDAOImp();
         pizza = (Pizza) model5.getRowData();
@@ -462,7 +472,7 @@ public class PedidoControle {
         }
         return listaCombo;
     }
-    
+
     public List<SelectItem> getComboBebida() {
         bDao = new BebidaDAOImp();
         List<Bebida> list = bDao.getTodos();
@@ -472,7 +482,7 @@ public class PedidoControle {
         }
         return listaCombo;
     }
-    
+
     public List<SelectItem> getComboMesa() {
         mDao = new MesaDAOImp();
         List<Mesa> list = mDao.getTodos();
@@ -482,24 +492,24 @@ public class PedidoControle {
         }
         return listaCombo;
     }
-    
+
     public void deletarBebida() {
         bebida = (Bebida) model4.getRowData();
         bebidas.remove(bebida);
-        if(bebida.getId() != null){
-            if(bebidas2 == null){
+        if (bebida.getId() != null) {
+            if (bebidas2 == null) {
                 bebidas2 = new ArrayList<Bebida>();
             }
             bebidas2.add(bebida);
         }
         model4 = new ListDataModel(bebidas);
     }
-    
+
     public void deletarPizza() {
         pizza = (Pizza) model5.getRowData();
         pizzas.remove(pizza);
-        if(pizza.getId() != null){
-            if(pizzas2 == null){
+        if (pizza.getId() != null) {
+            if (pizzas2 == null) {
                 pizzas2 = new ArrayList<Pizza>();
             }
             pizzas2.add(pizza);

@@ -10,6 +10,7 @@ import br.com.pi.dao.UsuarioDAO;
 import br.com.pi.dao.UsuarioDAOImp;
 import br.com.pi.entidade.Perfil;
 import br.com.pi.entidade.Usuario;
+import br.com.pi.util.Cripto;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -30,9 +31,11 @@ import javax.faces.model.SelectItem;
 public class UsuarioControle {
 
     private Usuario usuario;
+    private List<Usuario> usuarios;
     private UsuarioDAO usuarioDAO;
     private Perfil perfil;
     private DataModel model;
+    private Cripto cripto;
 
     public Usuario getUsuario() {
         if (usuario == null) {
@@ -71,13 +74,19 @@ public class UsuarioControle {
     public void setPerfil(Perfil perfil) {
         this.perfil = perfil;
     }
-    
 
     public String salvar() {
         FacesContext context = FacesContext.getCurrentInstance();
         usuarioDAO = new UsuarioDAOImp();
+        cripto = new Cripto();
         if (usuario.getId() == null) {
-            usuarioDAO.salva(usuario);
+            try {
+                usuario.setSenha(cripto.criptoGraf(usuario.getSenha()));
+                usuarioDAO.salva(usuario);
+            } catch (Exception e) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario ja Cadastrado!", ""));
+                return "cadUsuario.faces";
+            }
             context.addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO,
                     "Usuario salvo com sucesso!", ""));
@@ -95,7 +104,8 @@ public class UsuarioControle {
         usuario = null;
         model = null;
     }
-     public String limpaPesquisa() {
+
+    public String limpaPesquisa() {
         limpar();
         return "pesqUsuario";
     }
@@ -150,7 +160,7 @@ public class UsuarioControle {
         usuario = null;
         return "pesqUsuario";
     }
-    
+
     public List<SelectItem> getComboPerfis() {
         PerfilDAO pdao = new PerfilDAOImp();
         List<Perfil> perfis = pdao.getTodos();
@@ -159,5 +169,30 @@ public class UsuarioControle {
             listaCombo.add(new SelectItem(forn.getId(), forn.getNome()));
         }
         return listaCombo;
+    }
+
+    public String logar() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        usuarioDAO = new UsuarioDAOImp();
+        usuarios = usuarioDAO.getTodos();
+        cripto = new Cripto();
+        for (Usuario usuario1 : usuarios) {
+            if (usuario.getLogin().equals(usuario1.getLogin())) {
+                usuario.setSenha(cripto.criptoGraf(usuario.getSenha()));
+                if (usuario.getSenha().equals(usuario1.getSenha())) {
+                    if (!usuario1.isLogado()) {
+                        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario Logado com Sucesso!", ""));
+                        return "index";
+                    } else {
+                        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Usuario ja esta Logado!", ""));
+                    }
+                } else {
+                    context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Usuario Invalido!", ""));
+                }
+            } else {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Usuario Invalido!", ""));
+            }
+        }
+        return "login";
     }
 }

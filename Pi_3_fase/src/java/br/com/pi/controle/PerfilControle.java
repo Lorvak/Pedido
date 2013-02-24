@@ -59,7 +59,12 @@ public class PerfilControle {
         FacesContext context = FacesContext.getCurrentInstance();
         perfilDAO = new PerfilDAOImp();
         if (perfil.getId() == null) {
-            perfilDAO.salva(perfil);
+            try {
+                perfilDAO.salva(perfil);
+            } catch (Exception e) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Perfil ja Cadastrado!", ""));
+                return "cadPerfil.faces";
+            }
             context.addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO,
                     "Perfil salvo com sucesso!", ""));

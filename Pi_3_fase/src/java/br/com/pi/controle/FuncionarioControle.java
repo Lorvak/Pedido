@@ -15,6 +15,7 @@ import br.com.pi.entidade.Logradouro;
 import br.com.pi.entidade.Moradia;
 import br.com.pi.entidade.Perfil;
 import br.com.pi.entidade.Usuario;
+import br.com.pi.util.Cripto;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -44,6 +45,7 @@ public class FuncionarioControle {
     private Logradouro logradouro;
     private Perfil perfil;
     private Usuario usuario;
+    private Cripto cripto;
 
     public Usuario getUsuario() {
         if(usuario == null){
@@ -130,20 +132,39 @@ public class FuncionarioControle {
     }
 
     public String salvar() {
+        cripto = new Cripto();
         FacesContext context = FacesContext.getCurrentInstance();
         funcionarioDAO = new FuncionarioDAOImp();
         funcionario.setUsuario(usuario);
         funcionario.getUsuario().setPerfil(perfil);
         if (funcionario.getId() == null) {
-            funcionarioDAO.salva(funcionario);
+            try {
+                funcionario.getUsuario().setSenha(cripto.criptoGraf(funcionario.getUsuario().getSenha()));
+                funcionarioDAO.salva(funcionario);
+            } catch (Exception e) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Funcionario ja Cadastrado!", ""));
+                return "cadFuncionario.faces";
+            }
             context.addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO,
                     "Funcionario salvo com sucesso!", ""));
         } else {
-            funcionarioDAO.altera(funcionario);
+             try {
+                funcionario.getUsuario().setSenha(cripto.criptoGraf(funcionario.getUsuario().getSenha()));
+                funcionarioDAO.altera(funcionario);
+            } catch (Exception e) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Alteração Invalida!", ""));
+                return "cadFuncionario.faces";
+            }
             context.addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO,
                     "Funcionario alterado com sucesso!", ""));
+        }
+        if(moradias != null){
+            moradiaDAO = new MoradiaDAOImp();
+            for (Moradia object : moradias) {
+                moradiaDAO.remove(object);
+            }
         }
         limpar();
         return "pesqFuncionario";

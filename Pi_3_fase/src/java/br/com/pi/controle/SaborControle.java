@@ -67,7 +67,12 @@ public class SaborControle {
         dao = new SaborDAOImp();
         FacesContext context = FacesContext.getCurrentInstance();
         if (sabor.getId() == null) {
-            dao.salva(sabor);
+            dao.salva(sabor);try {
+                dao.salva(sabor);
+            } catch (Exception e) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Sabor ja Cadastrado!", ""));
+                return "cadSabor.faces";
+            }
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sabor Salvo Com Sucesso!", ""));
         } else {
             dao.altera(sabor);

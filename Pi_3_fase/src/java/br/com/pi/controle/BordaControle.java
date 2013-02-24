@@ -67,7 +67,12 @@ public class BordaControle {
         dao = new BordaDAOImp();
         FacesContext context = FacesContext.getCurrentInstance();
         if (borda.getId() == null) {
-            dao.salva(borda);
+            try {
+                dao.salva(borda);
+            } catch (Exception e) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Borda ja Cadastrado!", ""));
+                return "cadBorda.faces";
+            }
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Borda Salvo Com Sucesso!", ""));
         } else {
             dao.altera(borda);

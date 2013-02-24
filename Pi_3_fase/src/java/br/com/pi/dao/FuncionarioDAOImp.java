@@ -41,5 +41,15 @@ public class FuncionarioDAOImp extends BaseDAOImp<Funcionario, Long> implements 
         fechaConexao();
         return funcionarios;
     }
+    
+    @Override
+    public Funcionario pesquisaLikecracha(String cracha) {
+        abreConexao();
+        Query query = session.createQuery("FROM Funcionario f WHERE f.cracha like  :valor");
+        query.setString("valor", "%" + cracha + "%");
+        Funcionario funcionario = (Funcionario) query.uniqueResult();
+        fechaConexao();
+        return funcionario;
+    }
 
 }
