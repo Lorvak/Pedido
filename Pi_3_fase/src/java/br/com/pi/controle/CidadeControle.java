@@ -136,7 +136,6 @@ public class CidadeControle {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
             dao = new CidadeDAOImp();
-            cidade = (Cidade) model.getRowData();
             dao.remove(cidade);
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Cidade Excluido com sucesso!", ""));
         } catch (Exception e) {

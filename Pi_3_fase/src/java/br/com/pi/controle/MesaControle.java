@@ -97,7 +97,6 @@ public class MesaControle {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
             dao = new MesaDAOImp();
-            mesa = (Mesa) model.getRowData();
             dao.remove(mesa);
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Mesa Excluido com sucesso!", ""));
         } catch (Exception e) {

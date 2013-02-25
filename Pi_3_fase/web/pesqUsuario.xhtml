@@ -46,9 +46,8 @@
                         <h:outputText value="${c.senha}"></h:outputText>
                     </p:column>
                     <p:column>
-                        <f:facet name="header">Alterar/Excluir</f:facet>
+                        <f:facet name="header">Alterar</f:facet>
                         <p:commandButton action="#{usuarioControle.alterar()}" value="Alterar" ajax="false"/>
-                        <p:commandButton action="#{usuarioControle.excluir()}" update="tabelacidade" value="Excluir" ajax="false"/>
                     </p:column>
                 </p:dataTable>
             </h:form>

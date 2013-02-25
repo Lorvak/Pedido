@@ -121,7 +121,6 @@ public class PerfilControle {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
             perfilDAO = new PerfilDAOImp();
-            perfil = (Perfil) model.getRowData();
             perfilDAO.remove(perfil);
 
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,

@@ -106,7 +106,6 @@ public class PaisControle {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
             dao = new PaisDAOImp();
-            pais = (Pais) model.getRowData();
             dao.remove(pais);
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Pais Excluido com sucesso!", ""));
         } catch (Exception e) {

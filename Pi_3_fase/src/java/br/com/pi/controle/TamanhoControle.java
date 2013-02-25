@@ -97,7 +97,6 @@ public class TamanhoControle {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
             dao = new TamanhoDAOImp();
-            tamanho = (Tamanho) model.getRowData();
             dao.remove(tamanho);
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Tamanho Excluido com sucesso!", ""));
         } catch (Exception e) {

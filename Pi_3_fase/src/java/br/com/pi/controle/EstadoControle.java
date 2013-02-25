@@ -124,7 +124,6 @@ public class EstadoControle {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
             dao = new EstadoDAOImp();
-            estado = (Estado) model.getRowData();
             dao.remove(estado);
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Estado Excluido com sucesso!", ""));
         } catch (Exception e) {

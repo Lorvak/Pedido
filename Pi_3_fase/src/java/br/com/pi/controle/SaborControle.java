@@ -97,7 +97,6 @@ public class SaborControle {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
             dao = new SaborDAOImp();
-            sabor = (Sabor) model.getRowData();
             dao.remove(sabor);
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sabor Excluido com sucesso!", ""));
         } catch (Exception e) {

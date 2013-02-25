@@ -153,7 +153,6 @@ public class BairroControle {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
             dao = new BairroDAOImp();
-            bairro = (Bairro) model.getRowData();
             dao.remove(bairro);
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Bairro Excluido com sucesso!", ""));
         } catch (Exception e) {

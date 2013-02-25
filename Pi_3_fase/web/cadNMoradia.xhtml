@@ -59,7 +59,7 @@
                         <h:outputText  value="Complemento:" />
                         <p:inputText id="complemento" value="#{clienteControle.moradia.complemento}" required="true" requiredMessage="Campo cep é obrigatorio! "/>
                         <h:outputText  value="Telefone:" />
-                        <p:inputText id="telefone" value="#{clienteControle.moradia.telefone}" required="true" requiredMessage="Campo cep é obrigatorio! "/>
+                        <p:inputMask mask="(99)9999-9999" id="telefone" value="#{clienteControle.moradia.telefone}" required="true" requiredMessage="Campo cep é obrigatorio! "/>
                         <p:commandButton value="salvar" action="#{clienteControle.salvarNovoEndereco()}" ajax="false"/>
                         <p:button value="Voltar" href="cadCliente.faces"/>
                     </h:panelGrid>

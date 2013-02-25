@@ -92,7 +92,6 @@ public class BebidaControle {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
             dao = new BebidaDAOImp();
-            bebida = (Bebida) model.getRowData();
             dao.remove(bebida);
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Bebida Excluido com sucesso!", ""));
         } catch (Exception e) {

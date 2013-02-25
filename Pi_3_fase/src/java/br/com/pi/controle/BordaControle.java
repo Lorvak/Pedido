@@ -97,7 +97,6 @@ public class BordaControle {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
             dao = new BordaDAOImp();
-            borda = (Borda) model.getRowData();
             dao.remove(borda);
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Borda Excluido com sucesso!", ""));
         } catch (Exception e) {

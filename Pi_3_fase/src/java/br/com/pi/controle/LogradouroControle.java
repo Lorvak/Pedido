@@ -192,7 +192,7 @@ public class LogradouroControle {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
             dao = new LogradouroDAOImp();
-            logradouro = (Logradouro) model.getRowData();
+//            logradouro = (Logradouro) model.getRowData();
             dao.remove(logradouro);
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Logradouro Excluido com sucesso!", ""));
         } catch (Exception e) {

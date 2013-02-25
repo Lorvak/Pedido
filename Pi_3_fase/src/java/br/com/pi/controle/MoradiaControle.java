@@ -213,7 +213,6 @@ public class MoradiaControle {
         FacesContext context = FacesContext.getCurrentInstance();
         try {
             dao = new MoradiaDAOImp();
-            moradia = (Moradia) model.getRowData();
             dao.remove(moradia);
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Endereço Excluido com sucesso!", ""));
         } catch (Exception e) {

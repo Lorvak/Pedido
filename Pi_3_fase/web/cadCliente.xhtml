@@ -27,7 +27,7 @@
                         <p:calendar locale="pt" showButtonPanel="true" navigator="true" yearRange="1920" id="nascimento" 
                                     value="#{clienteControle.cliente.nascimento}" required="true" requiredMessage="Campo nascimento é obrigatorio! "/>
                         <h:outputText value="Celular: " />  
-                        <p:inputText id="celular" value="#{clienteControle.cliente.celular}" required="true" requiredMessage="Campo celular é obrigatorio! "/>
+                        <p:inputMask mask="(99)9999-9999" id="celular" value="#{clienteControle.cliente.celular}" required="true" requiredMessage="Campo celular é obrigatorio! "/>
                         <h:outputText value="Email: " />  
                         <p:inputText id="email" value="#{clienteControle.cliente.email}" required="true" requiredMessage="Campo email é obrigatorio! "/>
                         <h:outputText value="Usuario: " />  

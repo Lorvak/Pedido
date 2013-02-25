@@ -12,6 +12,7 @@
                 font-size: 12px !important;
             }
         </style>
+        <script language="JavaScript" type="text/javascript" src="mascara_validacao.js"></script> 
         <script type="text/javascript">
             PrimeFaces.locales['pt'] = {    
                 closeText: 'Fechar',    
@@ -44,12 +45,19 @@
         </script>
     </h:head>
     <h:body>
+        <p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();"/>
+
+        <p:dialog modal="true" widgetVar="statusDialog" header="Status" 
+                  draggable="false" closable="false">
+            <p:graphicImage value="/imagens/carregando.gif" />
+        </p:dialog>
+
         <p:layout fullPage="true">
-            <p:layoutUnit position="north" size="180" header="SENAC" resizable="true" closable="true" collapsible="true">
+            <p:layoutUnit position="north" size="180" header="SENAC" >
                 <div id="topo" style="width: 100%; text-align: center;">
-                    <div id="controleUsuario" style="float: left; width: 100px;">
+                    <div id="controleUsuario" style="float: right; width: auto">
                         <h:form id="formusu">
-                            <h:panelGrid id="painelUsuario" columns="2">
+                            <h:panelGrid id="painelUsuario" columns="3">
                                 <h:outputText value="Usuario: "/>
                                 <h:outputText value="#{usuarioControle.pessoa.nome}"/>
                                 <p:commandButton value="sair" action="#{usuarioControle.sair()}" ajax="false"/>

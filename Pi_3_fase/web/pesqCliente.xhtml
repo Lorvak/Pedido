@@ -58,7 +58,7 @@
                         <h:outputText value="${c.usuario.perfil.nome}"></h:outputText>
                     </p:column>
                     <p:column>
-                        <f:facet name="header">Alterar/Excluir</f:facet>
+                        <f:facet name="header">Alterar/Mostrar Endereços</f:facet>
                         <p:commandButton action="#{clienteControle.alterar()}" value="Alterar" ajax="false"/>
 
                         <p:commandButton id="cbPesqPizza" action="#{clienteControle.pesquisaMoradias()}" oncomplete="show.show()" update="showDialog"  value="Mostrar Enderecos"/>

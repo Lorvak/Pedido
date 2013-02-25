@@ -38,16 +38,8 @@
                         <h:outputText value="${c.borda.nome}"></h:outputText>
                     </p:column>
                     <p:column>
-                        <f:facet name="header">Alterar/Excluir</f:facet>
+                        <f:facet name="header">Alterar/Mostrar Pizza</f:facet>
                         <p:commandButton action="#{pizzaControle.alterar()}" value="Alterar" ajax="false"/>
-                        <p:commandButton onclick="confirmation.show()" value="Excluir Conf"/>
-                        <p:confirmDialog id="confirmDialog" message="Tem Certeza que deseja Excluir?" appendToBody="true" header="Excluir"
-                                         severity="alert" widgetVar="confirmation">
-                            <p:commandButton id="confirm" value="Sim" oncomplete="confirmation.hide()" process="@this" update="@form"
-                                             actionListener="#{pizzaControle.excluir()}"/>
-                            <p:commandButton id="decline" value="Não" onclick="confirmation.hide()" type="button"/>
-                        </p:confirmDialog>
-
                         <p:commandButton id="cbPesqPizza" action="#{pizzaControle.pesquisapizza()}" oncomplete="show.show()" update="showDialog"  value="Mostrar Pizza"/>
                         <p:confirmDialog id="showDialog" appendToBody="true" header="Pizza" message=""
                                          widgetVar="show">

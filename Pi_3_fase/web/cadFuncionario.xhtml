@@ -27,7 +27,7 @@
                         <p:calendar locale="pt" showButtonPanel="true" navigator="true" yearRange="1920" id="nascimento" 
                                     value="#{funcionarioControle.funcionario.nascimento}" required="true" requiredMessage="Campo nascimento é obrigatorio! "/>
                         <h:outputText value="Celular: " />  
-                        <p:inputText id="celular" value="#{funcionarioControle.funcionario.celular}" required="true" requiredMessage="Campo celular é obrigatorio! "/>
+                        <p:inputMask mask="(99)9999-9999" id="celular" value="#{funcionarioControle.funcionario.celular}" required="true" requiredMessage="Campo celular é obrigatorio! "/>
                         <h:outputText value="Email: " />  
                         <p:inputText id="email" value="#{funcionarioControle.funcionario.email}" required="true" requiredMessage="Campo email é obrigatorio! "/>
                         <h:outputText value="Usuario: " />  
@@ -41,9 +41,9 @@
                             <f:selectItems value="#{usuarioControle.comboPerfis}" /> 
                         </p:selectOneMenu>
                         <h:outputText value="Cpf: " />  
-                        <p:inputText id="cpf" value="#{funcionarioControle.funcionario.cpf}" required="true" requiredMessage="Campo celular é obrigatorio! "/>
+                        <p:inputMask mask="999.999.999-99" id="cpf" value="#{funcionarioControle.funcionario.cpf}" required="true" requiredMessage="Campo celular é obrigatorio! "/>
                         <h:outputText value="Pis: " />  
-                        <p:inputText id="pis" value="#{funcionarioControle.funcionario.pis}" required="true" requiredMessage="Campo cadastro é obrigatorio! "/>
+                        <p:inputMask mask="99.999.999-**" id="pis" value="#{funcionarioControle.funcionario.pis}" required="true" requiredMessage="Campo cadastro é obrigatorio! "/>
                         <h:outputText value="Carteira de Trabalho: " />  
                         <p:inputText id="CarteiraTrabalho" value="#{funcionarioControle.funcionario.carteiraTrabalho}" required="true" requiredMessage="Campo cadastro é obrigatorio! "/>
                         <h:outputText value="Cracha: " />  
