@@ -5,6 +5,7 @@
 package br.com.pi.dao;
 
 import br.com.pi.entidade.Pedido;
+import java.util.List;
 
 
 
@@ -13,4 +14,5 @@ import br.com.pi.entidade.Pedido;
  * @author Eduardo M. Silveira
  */
 public interface PedidoDAO extends BaseDAO<Pedido, Long> {
+    public List<Pedido> pesquisaLikeMesa(String numero);
 }

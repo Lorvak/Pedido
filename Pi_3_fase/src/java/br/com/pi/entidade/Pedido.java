@@ -40,13 +40,11 @@ public class Pedido implements Serializable {
     private Mesa mesa;
     @OneToOne
     private Funcionario funcionario;
-    @Transient
-    private Double valorFinal;
 
     public Pedido() {
     }
 
-    public Pedido(Long id, Double preco, Boolean aberto, List<Pizza> pizzas, List<Bebida> bebidas, Mesa mesa, Funcionario funcionario, Double valorFinal) {
+    public Pedido(Long id, Double preco, Boolean aberto, List<Pizza> pizzas, List<Bebida> bebidas, Mesa mesa, Funcionario funcionario) {
         this.id = id;
         this.preco = preco;
         this.aberto = aberto;
@@ -54,15 +52,6 @@ public class Pedido implements Serializable {
         this.bebidas = bebidas;
         this.mesa = mesa;
         this.funcionario = funcionario;
-        this.valorFinal = valorFinal;
-    }
-
-    public Double getValorFinal() {
-        return valorFinal;
-    }
-
-    public void setValorFinal(Double valorFinal) {
-        this.valorFinal = valorFinal;
     }
 
     public Long getId() {

@@ -11,7 +11,8 @@
             <h:form id="form1">
                 <p:toolbar>
                     <p:toolbarGroup align="left" style="height: 25px;">
-                        <p:commandButton value="Pesquisar" image="ui-icon-search" action="#{pedidoControle.pesq()}" ajax="false" style="margin: 0px;"/>
+                        <p:commandButton value="Pesquisar Pedido em Aberto" image="ui-icon-search" action="#{pedidoControle.pesq()}" ajax="false" style="margin: 0px;"/>
+                        <p:commandButton value="Pesquisar Pedidos Encerados" image="ui-icon-search" action="#{pedidoControle.pesq2()}" ajax="false" style="margin: 0px;"/>
                         <p:commandButton value="Novo" image="ui-icon-folder-open" action="#{pedidoControle.novo()}" ajax="false" style="margin: 0px;" disabled="true"/>
                     </p:toolbarGroup>
                 </p:toolbar>
@@ -95,8 +96,11 @@
                     </p:dataTable>
                     <p:commandButton id="btaddpizza" value="Adicionar Pizza" action="#{pedidoControle.novaPizza()}" ajax="false" />
                     </h:panelGrid>
-                    <h:panelGrid id="painel3" columns="1">
+                    <h:panelGrid id="painel3" columns="2">
+                        <h:outputText value="Preço Final: " /> 
+                        <p:inputText id="idfuncionario" value="#{pedidoControle.pedido.preco}" readonly="true"/>
                         <p:commandButton value="salvar" action="#{pedidoControle.salvar()}" ajax="false"/>
+                        <p:commandButton value="Fechar Conta" action="#{pedidoControle.fecharConta()}" ajax="false"/>
                     </h:panelGrid>
                 </p:fieldset>
             </h:form>

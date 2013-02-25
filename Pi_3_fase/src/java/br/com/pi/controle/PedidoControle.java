@@ -318,6 +318,14 @@ public class PedidoControle {
         pizza.setTamanho(tDao.pesquisa(pizza.getTamanho().getId()));
         pizzas.add(pizza);
         model5 = new ListDataModel(pizzas);
+        saborSelecionado = new SaborSelecionado();
+        for (SaborSelecionado object : pizza.getSabores()) {
+            if(saborSelecionado.getSabor().getPreco() <= object.getSabor().getPreco()){
+                saborSelecionado = object;
+            }
+        }
+        pedido.setPreco(pedido.getPreco()+pizza.getTamanho().getPreco()+pizza.getBorda().getPreco()+
+                (saborSelecionado.getSabor().getPreco()*pizza.getTamanho().getNsabores())); 
         return "cadPedido.faces";
     }
 
@@ -328,6 +336,7 @@ public class PedidoControle {
         bDao = new BebidaDAOImp();
         bebidas.add(bDao.pesquisa(bebida.getId()));
         model4 = new ListDataModel(bebidas);
+        pedido.setPreco(pedido.getPreco()+bebida.getPreco()); 
         return "cadPedido.faces";
     }
 
@@ -343,11 +352,21 @@ public class PedidoControle {
         limpar();
         return "pesqPedido.faces";
     }
+    
+    public String pesq2() {
+        limpar();
+        return "pesqPedidoEnderado.faces";
+    }
 
     public void calculaSabores() {
         for (int i = 0; i < pizza.getTamanho().getNsabores(); i++) {
             pizza.getSabores().add(new SaborSelecionado());
         }
+    }
+    
+    public void fecharConta() {
+        pedido.setAberto(false);
+        salvar();
     }
 
     public String salvar() {
@@ -363,12 +382,17 @@ public class PedidoControle {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Cracha Incorreto!", ""));
             return "cadPedido.faces";
         }
-        if (pedido.getId() == null) {
-            pdao.salva(pedido);
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Pizza Salvo Com Sucesso!", ""));
-        } else {
-            pdao.altera(pedido);
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Pizza Alterado Com Sucesso!", ""));
+        try {
+            if (pedido.getId() == null) {
+                pedido.setAberto(true);
+                pdao.salva(pedido);
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Pizza Salvo Com Sucesso!", ""));
+            } else {
+                pdao.altera(pedido);
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Pizza Alterado Com Sucesso!", ""));
+            }
+        } catch (Exception e) {
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao salvar a Pizza!", ""));
         }
         limpar();
         return "pesqPedido.faces";
@@ -386,7 +410,31 @@ public class PedidoControle {
                     flag = false;
                 }
             }
-            if (flag) {
+            if (flag && item.getAberto()) {
+                pedidos2.add(item);
+            }
+        }
+        model = new ListDataModel(pedidos2);
+        FacesContext context = FacesContext.getCurrentInstance();
+        if (pedidos2.isEmpty()) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Pizza inesistente!", "Pedido inesistente!"));
+            limpar();
+        }
+    }
+    
+    public void pesquisa2() {
+        pdao = new PedidoDAOImp();
+        List<Pedido> pedidos = pdao.getTodos();
+        List<Pedido> pedidos2 = new ArrayList<Pedido>();
+        boolean flag;
+        for (Pedido item : pedidos) {
+            flag = true;
+            for (Pedido item2 : pedidos2) {
+                if (item.getId().longValue() == item2.getId().longValue()) {
+                    flag = false;
+                }
+            }
+            if (flag && !item.getAberto()) {
                 pedidos2.add(item);
             }
         }

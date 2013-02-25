@@ -6,14 +6,16 @@ package br.com.pi.dao;
 
 import br.com.pi.entidade.Pedido;
 import java.util.List;
-
-
+import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
+import org.hibernate.Query;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
  * @author Eduardo M. Silveira
  */
-public class PedidoDAOImp extends BaseDAOImp<Pedido, Long> implements PedidoDAO{
+public class PedidoDAOImp extends BaseDAOImp<Pedido, Long> implements PedidoDAO {
 
     @Override
     public Pedido pesquisa(Long id) {
@@ -30,5 +32,19 @@ public class PedidoDAOImp extends BaseDAOImp<Pedido, Long> implements PedidoDAO{
         fechaConexao();
         return list;
     }
+
+    @Override
+    public List<Pedido> pesquisaLikeMesa(String numero){
+        abreConexao();
+        Criteria criteria = session.createCriteria(Pedido.class);
+        criteria.setFetchMode("Mesa", FetchMode.JOIN).add(Restrictions.eq("numero", numero));
+        List<Pedido> pedidos = criteria.list();
+        fechaConexao();
+        return pedidos;
+    }
     
+    public static void main(String[] args) {
+        PedidoDAOImp aOImp = new PedidoDAOImp();
+        System.out.println(aOImp.pesquisaLikeMesa("01"));
+    }
 }
