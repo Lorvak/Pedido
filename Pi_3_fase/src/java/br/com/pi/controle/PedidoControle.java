@@ -355,7 +355,7 @@ public class PedidoControle {
     
     public String pesq2() {
         limpar();
-        return "pesqPedidoEnderado.faces";
+        return "pesqPedidoEncerado.faces";
     }
 
     public void calculaSabores() {
@@ -386,13 +386,13 @@ public class PedidoControle {
             if (pedido.getId() == null) {
                 pedido.setAberto(true);
                 pdao.salva(pedido);
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Pizza Salvo Com Sucesso!", ""));
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Pedido Salvo Com Sucesso!", ""));
             } else {
                 pdao.altera(pedido);
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Pizza Alterado Com Sucesso!", ""));
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Pedido Alterado Com Sucesso!", ""));
             }
         } catch (Exception e) {
-                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao salvar a Pizza!", ""));
+                context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao salvar a Pedido!", ""));
         }
         limpar();
         return "pesqPedido.faces";
@@ -417,7 +417,7 @@ public class PedidoControle {
         model = new ListDataModel(pedidos2);
         FacesContext context = FacesContext.getCurrentInstance();
         if (pedidos2.isEmpty()) {
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Pizza inesistente!", "Pedido inesistente!"));
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Pedido inesistente!", "Pedido inesistente!"));
             limpar();
         }
     }
@@ -441,7 +441,7 @@ public class PedidoControle {
         model = new ListDataModel(pedidos2);
         FacesContext context = FacesContext.getCurrentInstance();
         if (pedidos2.isEmpty()) {
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Pizza inesistente!", "Pedido inesistente!"));
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Pedido inesistente!", "Pedido inesistente!"));
             limpar();
         }
     }

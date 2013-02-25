@@ -98,7 +98,7 @@
                     </h:panelGrid>
                     <h:panelGrid id="painel3" columns="2">
                         <h:outputText value="Preço Final: " /> 
-                        <p:inputText id="idfuncionario" value="#{pedidoControle.pedido.preco}" readonly="true"/>
+                        <p:inputText id="preco" value="#{pedidoControle.pedido.preco}" readonly="true"/>
                         <p:commandButton value="salvar" action="#{pedidoControle.salvar()}" ajax="false"/>
                         <p:commandButton value="Fechar Conta" action="#{pedidoControle.fecharConta()}" ajax="false"/>
                     </h:panelGrid>
