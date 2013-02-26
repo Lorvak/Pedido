@@ -58,8 +58,7 @@
                     <div id="controleUsuario" style="float: right; width: auto">
                         <h:form id="formusu">
                             <h:panelGrid id="painelUsuario" columns="3">
-                                <h:outputText value="Usuario: "/>
-                                <h:outputText value="#{usuarioControle.pessoa.nome}"/>
+                                <h:outputText value="Usuario: #{usuarioControle.pessoa.nome}"/>
                                 <p:commandButton value="sair" action="#{usuarioControle.sair()}" ajax="false"/>
                             </h:panelGrid>
                         </h:form>

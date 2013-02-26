@@ -2,7 +2,7 @@ package com.example.androipapp.services;
 
 public class WebServicesProperties {
 	
-	public static final String IP = "172.16.21.4";
+	public static final String IP = "192.168.1.10";
 	
 	public static final String WSDL_URL_PONTO_ELETRONICO="http://" + IP + ":8080/PontoEletronicoWeb/PontoEletronicoFacade?WSDL";
 	public static final String NAMESPACE_PONTO_ELETRONICO="http://services.pontoeletronico.senac.sc.br/"; 

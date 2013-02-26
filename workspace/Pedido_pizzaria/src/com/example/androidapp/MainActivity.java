@@ -8,10 +8,6 @@ import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
-import com.example.androidapp.bean.Pedido;
-import com.example.androidapp.bean.Pizza;
-import com.example.androipapp.services.WebServicesProperties;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,7 +15,9 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Spinner;
+
+import com.example.androidapp.bean.Pedido;
+import com.example.androipapp.services.WebServicesProperties;
 
 public class MainActivity extends Activity {
 	private String wsdlURL = WebServicesProperties.WSDL_URL_PEDIDO;

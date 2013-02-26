@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="15" version="2.0">
+<workbench progressCount="14" version="2.0">
 <workbenchAdvisor/>
-<window height="768" maximized="true" minimized="true" width="1024" x="132" y="2">
+<window height="768" maximized="true" width="1024" x="132" y="2">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="250"/>
@@ -11,18 +11,18 @@
 <coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="122" y="22"/>
 <coolItem id="additions" itemType="typeGroupMarker"/>
 <coolItem id="adt.actionSet.avdManager" itemType="typeToolBarContribution" x="61" y="22"/>
-<coolItem id="adt.actionSet.lint" itemType="typeToolBarContribution" x="53" y="22"/>
-<coolItem id="adt.actionSet.wizards" itemType="typeToolBarContribution" x="38" y="22"/>
-<coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="129" y="22"/>
-<coolItem id="org.eclipse.jdt.ui.JavaElementCreationActionSet" itemType="typeToolBarContribution" x="76" y="22"/>
-<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="76" y="22"/>
-<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="107" y="22"/>
+<coolItem id="adt.actionSet.lint" itemType="typeToolBarContribution" x="50" y="22"/>
+<coolItem id="adt.actionSet.wizards" itemType="typeToolBarContribution" x="37" y="22"/>
+<coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="168" y="22"/>
+<coolItem id="org.eclipse.jdt.ui.JavaElementCreationActionSet" itemType="typeToolBarContribution" x="74" y="22"/>
+<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="74" y="22"/>
+<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="109" y="22"/>
 <coolItem id="org.eclipse.wst.xml.ui.perspective.NewFileToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="61" y="22"/>
 <coolItem id="org.eclipse.debug.ui.launch.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="org.eclipse.debug.ui.main.toolbar" itemType="typeToolBarContribution" x="38" y="22"/>
+<coolItem id="org.eclipse.debug.ui.main.toolbar" itemType="typeToolBarContribution" x="37" y="22"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
-<coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="190" y="22"/>
+<coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="185" y="22"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="com.android.ide.eclipse.editors.CommonXmlEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
@@ -39,23 +39,27 @@
 <part id="1"/>
 <part id="2"/>
 <part id="3"/>
+<part id="4"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_listagem.xml" partName="activity_listagem.xml" path="C:/Users/Rafael/Documents/SENAC/Técnico Internet - Módulo III - PI/Hugo-2013/workspace/Pedido_pizzaria/res/layout/activity_listagem.xml" title="activity_listagem.xml" tooltip="Pedido_pizzaria/res/layout/activity_listagem.xml" workbook="DefaultEditorWorkbook">
+<editor id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_listagem.xml" partName="activity_listagem.xml" path="C:/Documents and Settings/Administrador/Meus documentos/GitHub/Pedido/workspace/Pedido_pizzaria/res/layout/activity_listagem.xml" title="activity_listagem.xml" tooltip="Pedido_pizzaria/res/layout/activity_listagem.xml" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Pedido_pizzaria/res/layout/activity_listagem.xml"/>
 </editor>
-<editor id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_activity_listar_pedidos.xml" partName="activity_activity_listar_pedidos.xml" path="C:/Users/Rafael/Documents/SENAC/Técnico Internet - Módulo III - PI/Hugo-2013/workspace/Pedido_pizzaria/res/layout/activity_activity_listar_pedidos.xml" title="activity_activity_listar_pedidos.xml" tooltip="Pedido_pizzaria/res/layout/activity_activity_listar_pedidos.xml" workbook="DefaultEditorWorkbook">
+<editor id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_activity_listar_pedidos.xml" partName="activity_activity_listar_pedidos.xml" path="C:/Documents and Settings/Administrador/Meus documentos/GitHub/Pedido/workspace/Pedido_pizzaria/res/layout/activity_activity_listar_pedidos.xml" title="activity_activity_listar_pedidos.xml" tooltip="Pedido_pizzaria/res/layout/activity_activity_listar_pedidos.xml" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Pedido_pizzaria/res/layout/activity_activity_listar_pedidos.xml"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ActivityListarPedidos.java" partName="ActivityListarPedidos.java" path="C:/Users/Rafael/Documents/SENAC/Técnico Internet - Módulo III - PI/Hugo-2013/workspace/Pedido_pizzaria/src/com/example/androidapp/ActivityListarPedidos.java" title="ActivityListarPedidos.java" tooltip="Pedido_pizzaria/src/com/example/androidapp/ActivityListarPedidos.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Pedido_pizzaria/src/com/example/androidapp/ActivityListarPedidos.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1213" selectionTopPixel="0"/>
-</editor>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="WebServicesProperties.java" partName="WebServicesProperties.java" path="C:/Users/Rafael/Documents/SENAC/Técnico Internet - Módulo III - PI/Hugo-2013/workspace/Pedido_pizzaria/src/com/example/androipapp/services/WebServicesProperties.java" title="WebServicesProperties.java" tooltip="Pedido_pizzaria/src/com/example/androipapp/services/WebServicesProperties.java" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="WebServicesProperties.java" partName="WebServicesProperties.java" path="C:/Documents and Settings/Administrador/Meus documentos/GitHub/Pedido/workspace/Pedido_pizzaria/src/com/example/androipapp/services/WebServicesProperties.java" title="WebServicesProperties.java" tooltip="Pedido_pizzaria/src/com/example/androipapp/services/WebServicesProperties.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Pedido_pizzaria/src/com/example/androipapp/services/WebServicesProperties.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="131" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MainActivity.java" partName="MainActivity.java" path="C:/Documents and Settings/Administrador/Meus documentos/GitHub/Pedido/workspace/Pedido_pizzaria/src/com/example/androidapp/MainActivity.java" title="MainActivity.java" tooltip="Pedido_pizzaria/src/com/example/androidapp/MainActivity.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Pedido_pizzaria/src/com/example/androidapp/MainActivity.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="276" selectionTopPixel="0"/>
+</editor>
+<editor id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_pedido_form.xml" partName="activity_pedido_form.xml" path="C:/Documents and Settings/Administrador/Meus documentos/GitHub/Pedido/workspace/Pedido_pizzaria/res/layout/activity_pedido_form.xml" title="activity_pedido_form.xml" tooltip="Pedido_pizzaria/res/layout/activity_pedido_form.xml" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Pedido_pizzaria/res/layout/activity_pedido_form.xml"/>
 </editor>
 </editors>
 <views>
@@ -84,6 +88,9 @@
 <view id="com.android.ide.eclipse.ddms.views.NetworkStatsView" partName="Network Statistics"/>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
+<expanded>
+<category IMemento.internal.id="Warnings"/>
+</expanded>
 <columnWidths org.eclipse.ui.ide.locationField="75" org.eclipse.ui.ide.markerType="75" org.eclipse.ui.ide.pathField="100" org.eclipse.ui.ide.resourceField="75" org.eclipse.ui.ide.severityAndDescriptionField="250"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
@@ -272,7 +279,7 @@
 </fastViewBar>
 <fastViewBar fastViewLocation="131072" id="org.eclipse.ui.internal.ViewStack@cba39a" orientation="512" selectedTabId="com.android.ide.eclipse.ddms.views.LogCatView" style="0">
 <fastViews>
-<view id="com.android.ide.eclipse.ddms.views.LogCatView" ratio="0.3"/>
+<view id="com.android.ide.eclipse.ddms.views.LogCatView" ratio="0.2992922"/>
 </fastViews>
 </fastViewBar>
 <fastViewBar fastViewLocation="1024" id="bottom" orientation="256" selectedTabId="org.eclipse.ui.console.ConsoleView" style="0">
@@ -280,7 +287,7 @@
 <view id="org.eclipse.ui.views.ProblemView" ratio="0.3"/>
 <view id="org.eclipse.jdt.ui.JavadocView" ratio="0.3"/>
 <view id="org.eclipse.jdt.ui.SourceView" ratio="0.3"/>
-<view id="org.eclipse.ui.console.ConsoleView" ratio="0.28344372"/>
+<view id="org.eclipse.ui.console.ConsoleView" ratio="0.28292683"/>
 </fastViews>
 </fastViewBar>
 <fastViewBar fastViewLocation="131072" id="right" orientation="512" selectedTabId="org.eclipse.ant.ui.views.AntView" style="0">
@@ -312,7 +319,7 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.23965763" ratioLeft="336" ratioRight="1066" relationship="2" relative="left"/>
+<info part="org.eclipse.ui.editorss" ratio="0.19878297" ratioLeft="196" ratioRight="790" relationship="2" relative="left"/>
 <info folder="true" part="bottom" ratio="0.74961597" ratioLeft="488" ratioRight="163" relationship="4" relative="org.eclipse.ui.editorss">
 <folder appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="LabelNotFound"/>
@@ -366,46 +373,13 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/Pedido_pizzaria/res/layout/activity_listagem.xml"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/Pedido_pizzaria/res/layout/activity_activity_listar_pedidos.xml"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Pedido_pizzaria/src/com/example/androidapp/ActivityListarPedidos.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Pedido_pizzaria/src/com/example/androidapp/ActivityListarPedidos.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Pedido_pizzaria/src/com/example/androidapp/MainActivity.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" path="/Pedido_pizzaria/AndroidManifest.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/Pedido_pizzaria/res/layout/activity_pedido_form.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/Pedido_pizzaria/res/layout/activity_activity_listar_pedidos.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/Pedido_pizzaria/res/layout/activity_listagem.xml"/>
 </editors>
-<item historyLabel="Pizza.java" index="1">
-<position info="not_deleted" x="524" y="0"/>
-</item>
-<item historyLabel="Pizza.java" index="1">
-<position info="not_deleted" x="121" y="5"/>
-</item>
-<item historyLabel="Sabor.java" index="4">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Pedido.java" index="0">
-<position info="not_deleted" x="135" y="0"/>
-</item>
-<item historyLabel="Pizza.java" index="1">
-<position info="not_deleted" x="164" y="0"/>
-</item>
-<item historyLabel="Pedido.java" index="0">
-<position info="not_deleted" x="135" y="0"/>
-</item>
-<item historyLabel="Pizza.java" index="1">
-<position info="not_deleted" x="164" y="0"/>
-</item>
-<item historyLabel="Bebida.java" index="2">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Bebida.java" index="2">
-<position info="not_deleted" x="459" y="0"/>
-</item>
-<item historyLabel="Pedido.java" index="0">
-<position info="not_deleted" x="135" y="0"/>
-</item>
-<item historyLabel="Bebida.java" index="2">
-<position info="not_deleted" x="133" y="0"/>
-</item>
-<item historyLabel="Mesa.java" index="3">
-<position info="not_deleted" x="322" y="0"/>
-</item>
-<item historyLabel="Sabor.java" index="4">
-<position info="not_deleted" x="455" y="0"/>
-</item>
 <item historyLabel="Pedido.java" index="0">
 <position info="not_deleted" x="135" y="0"/>
 </item>
@@ -508,6 +482,33 @@
 <item historyLabel="ActivityListarPedidos.java" index="13">
 <position info="not_deleted" x="1213" y="0"/>
 </item>
+<item historyLabel="WebServicesProperties.java" index="9">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="ActivityListarPedidos.java" index="14">
+<position info="not_deleted" x="1213" y="0"/>
+</item>
+<item historyLabel="ActivityListarPedidos.java" index="14">
+<position info="not_deleted" x="3495" y="0"/>
+</item>
+<item historyLabel="ActivityListarPedidos.java" index="14">
+<position info="not_deleted" x="3546" y="0"/>
+</item>
+<item historyLabel="MainActivity.java" index="15">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="MainActivity.java" index="15">
+<position info="not_deleted" x="62" y="0"/>
+</item>
+<item historyLabel="MainActivity.java" index="15">
+<position info="not_deleted" x="276" y="0"/>
+</item>
+<item historyLabel="Pedido_pizzaria Manifest" index="16"/>
+<item historyLabel="activity_pedido_form.xml" index="17"/>
+<item historyLabel="activity_activity_listar_pedidos.xml" index="18"/>
+<item historyLabel="activity_pedido_form.xml" index="17"/>
+<item historyLabel="activity_listagem.xml" index="19"/>
+<item historyLabel="activity_activity_listar_pedidos.xml" index="18"/>
 <item active="true" historyLabel="WebServicesProperties.java" index="9">
 <position info="not_deleted" x="0" y="0"/>
 </item>
@@ -517,6 +518,9 @@
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
+<trimArea IMemento.internal.id="16384">
+<trimItem IMemento.internal.id="left"/>
+</trimArea>
 <trimArea IMemento.internal.id="131072">
 <trimItem IMemento.internal.id="right"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@cba39a"/>
@@ -535,6 +539,15 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_pedido_form.xml" tooltip="Pedido_pizzaria/res/layout/activity_pedido_form.xml">
+<persistable path="/Pedido_pizzaria/res/layout/activity_pedido_form.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" name="AndroidManifest.xml" tooltip="Pedido_pizzaria/AndroidManifest.xml">
+<persistable path="/Pedido_pizzaria/AndroidManifest.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MainActivity.java" tooltip="Pedido_pizzaria/src/com/example/androidapp/MainActivity.java">
+<persistable path="/Pedido_pizzaria/src/com/example/androidapp/MainActivity.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="WebServicesProperties.java" tooltip="Pedido_pizzaria/src/com/example/androipapp/services/WebServicesProperties.java">
 <persistable path="/Pedido_pizzaria/src/com/example/androipapp/services/WebServicesProperties.java"/>
 </file>
@@ -546,9 +559,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_listagem.xml" tooltip="Pedido_pizzaria/res/layout/activity_listagem.xml">
 <persistable path="/Pedido_pizzaria/res/layout/activity_listagem.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="activity_pedido_form.xml" tooltip="Pedido_pizzaria/res/layout/activity_pedido_form.xml">
-<persistable path="/Pedido_pizzaria/res/layout/activity_pedido_form.xml"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Sabor.java" tooltip="Pedido_pizzaria/src/com/example/androidapp/bean/Sabor.java">
 <persistable path="/Pedido_pizzaria/src/com/example/androidapp/bean/Sabor.java"/>
@@ -573,12 +583,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" name="AndroidManifest.xml" tooltip="Pizzaria/AndroidManifest.xml">
 <persistable path="/Pizzaria/AndroidManifest.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Pizzas.java" tooltip="Pizzaria/src/br/com/pizzaria/Pizzas.java">
-<persistable path="/Pizzaria/src/br/com/pizzaria/Pizzas.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Listar.java" tooltip="Pizzaria/src/br/com/pizzaria/Listar.java">
-<persistable path="/Pizzaria/src/br/com/pizzaria/Listar.java"/>
 </file>
 </mruList>
 </workbench>
