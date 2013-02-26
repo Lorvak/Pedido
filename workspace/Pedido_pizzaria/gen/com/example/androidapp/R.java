@@ -17,17 +17,19 @@ public final class R {
     public static final class id {
         public static final int btMainCadPedido=0x7f070009;
         public static final int btSearch=0x7f070001;
-        public static final int btVoltar=0x7f07000d;
+        public static final int btVoltar=0x7f07000f;
         public static final int button1=0x7f070003;
         public static final int datePickerFiltro=0x7f070000;
         public static final int editText1=0x7f070005;
         public static final int editText2=0x7f070007;
         public static final int imageView1=0x7f070004;
+        public static final int listViewPedido=0x7f07000a;
         public static final int listViewRegistros=0x7f070002;
-        public static final int menu_settings=0x7f07000e;
-        public static final int spnBebida=0x7f07000c;
-        public static final int spnMesa=0x7f07000a;
-        public static final int spnPizza=0x7f07000b;
+        public static final int menu_settings=0x7f070010;
+        public static final int spinnerPizzas=0x7f07000e;
+        public static final int spnBebida=0x7f07000d;
+        public static final int spnMesa=0x7f07000b;
+        public static final int spnPizza=0x7f07000c;
         public static final int textView1=0x7f070006;
         public static final int textView2=0x7f070008;
     }
@@ -61,6 +63,7 @@ public final class R {
         public static final int menu_settings=0x7f040002;
         public static final int pedido=0x7f040018;
         public static final int project=0x7f040007;
+        public static final int realizar_pedido=0x7f04001e;
         public static final int sabor=0x7f040019;
         public static final int save=0x7f040005;
         public static final int search=0x7f040015;

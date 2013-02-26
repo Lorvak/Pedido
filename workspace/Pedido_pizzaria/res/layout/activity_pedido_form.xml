@@ -24,14 +24,21 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/spnPizza" />
+    
+        <Spinner
+            android:id="@+id/spinnerPizzas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spnBebida"
+            android:layout_alignParentLeft="true" />
 
     <Button
         android:id="@+id/btVoltar"
+        android:onClick="realizarPedido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/spnBebida"
-        android:text="Button" />
+        android:layout_below="@id/spinnerPizzas"
+        android:text="@string/realizar_pedido" />
 
 </RelativeLayout>

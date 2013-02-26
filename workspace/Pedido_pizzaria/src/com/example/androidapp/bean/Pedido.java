@@ -5,7 +5,14 @@ import java.util.List;
 public class Pedido {
 private Long id;
 private List<Pizza>pizzas;
+private String resumo;
 
+public String getResumo() {
+	return resumo;
+}
+public void setResumo(String resumo) {
+	this.resumo = resumo;
+}
 public Long getId() {
 	return id;
 }

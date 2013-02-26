@@ -1,6 +1,5 @@
 com.android.ide.eclipse.adt.fixLegacyEditors=1
-com.android.ide.eclipse.adt.sdk=E\:\\adt-bundle-windows-x86\\adt-bundle-windows-x86\\sdk
-com.android.ide.eclipse.adt.xmlEditor=true
+com.android.ide.eclipse.adt.sdk=C\:\\Users\\Rafael\\Documents\\Eclipse\\Eclipse Android bundle\\sdk
 design.palette.flyout.width=261
 design.structure.flyout.dockLocation=4
 design.structure.flyout.state=1

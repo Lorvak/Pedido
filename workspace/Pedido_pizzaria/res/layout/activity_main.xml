@@ -13,4 +13,12 @@
         android:layout_alignParentTop="true"
         android:text="@string/txtBtMainCadPaedido" />
 
+    <ListView
+        android:id="@+id/listViewPedido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btMainCadPedido" >
+    </ListView>
+
 </RelativeLayout>

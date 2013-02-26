@@ -31,5 +31,6 @@
     <string name="borda">Borda</string>
     <string name="txtbebida">Bebida</string>
     <string name="txtBtMainCadPaedido">Cadastrar Pedido</string>
+    <string name="realizar_pedido">Realizar Pedido</string>
 
 </resources>
